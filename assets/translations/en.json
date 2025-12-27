@@ -1,0 +1,94 @@
+
+{
+    "navigation" : {
+        "home" : "Home",
+        "profil" : "Profile",
+        "kaleler" : "Brief Information",
+        "share" : "Share",
+        "premium" : "Premium",
+        "scan" : "Scan",
+        "yes" : "Yes",
+        "no" : "No",
+        "thememodetext" : "Light/Dark",
+        "favoriAlert" : "Are you sure you want to remove from favorites ?",
+        "save" : "Added",
+        "fullmap" : "View Full Map",
+        "themeSettings" : "Photo analysis counter \nreset",
+        "sayacReset" : "Are you sure you want to reset the counter ?",
+        "sayacResetBtn" : "Reset",
+        "sayacMessage" : "reset successful",
+        "kameraHataText" : "Camera Initialization Error",
+        "fotografSayacText" : "Number of Photos Taken"
+    },
+
+
+    "history_info_1" : {
+        "conntent_0" : "assets/images/history/photo3.png",
+        "conntent_1" : "Büyük İskender yanlışlıkla diri diri gömüldü",
+        "conntent_2" : "Bilim insanları, Büyük İskender'in, Guillain-Barré Sendromu adı verilen nörolojik bir bozukluktan muzdarip olduğunu düşünüyorlar. Ayrıca öldüğü düşünüldüğü sıralarda aslında felç olduğuna ve zihinsel olarak her şeyin farkında olduğuna inanıyorlar."
+        
+    },
+
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "Papa IV.Gregory kedilere karşı savaş ilan etti",
+        "conntent_2" : "Papa IV. Gregory 13. yüzyılda kedilere savaş ilan etti. Kara kedilerin şeytanın aletleri olduğunu söyledi. Bu inançtan dolayı, tüm Avrupa'da bu kedigillerin yok edilmesini emretti. Ancak bu plan, veba taşıyan farelerin popülasyonunda bir artışa neden olduğu için geri tepti."
+        
+    },
+
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "1940'larda bir giysi parçası saldırılara yol açtı.",
+        "conntent_2" : "1940'larda, Smithsonian web sitesine göre, Zoot Suits (gevşek bir pantolon ve ceket) Latin, Siyahi ve diğer erkekler tarafından yaygın olarak giyilirdi. Ancak bazılarının bir moda anlayışı olarak gördüklerini, diğerleri Amerika'ya ve askerlerine karşı bir hakaret olarak gördü. Sonuç olarak, tarihi kaynaklara göre, 1943 yazı Los Angeles'taki bu azınlık topluluklarının saldırıları ile dünya gündemine oturdu. Saldırıları durdurmak için Los Angeles Belediye Meclisi, Zoot Suits'i yasakladı."
+        
+    },
+
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "The Anglo-Zanzibar Savaşı tarihteki en kısa savaştır.",
+        "conntent_2" : "1896 Anglo-Zanzibar Savaşı, 1890'da İngiltere ile Almanya arasında Heligoland-Zanzibar anlaşmasının imzalanmasından sonra başladı. Zanzibar, Britanya İmparatorluğu'nun himayesi olarak ilan edildikten sonra, Britanya, onu denetlemek için kendi padişahını başa geçirdi: Sultan Hamad bin Thuwaini. Ancak padişah 1896'da aniden öldü ve  Sultan Khalid bin Barghash, İngiltere'ye danışmadan tahta geçti. İngiltere bu durumdan mutlu değildi bu yüzden ondan geri çekilmesini istediler. Yeni padişah istifa etmeyi reddetti ve İngilizler sarayı bombaladılar. Çatışma 38 dakikada sona erdi."
+        
+    },
+
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "Eskiden kadın Gladyatörler vardı",
+        "conntent_2" : "Bir kadın gladyatöre Gladiatrix veya çoğul olarak Gladiatrices deniyordu. Erkek meslektaşlarından daha nadirdiler. Gladiatrices, suçluları infaz etmek, diğer Gladyatörlerle savaşmak ve Roma'nın çeşitli dövüş çukurlarında hayvanlarla savaşmak gibi görevleri vardı."
+        
+    },
+
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "Tarihte dünyanın en başarılı korsanı bir kadındı",
+        "conntent_2" : "Adı Ching Shih olan bu kadın, Kızıl Bayrak Filosu Komutanı onu satın alıp evlenene kadar Çin'de bir eskorttu. Ancak kocası onu sadece bir eş olarak görmektense, onun eşiti olarak gördü ve filoda aktif bir korsan komutanı oldu."
+        
+    },
+
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "Persler, MÖ 525'te bir Mısır saldırısını durdurmak için kedileri kullandılar.",
+        "conntent_2" : "Eski Mısır hakkında az çok bilgi sahibi olanlar tanırlar, Mısırlılar kedilere saygı duyarlardı ve hatta bazıları onlara tapardı (Bastet adında bir kedi tanrıçaları bile vardı). Pelusium Savaşı sırasında, II. Cambyses liderliğindeki işgalci Pers Ordusu, Mısır dininden yararlanarak savaşın önemli bir aşamasını kazandı. Makedon tarihçi Polyaeunus'a göre,  Pers Komutanı, askerlerine kendilerini Mısır saldırısından korumak için 'kutsal' kediyi kullanmalarını emretti. Perslerin zaferi kaçınılmaz bir sonuç olmasına rağmen, bu taktiği kullanarak birçok askeri kurtardılar. Herodot, savaşta sadece 7000 Pers'in düştüğünü ve 50000'den fazla Mısırlı'nın hayatını kaybettiğini yazmıştır."
+        
+    },
+
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "Aztek",
+        "conntent_2" : "1487 yılında Aztek tapınağındaki ayinlerde 20 binin üzerinde insan kurban edilmiştir."
+        
+    },
+
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "2. Dünya Savaşı",
+        "conntent_2" : "En son süvari birliği 2. Dünya Savaşı sırasında kullanılmıştır. Alman piyade birliğine saldıran Moğol süvarilerinden 2000 kişi öldürülmüş, buna karşın hiç Alman askeri ölmemiştir."
+        
+    },
+
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "Pek çok şehirde Roma İmparatorluğu'ndan kalma hamamlar vardı",
+        "conntent_2" : "Orta Çağ'da yaşamış olan insanlara 'hiç yıkanmamış' gözüyle bakmak pek adil olmayacaktır. Bu yanılgı büyük olasılıkla, kilisenin Roma döneminde yaygın olan karma banyolara karşı çıkmasından kaynaklanmaktadır. Gerçekte kilise, kilise yakınlarına ve hac bölgelerine kadınlar ve erkekler için ayrı olmak üzere hamamlar yaptırdı. Evde banyo yapabilmek ise zenginler için bir ayrıcalıktı."
+        
+    }
+}
