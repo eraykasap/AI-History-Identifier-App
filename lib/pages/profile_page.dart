@@ -164,7 +164,7 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 0.92, mainAxisSpacing: 10), 
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 0.90, mainAxisSpacing: 10), 
               itemCount: contentGridList.length,
               itemBuilder: (context, index) {
                 final item = contentGridList[index];
@@ -174,7 +174,8 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
                     ref.read(photoTakenProvider.notifier).state = item.image;
                     ref.read(onSaveProvider.notifier).state = item.isSave;
                     ref.read(saveIdProvider.notifier).state = item.Id;
-                    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
+                    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
+                    print("İTEM İNDEXİ : $index");
                   },
                   child: ContentSavedCard(image: item.image, allContent: item.allContent)
                 );

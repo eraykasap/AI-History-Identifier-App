@@ -18,7 +18,13 @@
         "sayacResetBtn" : "Reset",
         "sayacMessage" : "reset successful",
         "kameraHataText" : "Camera Initialization Error",
-        "fotografSayacText" : "Number of Photos Taken"
+        "fotografSayacText" : "Number of Photos Taken",
+        "onboardText_1" : "Press the scan button",
+        "onboardText_2" : "Upload or take a photo",
+        "onboardText_3" : "Let AI analyze it",
+        "onboardText_4" : "Get Detailed Information",
+        "onboardText_5" : "Welcome to History Identifier",
+        "onboardText_6" : "Let's get started quickly"
     },
 
 

@@ -98,7 +98,7 @@ final ThemeData lightTheme = ThemeData(
 
   cardColor: Colors.white,
 
-  //shadowColor: Colors.grey.shade400,
+  shadowColor: Colors.grey.shade400,
 
   canvasColor: Colors.black,
 
@@ -210,7 +210,7 @@ final ThemeData darkTheme = ThemeData(
 
   cardColor: Colors.grey.shade800,
 
-  //shadowColor: Colors.white38
+  shadowColor: Colors.white38,
 
   canvasColor: Colors.white,
 

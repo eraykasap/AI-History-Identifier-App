@@ -91,6 +91,7 @@ flutter:
   assets:
     - assets/translations/
     - assets/images/history/
+    - assets/images/onboardphoto/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

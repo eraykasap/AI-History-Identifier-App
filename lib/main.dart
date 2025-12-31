@@ -9,6 +9,8 @@ import 'package:history_identifier/config/data.dart';
 import 'package:history_identifier/model/model.dart';
 
 import 'package:history_identifier/pages/home_page.dart';
+import 'package:history_identifier/pages/onboard_page.dart';
+import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/pages/photo_page.dart';
 import 'package:history_identifier/pages/profile_page.dart';
 import 'package:history_identifier/providers/providers.dart';
@@ -38,6 +40,7 @@ void main() async {
   await Hive.openBox<String>("themeModeSave");
   await Hive.openBox<int>("freePhotoTake");
   await Hive.openBox<int>("savedDay");
+  await Hive.openBox<bool>("saveOnboard");
   //await Hive.deleteBoxFromDisk("themeModeSave");
 
   runApp(EasyLocalization(
@@ -62,6 +65,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   var themeModeBox = Hive.box<String>("themeModeSave");
   var freePhotoTake = Hive.box<int>("freePhotoTake");
   var savedDay = Hive.box<int>("savedDay");
+  var saveOnboard = Hive.box<bool>("saveOnboard");
 
   @override
   void initState() {
@@ -78,6 +82,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     });
     
   }
+
+  
 
 
   Future<void> initializeRevenueCat() async {
@@ -103,6 +109,10 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
     ref.read(savedDayProvider.notifier).state = savedDay.get("savedDay") ?? 0;
     print("YENİ SAVED DAY : ${ref.read(savedDayProvider)}");
+
+    
+    saveOnboard.isNotEmpty ? ref.read(onBoardPageProvider.notifier).state = saveOnboard.get("saveOnboard") ?? false : ref.read(onBoardPageProvider);
+    print("KAYDEDİLEN PROVİDER ONBOARD DEĞERİ ${ref.read(onBoardPageProvider)}");
     
   }
 
@@ -134,6 +144,10 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       var savedday = ref.read(savedDayProvider);
       savedDay.put("savedDay", savedday);
 
+      var saveonBoardPage = ref.read(onBoardPageProvider);
+      print("KAYDEDİLEN ONBOARD DEĞERİ $saveonBoardPage");
+      saveOnboard.put("saveOnboard", saveonBoardPage);
+
     }
   }
 
@@ -142,6 +156,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
 
     final currentMode = ref.watch(themeModeProvider);
+    final onBoardView = ref.watch(onBoardPageProvider);
+    print("MYAPP ONBOARD BOOL DEGERİ ${ref.read(onBoardPageProvider)}");
 
     return MaterialApp(
 
@@ -155,7 +171,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       theme: lightTheme,
       darkTheme: darkTheme,
 
-      home: BottomNavBarCustom(),
+      home: onBoardView ? BottomNavBarCustom() : OnboardPage(),
+
     );
   }
 }

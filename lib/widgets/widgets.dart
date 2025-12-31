@@ -1,5 +1,7 @@
 
+import 'dart:async';
 import 'dart:io';
+import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,7 @@ class ContentModelWidget extends StatelessWidget {
           children: [
             //Image.file(takenImage),
             SizedBox(height: 10,),
-            Center(child: Text(title, style: Theme.of(context).textTheme.headlineLarge,)),
+            Center(child: Container(child: Text(title, style: Theme.of(context).textTheme.headlineLarge,))),
             SizedBox(height: 10,),
             Center(child: Text(content, style: Theme.of(context).textTheme.bodyMedium,)),
             SizedBox(height: 35,)
@@ -82,9 +84,10 @@ class ContentSavedCard extends StatelessWidget {
             SizedBox(height: 10,),
             //
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              padding: const EdgeInsets.fromLTRB(10, 8, 10, 5),
               child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
             )
+
           ],
         ),
       )
@@ -120,7 +123,7 @@ class Contentcard extends StatelessWidget {
                 borderRadius: BorderRadiusGeometry.circular(12),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.blue
+                    //color: Colors.blue
                   ),
                   width: double.maxFinite,
                   height: 160,
@@ -367,7 +370,7 @@ class MapViewWidget extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.red,
+                color: Color.fromRGBO(195, 150, 57, 1),
                 border: Border.all(width: 2, color: Colors.transparent)
               ),
               child: Center(
@@ -446,8 +449,6 @@ class ContainerPayyWall extends StatelessWidget {
 }
 
 
-
-
 class PulsAnimation extends StatefulWidget {
 
   final Widget child;
@@ -496,5 +497,151 @@ class _PulsAnimationState extends State<PulsAnimation> with SingleTickerProvider
 }
 
 
+class AnimatedContentWidget extends StatefulWidget {
+  final String title;
+  final String content;
 
+  const AnimatedContentWidget({
+    super.key,
+    required this.title,
+    required this.content,
+  });
+
+  @override
+  State<AnimatedContentWidget> createState() => _AnimatedContentWidgetState();
+}
+
+class _AnimatedContentWidgetState extends State<AnimatedContentWidget> with SingleTickerProviderStateMixin {
+
+  String _displayedTitle = '';
+  String _displayedContent = '';
+  bool _isTitleComplete = false;
+  bool _isContentComplete = false;
+  int _currentTitleIndex = 0;
+  int _currentContentIndex = 0;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _startAnimation();
+  }
+
+  void _startAnimation() {
+    // Title animasyonunu başlat
+    _timer = Timer.periodic(const Duration(milliseconds: 3), (timer) {
+      if (_currentTitleIndex < widget.title.length) {
+        setState(() {
+          _displayedTitle += widget.title[_currentTitleIndex];
+          _currentTitleIndex++;
+        });
+      } else if (!_isTitleComplete) {
+        setState(() {
+          _isTitleComplete = true;
+        });
+      } else if (_currentContentIndex < widget.content.length) {
+        // Content animasyonunu başlat
+        setState(() {
+          _displayedContent += widget.content[_currentContentIndex];
+          _currentContentIndex++;
+        });
+      } else {
+        setState(() {
+          _isContentComplete = true;
+        });
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: SelectionArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, //
+          children: [
+            const SizedBox(height: 10),
+            // Title
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Text(
+                    _displayedTitle,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                if (!_isTitleComplete)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    //child: _buildAIIcon(),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            // Content
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    _displayedContent,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                if (_isTitleComplete && !_isContentComplete)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    //child: _buildAIIcon(),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 35),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /* Widget _buildAIIcon() {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: const Duration(milliseconds: 500),
+      builder: (context, value, child) {
+        return Opacity(
+          opacity: value,
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple.withOpacity(0.8),
+                  Colors.blue.withOpacity(0.8),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: const Icon(
+              Icons.smart_toy, // veya Icons.psychology, Icons.smart_toy
+              size: 16,
+              color: Colors.white,
+            ),
+          ),
+        );
+      },
+    );
+  } */
+
+
+}
 

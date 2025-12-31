@@ -18,7 +18,13 @@
         "sayacResetBtn" : "Sıfırla",
         "sayacMessage" : "Sıfırlama başarılı",
         "kameraHataText" : "Kamera Başlatma Hatası",
-        "fotografSayacText" : "Çekilen Fotoğraf Sayısı"
+        "fotografSayacText" : "Çekilen Fotoğraf Sayısı",
+        "onboardText_1" : "Tarama butonuna basın",
+        "onboardText_2" : "Fotoğraf yükleyin veya çekin",
+        "onboardText_3" : "Yapay zekanın analiz etmesine izin verin",
+        "onboardText_4" : "Ayrıntılı Bilgi Alın",
+        "onboardText_5" : "Tarih Tanımlayıcısına Hoş Geldiniz",
+        "onboardText_6" : "Hadi hızlı bir başlangıç yapalım"
     },
 
 

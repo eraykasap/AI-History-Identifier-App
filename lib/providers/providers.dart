@@ -36,6 +36,8 @@ final savedDayProvider = StateProvider<int>((ref) => 0);
 
 final saveFreePhotoTakeProvider = StateProvider<int>((ref) => 0);
 
+final onBoardPageProvider = StateProvider<bool>((ref) => false);
+
 
 
 

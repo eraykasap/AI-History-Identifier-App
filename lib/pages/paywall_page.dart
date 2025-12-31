@@ -1,6 +1,8 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:history_identifier/config/data.dart';
+import 'package:history_identifier/main.dart';
 import 'package:history_identifier/widgets/widgets.dart';
 import 'package:purchases_flutter/models/package_wrapper.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -149,7 +151,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       spacing: 20,
                       children: [
                         ContainerPayyWall(icon: Icons.document_scanner, label: "Unlimited Scans"),
-                        ContainerPayyWall(icon: Icons.article_outlined, label: "More \nDetail")
+                        ContainerPayyWall(icon: Icons.article_outlined, label: "More \nDetail"),
+                        ContainerPayyWall(icon: Icons.payment, label: "Cancel Anytime")
                       ],
                     ),
                                 
@@ -168,15 +171,18 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       ),
                     ),
 
-                    SizedBox(height: 15,),
+                    
                                 
-                    buildPackageCard(
-                      index: 2, 
-                      title: "Monthly Plan", 
-                      subtitle: "", 
-                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "aa", 
-                      period: "/ Mounthly", 
-                      isDiscount: false
+                    Visibility(
+                      visible: isHasEverSub,
+                      child: buildPackageCard(
+                        index: 2, 
+                        title: "Monthly Plan", 
+                        subtitle: "", 
+                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "aa", 
+                        period: "/ Mounthly", 
+                        isDiscount: false
+                      ),
                     ),
                                 
                     SizedBox(height: 15,),
@@ -230,11 +236,16 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
               child: Align(
                 alignment: AlignmentGeometry.topLeft,
                 child: IconButton(onPressed: () {
-                  Navigator.of(context).pop();
+                  //Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
                 }, icon: Icon(Icons.arrow_back_ios, size: 36, color: Colors.white,))
               ),
             ),
           ),
+
+
+          
+
         ],
       )
     );
