@@ -500,11 +500,13 @@ class _PulsAnimationState extends State<PulsAnimation> with SingleTickerProvider
 class AnimatedContentWidget extends StatefulWidget {
   final String title;
   final String content;
+  //final Duration? startDelay;
 
   const AnimatedContentWidget({
     super.key,
     required this.title,
     required this.content,
+    //required this.startDelay
   });
 
   @override
@@ -524,7 +526,10 @@ class _AnimatedContentWidgetState extends State<AnimatedContentWidget> with Sing
   @override
   void initState() {
     super.initState();
+
     _startAnimation();
+    
+    
   }
 
   void _startAnimation() {

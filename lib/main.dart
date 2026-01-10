@@ -105,14 +105,16 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     ThemeMode themeMode = themeModeString.contains("dark") ? ThemeMode.dark : ThemeMode.light;
     ref.read(themeModeProvider.notifier).state = themeMode;
 
-    ref.read(saveFreePhotoTakeProvider.notifier).state = freePhotoTake.get("freePhotoTake") ?? 0;
+    //ref.read(saveFreePhotoTakeProvider.notifier).state = freePhotoTake.get("freePhotoTake") ?? 0;
 
-    ref.read(savedDayProvider.notifier).state = savedDay.get("savedDay") ?? 0;
+    savedDay.isNotEmpty ? ref.read(savedDayProvider.notifier).state = savedDay.get("savedDay") ?? 0 : DateTime.now().day;
     print("YENİ SAVED DAY : ${ref.read(savedDayProvider)}");
 
     
     saveOnboard.isNotEmpty ? ref.read(onBoardPageProvider.notifier).state = saveOnboard.get("saveOnboard") ?? false : ref.read(onBoardPageProvider);
     print("KAYDEDİLEN PROVİDER ONBOARD DEĞERİ ${ref.read(onBoardPageProvider)}");
+
+    //await DailyLimitManager.getDateTime(ref); //
     
   }
 

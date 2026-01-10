@@ -74,7 +74,7 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
               alignment: AlignmentGeometry.topRight,
               child: IconButton(onPressed: () {
                 ref.read(onBoardPageProvider.notifier).state = true;
-                Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+                Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => BottomNavBarCustom()));
               }, icon: Icon(Icons.cancel_outlined, color: Colors.black.withAlpha(50), size: 40,)),
             ),
 
@@ -107,7 +107,7 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
                     }
                     else {
                       ref.read(onBoardPageProvider.notifier).state = true;
-                      Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+                      Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => BottomNavBarCustom()));
                     }
                   }, 
                   child: Text(currentIdex < steps.length -1 ? "Next" : "Get Started", style: TextStyle(color: Colors.white),),
@@ -133,7 +133,10 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
 
-        Text(step.title, style: TextStyle(color: Colors.black, fontSize: 24),),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Text(step.title, style: TextStyle(color: Colors.black, fontSize: 24),),
+        ),
 
         SizedBox(height: 55,),
 

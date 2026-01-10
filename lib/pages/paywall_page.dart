@@ -20,7 +20,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
   int selectedIndex = 0;
   bool isLoading = true;
   bool isSub = false;
-  bool isHasEverSub = true;
+  bool isHasEverSub = false;
 
 
   @override
@@ -28,6 +28,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
     super.initState();
     loadPackages();
+
+    
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       subcheck();
@@ -44,6 +46,13 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     setState(() {
       isSub = subscriptionStatus;
       isHasEverSub = hasEverSub;
+
+      if (isHasEverSub) {
+        selectedIndex = 2;
+      }
+      else {
+        selectedIndex = 0;
+      }
     });
 
   }
@@ -87,7 +96,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       bool success = await SubscriptionManager.purchasePackage(selectedpackage);
 
       if (success) {
-        Navigator.pop(context, true);
+        //Navigator.pop(context, true);
+        Navigator.of(context).pop(true);
       }
 
     }

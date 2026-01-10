@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
@@ -27,6 +28,9 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   String saveID = "";
   bool isAudioPlay = false;
   bool isSubscribed = false;
+  bool _showButton = false;
+  late int contenetLenght;
+  StringBuffer combineText = StringBuffer();
   final AudioService _audioService = AudioService();
 
   @override
@@ -35,7 +39,27 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     super.initState();
     _checkSubscription();
     _initAudio();
+    
+
+    var contentList = ref.read(contentProvider);
+    contenetLenght = widget.itemIndex < 0 ? contentList.fold(0, (sum, item) => sum + contentList[0].title.length + contentList[0].content.length) : contentList.fold(0, (sum, item) => sum + item.title.length + item.content.length);
+
+    Future.delayed(Duration(milliseconds: contenetLenght), (){
+
+      
+      
+      setState(() {
+        _showButton = true;
+      });
+    });
+
+
+    
   }
+
+
+  
+
 
   Future<void> _checkSubscription() async {
     final subscriptionStatus = await SubscriptionManager.isUserSubscribed();
@@ -77,7 +101,6 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     var freePhotoTake = ref.watch(saveFreePhotoTakeProvider);
     saveID = ref.read(saveIdProvider);
 
-    
     
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -126,8 +149,6 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                   ) : 
                   CircularProgressIndicator(),
 
-              
-                  //_buildContentSection(contentList),
                   
                   ListView.builder(
                     shrinkWrap: true,
@@ -137,12 +158,35 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                   
                       var item = contentList[index];
 
-                      return Container(
-                        child: widget.itemIndex < 0 ? AnimatedContentWidget(title: item.title, content: item.content) : ContentModelWidget(title: item.title, content: item.content),
-                      );
+                      
+
+                      /* if (index > 0 && isSubscribed) {
+                        return Stack(
+                          children: [
+
+                            ImageFiltered(
+                              imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                              child: IgnorePointer(
+                                child: Opacity(
+                                  opacity: 0.6,
+                                  child: ContentModelWidget(title: item.title, content: item.content),
+                                ),
+                              ),
+                            ),
+
+                            ElevatedButton(onPressed: () {}, child: Text("data"))
+
+                          ],
+                        );
+                      } */
+
+                      return ContentModelWidget(title: item.title, content: item.content);
+
+
                     
                     }
                   ),
+
 
                   Visibility(
                     visible: !isSubscribed,
@@ -150,9 +194,13 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                       width: 280,
                       height: 60,
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+                        style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(195, 150, 57, 1)),
                         onPressed: () {
-                          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage()));
+                          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage())).then((value) {
+                            if (value == true) {
+                              _checkSubscription();
+                            }
+                          });
                         }, 
                         child: Text("More Details", style: Theme.of(context).textTheme.headlineSmall,)
                       ),
@@ -165,9 +213,6 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
               ),
             ),
           ),
-
-
-          
 
 
         ],
@@ -188,6 +233,8 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     
     );
   }
+
+
 
   Future showMesaj (BuildContext context, WidgetRef ref) {
     return showDialog(
@@ -297,154 +344,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
             child: Icon(isSave ? Icons.bookmark : Icons.bookmark_outline, color: Theme.of(context).iconTheme.color,),
           );
   }
+  
 
-
-
-
-
-  Widget _buildContentSection(List<ContentModel> contentList) {
-    if (isSubscribed) {
-      // Premium kullanıcı - normal göster
-      return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: contentList.length,
-        itemBuilder: (context, index) {
-          var item = contentList[index];
-          return widget.itemIndex < 0 
-              ? AnimatedContentWidget(title: item.title, content: item.content) 
-              : ContentModelWidget(title: item.title, content: item.content);
-        }
-      );
-    } else {
-      // Free kullanıcı - blur'lu göster
-      return Stack(
-        children: [
-          // Arka plandaki içerik
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 1, // Sadece ilk item
-            itemBuilder: (context, index) {
-              var item = contentList[index];
-              return widget.itemIndex < 0 
-                  ? AnimatedContentWidget(title: item.title, content: item.content) 
-                  : ContentModelWidget(title: item.title, content: item.content);
-            }
-          ),
-          
-          // Blur overlay
-          Positioned.fill(
-            child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                child: Container(
-                  color: Colors.black.withOpacity(0.2),
-                  child: Center(
-                    //child: _buildPremiumPrompt(),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    }
-  }
-
-  // Premium prompt widget
-  Widget _buildPremiumPrompt() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 24, vertical: 40),
-      padding: EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.85),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.amber, width: 2),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.amber.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 10,
-          )
-        ]
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.diamond, size: 64, color: Colors.amber),
-          SizedBox(height: 16),
-          Text(
-            '🔒 Premium Content',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(height: 12),
-          Text(
-            'Unlock full historical details\nand unlimited scans',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
-              height: 1.4,
-            ),
-          ),
-          SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) => PayWallPage()
-                )
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.amber,
-              foregroundColor: Colors.black,
-              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 8,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.workspace_premium, size: 24),
-                SizedBox(width: 8),
-                Text(
-                  'Upgrade Now',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 12),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.amber.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.amber.withOpacity(0.5)),
-            ),
-            child: Text(
-              'Only ₺30/month',
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
 }
