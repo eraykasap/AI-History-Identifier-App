@@ -67,7 +67,7 @@ class ApiOperations {
   
   Future<List<ContentModel>> sendImageAndGetJson (File imageFile) async {
 
-    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "AIzaSyCgTkFSIQkoJ-ivU05SGDS83Of9-uJDnUs");
+    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "");
     List<ContentModel> icerikListesi = [];
 
     final jsonSchema = Schema(
