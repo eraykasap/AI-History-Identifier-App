@@ -233,6 +233,29 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
         
       ),
 
+      floatingActionButton: RawMaterialButton(
+        onPressed: () {
+          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()));
+        },
+        
+        elevation: 0,
+        
+        
+        fillColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor!,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(14)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.photo_camera_outlined, color: Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,),
+                Text("navigation.scan".tr(), style: TextStyle(color: Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color),)
+              ],
+            ),
+        ),
+      )
+
     );
   }
 }
@@ -281,7 +304,7 @@ Widget bottomNavgationBar(int selectindex, BuildContext context, WidgetRef ref, 
           width: 10,
         ),
 
-        SizedBox(
+        /* SizedBox(
           height: 85,
           child: ElevatedButton(
             onPressed: () {
@@ -301,7 +324,7 @@ Widget bottomNavgationBar(int selectindex, BuildContext context, WidgetRef ref, 
               overlayColor: Colors.grey.shade800
             ),
           ),
-        )
+        ) */
 
 
 

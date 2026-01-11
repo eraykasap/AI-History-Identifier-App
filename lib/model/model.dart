@@ -944,12 +944,13 @@ class StaticClass {
   static Future<void> openInGoogleMaps (double lat, double lang, String name) async {
   
     final androidUrl = Uri.parse("geo:$lat,$lang?q=$lat,$lang($name)");
-    //final iosUrl = Uri.parse("'https://maps.apple.com/?ll=$lat,$lang&q=$name';");
+    final iosUrl = Uri.parse("https://maps.apple.com/?q=$name&ll=$lat,$lang");
+                              
 
     if (Platform.isIOS) {
-      /* if (await canLaunchUrl(iosUrl)) {
+      if (await canLaunchUrl(iosUrl)) {
         await launchUrl(iosUrl, mode: LaunchMode.externalApplication);
-      } */
+      }
     }
     else {
       if (await canLaunchUrl(androidUrl)) {
