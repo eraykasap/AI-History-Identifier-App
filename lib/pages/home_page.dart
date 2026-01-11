@@ -160,60 +160,65 @@ class HomePage extends ConsumerWidget {
 
 
   Widget mapViewMuseum (BuildContext context) {
-    return Stack(
-      children: 
-      [ 
+    return FutureBuilder(
+      future: Future.delayed(Duration(milliseconds: 150)), 
+      builder: (context, snapshot) {
+        return Stack(
+          children: 
+          [ 
         
-        Container(
-          width: MediaQuery.of(context).size.width >= 800 ? 800 : MediaQuery.of(context).size.width * 1,
-          height: 240,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withAlpha(60),
-                spreadRadius: 2,
-                blurRadius: 6,
-                offset: Offset(0, 0)
-              )
-            ]
-          ),
-          child: MapViewWidget()
-        ),
-
-
-        Container(
-          width: MediaQuery.of(context).size.width >= 800 ? 800 : MediaQuery.of(context).size.width * 1,
-          height: 240,
-          //color: Colors.amber,
-          child: Align(
-            
-            child: Align(
-              alignment: AlignmentGeometry.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.primaryFixed),
-                  onPressed: () {
-                    //StaticClass.openAllInGoogleMaps();
-                    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => FullMapViewPage()));
-                  }, child: 
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text("navigation.fullmap".tr(), style: Theme.of(context).textTheme.labelSmall,),
-                      const SizedBox(width: 10,),
-                      Icon(Icons.open_in_full, color: Theme.of(context).iconTheme.color,)
-                    ],
+            Container(
+              width: MediaQuery.of(context).size.width >= 800 ? 800 : MediaQuery.of(context).size.width * 1,
+              height: 240,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(60),
+                    spreadRadius: 2,
+                    blurRadius: 6,
+                    offset: Offset(0, 0)
                   )
-                ),
+                ]
+              ),
+              child: MapViewWidget()
+            ),
+
+
+            Container(
+              width: MediaQuery.of(context).size.width >= 800 ? 800 : MediaQuery.of(context).size.width * 1,
+              height: 240,
+              //color: Colors.amber,
+              child: Align(
+            
+                child: Align(
+                  alignment: AlignmentGeometry.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.primaryFixed),
+                      onPressed: () {
+                        //StaticClass.openAllInGoogleMaps();
+                        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => FullMapViewPage()));
+                      }, child: 
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text("navigation.fullmap".tr(), style: Theme.of(context).textTheme.labelSmall,),
+                          const SizedBox(width: 10,),
+                          Icon(Icons.open_in_full, color: Theme.of(context).iconTheme.color,)
+                        ],
+                      )
+                    ),
+                  ),
+                )
               ),
             )
-          ),
-        )
 
 
-      ]
+          ]
 
+        );
+      }
     );
   }
 
