@@ -45,12 +45,11 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     contenetLenght = widget.itemIndex < 0 ? contentList.fold(0, (sum, item) => sum + contentList[0].title.length + contentList[0].content.length) : contentList.fold(0, (sum, item) => sum + item.title.length + item.content.length);
 
     Future.delayed(Duration(milliseconds: contenetLenght), (){
-
-      
       
       setState(() {
         _showButton = true;
       });
+      
     });
 
 
@@ -202,7 +201,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                             }
                           });
                         }, 
-                        child: Text("More Details", style: Theme.of(context).textTheme.headlineSmall,)
+                        child: Text("navigation.moreDetails".tr(), style: Theme.of(context).textTheme.headlineSmall,)
                       ),
                     )
                   ),

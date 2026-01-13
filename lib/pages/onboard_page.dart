@@ -110,7 +110,7 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
                       Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => BottomNavBarCustom()));
                     }
                   }, 
-                  child: Text(currentIdex < steps.length -1 ? "Next" : "Get Started", style: TextStyle(color: Colors.white),),
+                  child: Text(currentIdex < steps.length -1 ? "navigation.onboardbutton_text_1".tr() : "navigation.onboardbutton_text_2".tr(), style: TextStyle(color: Colors.white),),
                   style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(195, 150, 57, 1)),
                 ),
               ),

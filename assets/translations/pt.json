@@ -1,0 +1,99 @@
+
+
+{
+
+    "navigation" : {
+        "home" : "Início",
+        "profil" : "Perfil",
+        "kaleler" : "Informação breve",
+        "share" : "Compartilhar",
+        "premium" : "Premium",
+        "scan" : "Escanear",
+        "yes" : "Sim",
+        "no" : "Não",
+        "thememodetext" : "Claro/Escuro",
+        "favoriAlert" : "Tem certeza de que deseja remover dos favoritos?",
+        "save" : "Adicionado",
+        "fullmap" : "Ver mapa completo",
+        "themeSettings" : "Redefinição do contador de \nanálise de fotos",
+        "sayacReset" : "Tem certeza de que deseja redefinir o contador?",
+        "sayacResetBtn" : "Redefinir",
+        "sayacMessage" : "redefinição bem-sucedida",
+        "kameraHataText" : "Erro de inicialização da câmera",
+        "fotografSayacText" : "Número de fotos tiradas",
+        "onboardText_1" : "Pressione o botão escanear",
+        "onboardText_2" : "Carregue ou tire uma foto",
+        "onboardText_3" : "Deixe a IA analisá-la",
+        "onboardText_4" : "Obtenha informações detalhadas",
+        "onboardText_5" : "Bem-vindo ao History Identifier",
+        "onboardText_6" : "Vamos começar rapidamente",
+        "payWallContainer_1" : "Escaneamentos \nilimitados",
+        "payWallContainer_2" : "Mais \ndetalhes",
+        "payWallContainer_3" : "Cancelar a \nqualquer momento",
+        "monthly_30" : "Mensal",
+        "weekly" : "Semanal",
+        "continue" : "continuar",
+        "paywall_title" : "Desvende os segredos \nocultos da história",
+
+        "moreDetails" : "Mais detalhes",
+        "onboardbutton_text_1" : "Próximo",
+        "onboardbutton_text_2" : "Começar",
+        "discount_text" : "30% DE DESCONTO",
+        "already_subscribed" : "Você já está inscrito",
+        "ok" : "Ok",
+        "analiz_error" : "Ocorreu um erro. Por favor, tente novamente.",
+        "daily_scan_limit" : "Seu limite de digitalização diária foi atingido."
+    },
+
+    "history_info_1" : {
+        "conntent_0" : "assets/images/history/photo3.png",
+        "conntent_1" : "Alexandre, o Grande foi enterrado vivo por engano",
+        "conntent_2" : "Os cientistas acreditam que Alexandre, o Grande sofria de um distúrbio neurológico chamado Síndrome de Guillain-Barré. Eles também acreditam que quando se pensava que ele estava morto, ele estava na verdade paralisado e mentalmente consciente de tudo."
+    },
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "O Papa Gregório IV declarou guerra aos gatos",
+        "conntent_2" : "O Papa Gregório IV declarou guerra aos gatos no século XIII. Ele disse que os gatos pretos eram ferramentas do diabo. Devido a essa crença, ele ordenou a exterminação desses felinos em toda a Europa. No entanto, esse plano saiu pela culatra, pois causou um aumento na população de ratos portadores de peste."
+    },
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "Uma peça de roupa causou ataques na década de 1940",
+        "conntent_2" : "Na década de 1940, de acordo com o site do Smithsonian, os Zoot Suits (calça e jaqueta largas) eram comumente usados por homens latinos, negros e outros. Mas o que alguns viam como um senso de moda, outros viam como um insulto à América e seus soldados. Como resultado, de acordo com fontes históricas, os ataques a essas comunidades minoritárias em Los Angeles no verão de 1943 se tornaram uma questão mundial. Para interromper os ataques, o Conselho Municipal de Los Angeles proibiu os Zoot Suits."
+    },
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "A Guerra Anglo-Zanzibar é a guerra mais curta da história",
+        "conntent_2" : "A Guerra Anglo-Zanzibar de 1896 começou após a assinatura do tratado Heligoland-Zanzibar entre a Grã-Bretanha e a Alemanha em 1890. Depois que Zanzibar foi declarado um protetorado do Império Britânico, a Grã-Bretanha instalou seu próprio sultão para controlá-lo: o sultão Hamad bin Thuwaini. No entanto, o sultão morreu repentinamente em 1896 e o sultão Khalid bin Barghash subiu ao trono sem consultar a Grã-Bretanha. A Grã-Bretanha não estava satisfeita com essa situação e pediu que ele se retirasse. O novo sultão recusou-se a renunciar e os britânicos bombardearam o palácio. O conflito terminou em 38 minutos."
+    },
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "Havia gladiadoras no passado",
+        "conntent_2" : "Uma gladiadora era chamada de Gladiatrix ou no plural Gladiatrices. Elas eram mais raras que suas contrapartes masculinas. As Gladiatrices tinham tarefas como executar criminosos, lutar com outros gladiadores e lutar com animais nas várias arenas de combate de Roma."
+    },
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "A pirata mais bem-sucedida da história foi uma mulher",
+        "conntent_2" : "Esta mulher chamada Ching Shih era uma acompanhante na China até que o comandante da Frota da Bandeira Vermelha a comprou e se casou com ela. No entanto, em vez de vê-la apenas como esposa, seu marido a via como sua igual e ela se tornou uma comandante pirata ativa na frota."
+    },
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "Os persas usaram gatos para deter um ataque egípcio em 525 a.C.",
+        "conntent_2" : "Aqueles que têm algum conhecimento sobre o antigo Egito reconhecem que os egípcios respeitavam os gatos e alguns até os adoravam (eles até tinham uma deusa gato chamada Bastet). Durante a Batalha de Pelúsio, o exército persa invasor liderado por Cambises II venceu uma fase importante da guerra explorando a religião egípcia. De acordo com o historiador macedônio Polieno, o comandante persa ordenou que seus soldados usassem o gato 'sagrado' para se proteger do ataque egípcio. Embora a vitória dos persas fosse um resultado inevitável, eles salvaram muitos soldados usando essa tática. Heródoto escreveu que apenas 7000 persas caíram na batalha e mais de 50000 egípcios perderam a vida."
+    },
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "Asteca",
+        "conntent_2" : "Em 1487, mais de 20 mil pessoas foram sacrificadas nos rituais do templo asteca."
+    },
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "Segunda Guerra Mundial",
+        "conntent_2" : "A última unidade de cavalaria foi usada durante a Segunda Guerra Mundial. 2000 cavaleiros mongóis que atacaram uma unidade de infantaria alemã foram mortos, enquanto nenhum soldado alemão morreu."
+    },
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "Havia banhos do Império Romano em muitas cidades",
+        "conntent_2" : "Não seria justo olhar para as pessoas que viveram na Idade Média com o olhar de 'nunca lavado'. Esse equívoco provavelmente vem da oposição da igreja aos banhos mistos que eram comuns no período romano. Na realidade, a igreja mandou construir banhos separados para mulheres e homens perto das igrejas e em áreas de peregrinação. A capacidade de tomar banho em casa era um privilégio para os ricos."
+    }
+
+}

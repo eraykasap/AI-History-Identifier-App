@@ -1,0 +1,99 @@
+
+
+{
+
+    "navigation" : {
+        "home" : "Strona główna",
+        "profil" : "Profil",
+        "kaleler" : "Krótkie informacje",
+        "share" : "Udostępnij",
+        "premium" : "Premium",
+        "scan" : "Skanuj",
+        "yes" : "Tak",
+        "no" : "Nie",
+        "thememodetext" : "Jasny/Ciemny",
+        "favoriAlert" : "Czy na pewno chcesz usunąć z ulubionych?",
+        "save" : "Dodano",
+        "fullmap" : "Zobacz pełną mapę",
+        "themeSettings" : "Resetowanie licznika\nanalizy zdjęć",
+        "sayacReset" : "Czy na pewno chcesz zresetować licznik?",
+        "sayacResetBtn" : "Resetuj",
+        "sayacMessage" : "resetowanie zakończone sukcesem",
+        "kameraHataText" : "Błąd inicjalizacji kamery",
+        "fotografSayacText" : "Liczba wykonanych zdjęć",
+        "onboardText_1" : "Naciśnij przycisk skanowania",
+        "onboardText_2" : "Prześlij lub zrób zdjęcie",
+        "onboardText_3" : "Pozwól AI je przeanalizować",
+        "onboardText_4" : "Uzyskaj szczegółowe informacje",
+        "onboardText_5" : "Witamy w History Identifier",
+        "onboardText_6" : "Zacznijmy szybko",
+        "payWallContainer_1" : "Nieograniczone\nskanowanie",
+        "payWallContainer_2" : "Więcej\nszczegółów",
+        "payWallContainer_3" : "Anuluj w\ndowolnym momencie",
+        "monthly_30" : "Miesięcznie",
+        "weekly" : "Tygodniowo",
+        "continue" : "kontynuuj",
+        "paywall_title" : "Odkryj ukryte\nsekrety historii",
+
+        "moreDetails" : "Więcej szczegółów",
+        "onboardbutton_text_1" : "Dalej",
+        "onboardbutton_text_2" : "Rozpocznij",
+        "discount_text" : "30% ZNIŻKI",
+        "already_subscribed" : "Masz już subskrypcję",
+        "ok" : "Ok",
+        "analiz_error" : "Wystąpił błąd. Spróbuj ponownie.",
+        "daily_scan_limit" : "Osiągnięto dzienny limit skanowania."
+    },
+
+    "history_info_1" : {
+        "conntent_0" : "assets/images/history/photo3.png",
+        "conntent_1" : "Aleksander Wielki został przez pomyłkę pochowany żywcem",
+        "conntent_2" : "Naukowcy uważają, że Aleksander Wielki cierpiał na zaburzenie neurologiczne zwane zespołem Guillaina-Barrégo. Wierzą również, że kiedy myślano, że nie żyje, w rzeczywistości był sparaliżowany i psychicznie świadomy wszystkiego."
+    },
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "Papież Grzegorz IV wypowiedział wojnę kotom",
+        "conntent_2" : "Papież Grzegorz IV wypowiedział wojnę kotom w XIII wieku. Powiedział, że czarne koty są narzędziami diabła. Z powodu tego przekonania nakazał eksterminację tych kotów w całej Europie. Jednak plan ten obrócił się przeciwko niemu, ponieważ spowodował wzrost populacji szczurów przenoszących dżumę."
+    },
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "W latach 40. XX wieku element odzieży spowodował ataki",
+        "conntent_2" : "W latach 40. XX wieku, według strony internetowej Smithsonian, garnitury Zoot (luźne spodnie i marynarka) były powszechnie noszone przez mężczyzn latynoskich, czarnoskórych i innych. Ale to, co niektórzy postrzegali jako poczucie mody, inni widzieli jako zniewagę dla Ameryki i jej żołnierzy. W rezultacie, według źródeł historycznych, ataki na te mniejszościowe społeczności w Los Angeles latem 1943 roku stały się problemem globalnym. Aby powstrzymać ataki, Rada Miejska Los Angeles zakazała garniturów Zoot."
+    },
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "Wojna angielsko-zanzibarijska jest najkrótszą wojną w historii",
+        "conntent_2" : "Wojna angielsko-zanzibarijska z 1896 roku rozpoczęła się po podpisaniu traktatu Heligoland-Zanzibar między Wielką Brytanią a Niemcami w 1890 roku. Po ogłoszeniu Zanzibaru protektoratem Imperium Brytyjskiego, Wielka Brytania ustanowiła własnego sułtana, aby go kontrolować: sułtana Hamada bin Thuwaini. Jednak sułtan zmarł nagle w 1896 roku, a sułtan Khalid bin Barghash wstąpił na tron bez konsultacji z Wielką Brytanią. Wielka Brytania nie była zadowolona z tej sytuacji i zażądała, aby ustąpił. Nowy sułtan odmówił rezygnacji, a Brytyjczycy zbombardowali pałac. Konflikt zakończył się w 38 minut."
+    },
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "Dawniej były gladiatorki",
+        "conntent_2" : "Gladiatorkę nazywano Gladiatrix lub w liczbie mnogiej Gladiatrices. Były rzadsze niż ich męscy odpowiednicy. Gladiatrices miały zadania takie jak egzekucja przestępców, walka z innymi gladiatorami i walka ze zwierzętami na różnych arenach walk w Rzymie."
+    },
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "Najbardziej udanym piratem w historii była kobieta",
+        "conntent_2" : "Ta kobieta o imieniu Ching Shih była eskortą w Chinach, dopóki dowódca Floty Czerwonej Flagi nie kupił jej i nie poślubił. Jednak zamiast postrzegać ją tylko jako żonę, jej mąż widział w niej równą sobie osobę i stała się aktywną dowódczynią piratów we flocie."
+    },
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "Persowie użyli kotów, aby zatrzymać egipski atak w 525 p.n.e.",
+        "conntent_2" : "Ci, którzy mają pewną wiedzę o starożytnym Egipcie, wiedzą, że Egipcjanie szanowali koty, a niektórzy nawet je czcili (mieli nawet boginię-kota o imieniu Bastet). Podczas bitwy pod Peluzją najeźdźcza armia perska pod wodzą Kambizesa II wygrała ważną fazę wojny, wykorzystując egipską religię. Według macedońskiego historyka Polyaenusa dowódca perski nakazał swoim żołnierzom użyć 'świętego' kota, aby chronić się przed egipskim atakiem. Chociaż zwycięstwo Persów było nieuniknionym wynikiem, uratowali wielu żołnierzy, stosując tę taktykę. Herodot napisał, że w bitwie zginęło tylko 7000 Persów i ponad 50000 Egipcjan straciło życie."
+    },
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "Aztekowie",
+        "conntent_2" : "W 1487 roku ponad 20 tysięcy ludzi zostało poświęconych w rytuałach w świątyni azteckiej."
+    },
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "II Wojna Światowa",
+        "conntent_2" : "Ostatnia jednostka kawalerii została użyta podczas II wojny światowej. 2000 mongolskich kawalerzystów, którzy zaatakowali niemiecką jednostkę piechoty, zostało zabitych, podczas gdy żaden niemiecki żołnierz nie zginął."
+    },
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "W wielu miastach były łaźnie z czasów Imperium Rzymskiego",
+        "conntent_2" : "Nie byłoby sprawiedliwe patrzenie na ludzi żyjących w średniowieczu jako na 'nigdy niemytych'. To nieporozumienie prawdopodobnie wynika ze sprzeciwu kościoła wobec mieszanych łaźni, które były powszechne w okresie rzymskim. W rzeczywistości kościół kazał budować oddzielne łaźnie dla kobiet i mężczyzn w pobliżu kościołów i na terenach pielgrzymkowych. Możliwość kąpieli w domu była przywilejem bogatych."
+    }
+
+}

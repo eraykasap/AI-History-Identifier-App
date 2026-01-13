@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:history_identifier/config/data.dart';
@@ -35,6 +36,13 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       subcheck();
     });
 
+    if (isHasEverSub) {
+        selectedIndex = 2;
+      }
+      else {
+        selectedIndex = 0;
+    }
+
   }
 
 
@@ -46,13 +54,6 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     setState(() {
       isSub = subscriptionStatus;
       isHasEverSub = hasEverSub;
-
-      if (isHasEverSub) {
-        selectedIndex = 2;
-      }
-      else {
-        selectedIndex = 0;
-      }
     });
 
   }
@@ -152,7 +153,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                   
                   children: [
                                 
-                    Text("Unlock History's \nHidden secrets", style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
+                    Text("navigation.paywall_title".tr(), style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
                                 
                     SizedBox(height: 20,),
                     
@@ -160,9 +161,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       mainAxisAlignment: MainAxisAlignment.center,
                       spacing: 20,
                       children: [
-                        ContainerPayyWall(icon: Icons.document_scanner, label: "Unlimited Scans"),
-                        ContainerPayyWall(icon: Icons.article_outlined, label: "More \nDetail"),
-                        ContainerPayyWall(icon: Icons.payment, label: "Cancel Anytime")
+                        ContainerPayyWall(icon: Icons.document_scanner, label: "navigation.payWallContainer_1".tr()),
+                        ContainerPayyWall(icon: Icons.article_outlined, label: "navigation.payWallContainer_2".tr()),
+                        ContainerPayyWall(icon: Icons.payment, label: "navigation.payWallContainer_3".tr())
                       ],
                     ),
                                 
@@ -173,7 +174,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       visible: !isHasEverSub,
                       child: buildPackageCard(
                         index: 0, 
-                        title: "Monthly Plan",  
+                        title: "navigation.monthly_30".tr(),  
                         subtitle: "", 
                         price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.introductoryPrice != null) ? "${_packeges![0].storeProduct.introductoryPrice!.priceString}" : "error",
                         period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
@@ -187,10 +188,10 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       visible: isHasEverSub,
                       child: buildPackageCard(
                         index: 2, 
-                        title: "Monthly Plan", 
+                        title: "navigation.monthly_30".tr(), 
                         subtitle: "", 
-                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "aa", 
-                        period: "/ Mounthly", 
+                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "*", 
+                        period: "", 
                         isDiscount: false
                       ),
                     ),
@@ -199,10 +200,10 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                                 
                     buildPackageCard(
                       index: 1, 
-                      title: "Weekly", 
+                      title: "navigation.weekly".tr(), 
                       subtitle: "", 
-                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "bb", 
-                      period: "/ weekly",
+                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "*", 
+                      period: "",
                       isDiscount: false
                     ),
 
@@ -224,7 +225,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                           onPressed: () {
                           handlePurchase();
-                        }, child: Text("Continue", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),)),
+                        }, child: Text("navigation.continue".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),)),
                       ),
                     )),
                 
@@ -291,7 +292,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                 visible: isDiscount,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Text("%30 İNDİRİM", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),),
+                  child: Text("navigation.discount_text".tr(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),),
                 )
               ),
 
@@ -313,7 +314,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(price, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                              Text(period, style: TextStyle(color: Colors.white, fontSize: 14, decoration: isDiscount ? TextDecoration.lineThrough : TextDecoration.none, decorationColor: Colors.white),)
+                              Visibility(visible: isDiscount, child: Text(period, style: TextStyle(color: Colors.white, fontSize: 14, decoration: isDiscount ? TextDecoration.lineThrough : TextDecoration.none, decorationColor: Colors.white),))
                             ],
                           ),
                           leading: Transform.scale(
@@ -352,11 +353,11 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       builder: (context) {
         return AlertDialog(
           backgroundColor: Color.fromRGBO(15, 27, 33, 1),
-          content: Text("You have already subscribed", style: TextStyle(color: Colors.white),),
+          content: Text("navigation.already_subscribed".tr(), style: TextStyle(color: Colors.white),),
           actions: [
             TextButton(onPressed: () {
               Navigator.of(context).pop();
-            }, child: Text("Ok", style: TextStyle(color: Colors.white),))
+            }, child: Text("navigation.ok".tr(), style: TextStyle(color: Colors.white),))
           ],
         );
       }

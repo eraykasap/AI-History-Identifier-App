@@ -32,7 +32,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //freePhotoTake = ref.read(saveFreePhotoTakeProvider);
+    
     _initializedCamera();
     loadCustomerSubInformation();
   }
@@ -220,7 +220,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
 
   Future<void> _takePicture() async {
 
-    if (ref.read(saveFreePhotoTakeProvider) < 5) {
+    if (ref.read(saveFreePhotoTakeProvider) < 5 || customerSub) {
 
       final image = await _controller!.takePicture();
       File imageFile = File(image.path);
@@ -241,7 +241,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
 
   Future<void> _pickImage() async {
 
-    if (ref.read(saveFreePhotoTakeProvider) < 5) {
+    if (ref.read(saveFreePhotoTakeProvider) < 5 || customerSub) {
 
       final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -287,7 +287,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor:Color.fromRGBO(15, 27, 33, 1),
-          content: Text("Günlük tarama limitin doldu", style: TextStyle(color: Colors.white),),
+          content: Text("navigation.daily_scan_limit".tr(), style: TextStyle(color: Colors.white),),
           actions: [
             TextButton(onPressed: () {
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));

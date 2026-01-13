@@ -1,0 +1,99 @@
+
+
+{
+
+    "navigation" : {
+        "home" : "Startseite",
+        "profil" : "Profil",
+        "kaleler" : "Kurzinformation",
+        "share" : "Teilen",
+        "premium" : "Premium",
+        "scan" : "Scannen",
+        "yes" : "Ja",
+        "no" : "Nein",
+        "thememodetext" : "Hell/Dunkel",
+        "favoriAlert" : "Möchten Sie wirklich aus Favoriten entfernen?",
+        "save" : "Hinzugefügt",
+        "fullmap" : "Vollständige Karte anzeigen",
+        "themeSettings" : "Fotoanalyse-Zähler \nzurücksetzen",
+        "sayacReset" : "Möchten Sie den Zähler wirklich zurücksetzen?",
+        "sayacResetBtn" : "Zurücksetzen",
+        "sayacMessage" : "Zurücksetzen erfolgreich",
+        "kameraHataText" : "Kamera-Initialisierungsfehler",
+        "fotografSayacText" : "Anzahl aufgenommener Fotos",
+        "onboardText_1" : "Drücken Sie die Scan-Taste",
+        "onboardText_2" : "Laden Sie ein Foto hoch oder machen Sie eines",
+        "onboardText_3" : "Lassen Sie es von KI analysieren",
+        "onboardText_4" : "Erhalten Sie detaillierte Informationen",
+        "onboardText_5" : "Willkommen bei History Identifier",
+        "onboardText_6" : "Lassen Sie uns schnell beginnen",
+        "payWallContainer_1" : "Unbegrenzte \nScans",
+        "payWallContainer_2" : "Mehr \nDetails",
+        "payWallContainer_3" : "Jederzeit \nkündbar",
+        "monthly_30" : "Monatlich",
+        "weekly" : "Wöchentlich",
+        "continue" : "weiter",
+        "paywall_title" : "Entdecken Sie die \nverborgenen Geheimnisse der Geschichte",
+
+        "moreDetails" : "Weitere Details",
+        "onboardbutton_text_1" : "Weiter",
+        "onboardbutton_text_2" : "Loslegen",
+        "discount_text" : "30% RABATT",
+        "already_subscribed" : "Sie haben bereits ein Abonnement",
+        "ok" : "Ok",
+        "analiz_error" : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        "daily_scan_limit" : "Ihr tägliches Scanlimit wurde erreicht."
+    },
+
+    "history_info_1" : {
+        "conntent_0" : "assets/images/history/photo3.png",
+        "conntent_1" : "Alexander der Große wurde versehentlich lebendig begraben",
+        "conntent_2" : "Wissenschaftler glauben, dass Alexander der Große an einer neurologischen Störung namens Guillain-Barré-Syndrom litt. Sie glauben auch, dass er, als man dachte, er sei tot, tatsächlich gelähmt war und geistig bei vollem Bewusstsein war."
+    },
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "Papst Gregor IV. erklärte Katzen den Krieg",
+        "conntent_2" : "Papst Gregor IV. erklärte im 13. Jahrhundert den Katzen den Krieg. Er sagte, schwarze Katzen seien Werkzeuge des Teufels. Aufgrund dieses Glaubens befahl er die Ausrottung dieser Katzen in ganz Europa. Dieser Plan ging jedoch nach hinten los, da er zu einer Zunahme der pestübertragenden Rattenpopulation führte."
+    },
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "In den 1940er Jahren führte ein Kleidungsstück zu Angriffen",
+        "conntent_2" : "In den 1940er Jahren wurden laut der Smithsonian-Website Zoot Suits (eine lockere Hose und Jacke) häufig von lateinamerikanischen, schwarzen und anderen Männern getragen. Aber was einige als Modesinn sahen, sahen andere als Beleidigung für Amerika und seine Soldaten. Infolgedessen wurden laut historischen Quellen die Angriffe auf diese Minderheitsgemeinschaften in Los Angeles im Sommer 1943 zu einem weltweiten Thema. Um die Angriffe zu stoppen, verbot der Stadtrat von Los Angeles die Zoot Suits."
+    },
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "Der Anglo-Sansibar-Krieg ist der kürzeste Krieg der Geschichte",
+        "conntent_2" : "Der Anglo-Sansibar-Krieg von 1896 begann nach der Unterzeichnung des Heligoland-Sansibar-Abkommens zwischen Großbritannien und Deutschland im Jahr 1890. Nachdem Sansibar zum Protektorat des Britischen Reiches erklärt worden war, setzte Großbritannien seinen eigenen Sultan ein, um es zu kontrollieren: Sultan Hamad bin Thuwaini. Der Sultan starb jedoch 1896 plötzlich, und Sultan Khalid bin Barghash bestieg den Thron, ohne Großbritannien zu konsultieren. Großbritannien war mit dieser Situation nicht zufrieden und forderte ihn zum Rücktritt auf. Der neue Sultan weigerte sich zurückzutreten, und die Briten bombardierten den Palast. Der Konflikt endete in 38 Minuten."
+    },
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "Es gab früher weibliche Gladiatoren",
+        "conntent_2" : "Eine weibliche Gladiatorin wurde Gladiatrix oder im Plural Gladiatrices genannt. Sie waren seltener als ihre männlichen Kollegen. Gladiatrices hatten Aufgaben wie die Hinrichtung von Kriminellen, den Kampf mit anderen Gladiatoren und den Kampf mit Tieren in verschiedenen Kampfarenen Roms."
+    },
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "Die erfolgreichste Piratin der Geschichte war eine Frau",
+        "conntent_2" : "Diese Frau namens Ching Shih war eine Begleiterin in China, bis der Kommandant der Roten Flaggen-Flotte sie kaufte und heiratete. Anstatt sie nur als Ehefrau zu sehen, sah ihr Mann sie jedoch als Gleichgestellte und sie wurde eine aktive Piratenkommandantin in der Flotte."
+    },
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "Die Perser nutzten Katzen, um 525 v. Chr. einen ägyptischen Angriff zu stoppen",
+        "conntent_2" : "Diejenigen, die etwas über das alte Ägypten wissen, erkennen, dass die Ägypter Katzen respektierten und einige sie sogar verehrten (sie hatten sogar eine Katzengöttin namens Bastet). Während der Schlacht von Pelusium gewann die eindringende persische Armee unter der Führung von Kambyses II. eine wichtige Phase des Krieges, indem sie die ägyptische Religion ausnutzte. Dem makedonischen Historiker Polyaenus zufolge befahl der persische Kommandant seinen Soldaten, die 'heilige' Katze zu benutzen, um sich vor dem ägyptischen Angriff zu schützen. Obwohl der Sieg der Perser ein unvermeidliches Ergebnis war, retteten sie durch die Anwendung dieser Taktik viele Soldaten. Herodot schrieb, dass in der Schlacht nur 7000 Perser fielen und mehr als 50000 Ägypter ihr Leben verloren."
+    },
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "Azteken",
+        "conntent_2" : "Im Jahr 1487 wurden bei Ritualen im aztekischen Tempel über 20.000 Menschen geopfert."
+    },
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "Zweiter Weltkrieg",
+        "conntent_2" : "Die letzte Kavallerieeinheit wurde während des Zweiten Weltkriegs eingesetzt. 2000 mongolische Kavalleristen, die eine deutsche Infanterieeinheit angriffen, wurden getötet, während kein deutscher Soldat starb."
+    },
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "In vielen Städten gab es Bäder aus dem Römischen Reich",
+        "conntent_2" : "Es wäre nicht fair, Menschen, die im Mittelalter lebten, mit dem Blick 'nie gebadet' zu betrachten. Dieses Missverständnis rührt höchstwahrscheinlich von der Opposition der Kirche gegen gemischte Bäder her, die in der römischen Zeit üblich waren. Tatsächlich ließ die Kirche getrennte Bäder für Frauen und Männer in der Nähe von Kirchen und Pilgerorten bauen. Die Möglichkeit, zu Hause zu baden, war ein Privileg für die Reichen."
+    }
+    
+}

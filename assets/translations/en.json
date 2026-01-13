@@ -24,7 +24,24 @@
         "onboardText_3" : "Let AI analyze it",
         "onboardText_4" : "Get Detailed Information",
         "onboardText_5" : "Welcome to History Identifier",
-        "onboardText_6" : "Let's get started quickly"
+        "onboardText_6" : "Let's get started quickly",
+        "payWallContainer_1" : "Unlimited \nScans",
+        "payWallContainer_2" : "More \nDetail",
+        "payWallContainer_3" : "Cancel \nAnytime",
+        "monthly_30" : "Monthly",
+        "weekly" : "Weekly",
+        "continue" : "continue",
+        "paywall_title" : "Unlock History's \nHidden Secrets",
+
+        "moreDetails" : "More Details",
+        "onboardbutton_text_1" : "Next",
+        "onboardbutton_text_2" : "Get Started",
+        "discount_text" : "%30 DİSCOUNT",
+        "already_subscribed" : "You have already subscribed",
+        "ok" : "Ok",
+        "analiz_error" : "An error occurred. Please try again.",
+        "daily_scan_limit" : "Your daily screening limit has been reached."
+        
     },
 
 

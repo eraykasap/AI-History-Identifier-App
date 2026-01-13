@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +34,6 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
     // TODO: implement initState
     super.initState();
     _startAnalysis();
-    //sendImageAndGetJson(widget.Myimage, ref);
 
     Future.microtask(() {
       ref.read(photoTakenProvider.notifier).state = widget.Myimage;
@@ -41,8 +41,6 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
       ref.read(photoCounterProvider.notifier).state++;
     });
 
-
-    
   }
 
   
@@ -94,7 +92,7 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
         setState(() {
           analizEdiliyor = false;
         });
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2), content: Text("Bir sorun oluştu. Lütfen tekrar deneyin"))).closed.then((_) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2), content: Text("navigation.analiz_error".tr()))).closed.then((_) {
           Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
         });
         
@@ -104,7 +102,7 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
       setState(() {
         analizEdiliyor = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2), content: Text("Bir sorun oluştu. Lütfen tekrar deneyin"))).closed.then((_) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2), content: Text("navigation.analiz_error".tr()))).closed.then((_) {
         Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
       });
       

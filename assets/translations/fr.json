@@ -1,0 +1,99 @@
+
+
+{
+
+    "navigation" : {
+        "home" : "Accueil",
+        "profil" : "Profil",
+        "kaleler" : "Brève information",
+        "share" : "Partager",
+        "premium" : "Premium",
+        "scan" : "Scanner",
+        "yes" : "Oui",
+        "no" : "Non",
+        "thememodetext" : "Clair/Sombre",
+        "favoriAlert" : "Êtes-vous sûr de vouloir supprimer des favoris ?",
+        "save" : "Ajouté",
+        "fullmap" : "Voir la carte complète",
+        "themeSettings" : "Réinitialisation du compteur \nd'analyse de photos",
+        "sayacReset" : "Êtes-vous sûr de vouloir réinitialiser le compteur ?",
+        "sayacResetBtn" : "Réinitialiser",
+        "sayacMessage" : "réinitialisation réussie",
+        "kameraHataText" : "Erreur d'initialisation de la caméra",
+        "fotografSayacText" : "Nombre de photos prises",
+        "onboardText_1" : "Appuyez sur le bouton scanner",
+        "onboardText_2" : "Téléchargez ou prenez une photo",
+        "onboardText_3" : "Laissez l'IA l'analyser",
+        "onboardText_4" : "Obtenez des informations détaillées",
+        "onboardText_5" : "Bienvenue sur History Identifier",
+        "onboardText_6" : "Commençons rapidement",
+        "payWallContainer_1" : "Scans \nillimités",
+        "payWallContainer_2" : "Plus de \ndétails",
+        "payWallContainer_3" : "Annuler à \ntout moment",
+        "monthly_30" : "Mensuel",
+        "weekly" : "Hebdomadaire",
+        "continue" : "continuer",
+        "paywall_title" : "Dévoilez les secrets \ncachés de l'histoire",
+
+        "moreDetails" : "Plus de détails",
+        "onboardbutton_text_1" : "Suivant",
+        "onboardbutton_text_2" : "Commencer",
+        "discount_text" : "RÉDUCTION DE 30%",
+        "already_subscribed" : "Vous êtes déjà abonné",
+        "ok" : "Ok",
+        "analiz_error" : "Une erreur s'est produite. Veuillez réessayer.",
+        "daily_scan_limit" : "Votre limite de scan quotidienne a été atteinte."
+    },
+
+    "history_info_1" : {
+        "conntent_0" : "assets/images/history/photo3.png",
+        "conntent_1" : "Alexandre le Grand a été enterré vivant par erreur",
+        "conntent_2" : "Les scientifiques pensent qu'Alexandre le Grand souffrait d'un trouble neurologique appelé syndrome de Guillain-Barré. Ils croient également que lorsqu'on pensait qu'il était mort, il était en fait paralysé et mentalement conscient de tout."
+    },
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "Le pape Grégoire IV a déclaré la guerre aux chats",
+        "conntent_2" : "Le pape Grégoire IV a déclaré la guerre aux chats au 13ème siècle. Il a dit que les chats noirs étaient les outils du diable. En raison de cette croyance, il a ordonné l'extermination de ces félins dans toute l'Europe. Cependant, ce plan s'est retourné contre lui car il a provoqué une augmentation de la population de rats porteurs de la peste."
+    },
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "Un vêtement a provoqué des attaques dans les années 1940",
+        "conntent_2" : "Dans les années 1940, selon le site Web du Smithsonian, les Zoot Suits (un pantalon et une veste amples) étaient couramment portés par les hommes latino-américains, noirs et autres. Mais ce que certains considéraient comme un sens de la mode, d'autres le voyaient comme une insulte à l'Amérique et à ses soldats. En conséquence, selon les sources historiques, les attaques contre ces communautés minoritaires à Los Angeles à l'été 1943 sont devenues un problème mondial. Pour arrêter les attaques, le conseil municipal de Los Angeles a interdit les Zoot Suits."
+    },
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "La guerre anglo-zanzibarite est la guerre la plus courte de l'histoire",
+        "conntent_2" : "La guerre anglo-zanzibarite de 1896 a commencé après la signature du traité Heligoland-Zanzibar entre la Grande-Bretagne et l'Allemagne en 1890. Après que Zanzibar a été déclaré protectorat de l'Empire britannique, la Grande-Bretagne a installé son propre sultan pour le contrôler : le sultan Hamad bin Thuwaini. Cependant, le sultan est mort subitement en 1896 et le sultan Khalid bin Barghash est monté sur le trône sans consulter la Grande-Bretagne. La Grande-Bretagne n'était pas satisfaite de cette situation et lui a demandé de se retirer. Le nouveau sultan a refusé de démissionner et les Britanniques ont bombardé le palais. Le conflit s'est terminé en 38 minutes."
+    },
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "Il y avait autrefois des gladiatrices",
+        "conntent_2" : "Une gladiatrice était appelée Gladiatrix ou au pluriel Gladiatrices. Elles étaient plus rares que leurs homologues masculins. Les Gladiatrices avaient des tâches telles que l'exécution de criminels, le combat avec d'autres gladiateurs et le combat avec des animaux dans les différentes arènes de combat de Rome."
+    },
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "La pirate la plus réussie de l'histoire était une femme",
+        "conntent_2" : "Cette femme nommée Ching Shih était une escorte en Chine jusqu'à ce que le commandant de la Flotte du Drapeau Rouge l'achète et l'épouse. Cependant, au lieu de la voir simplement comme une épouse, son mari la considérait comme son égale et elle est devenue une commandante pirate active dans la flotte."
+    },
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "Les Perses ont utilisé des chats pour arrêter une attaque égyptienne en 525 av. J.-C.",
+        "conntent_2" : "Ceux qui connaissent un peu l'Égypte ancienne reconnaissent que les Égyptiens respectaient les chats et certains les vénéraient même (ils avaient même une déesse chat appelée Bastet). Pendant la bataille de Péluse, l'armée perse envahissante dirigée par Cambyse II a remporté une phase importante de la guerre en exploitant la religion égyptienne. Selon l'historien macédonien Polyène, le commandant perse a ordonné à ses soldats d'utiliser le chat 'sacré' pour se protéger de l'attaque égyptienne. Bien que la victoire des Perses ait été un résultat inévitable, ils ont sauvé de nombreux soldats en utilisant cette tactique. Hérodote a écrit que seulement 7000 Perses sont tombés dans la bataille et que plus de 50000 Égyptiens ont perdu la vie."
+    },
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "Aztèque",
+        "conntent_2" : "En 1487, plus de 20 000 personnes ont été sacrifiées lors de rituels dans le temple aztèque."
+    },
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "Seconde Guerre mondiale",
+        "conntent_2" : "La dernière unité de cavalerie a été utilisée pendant la Seconde Guerre mondiale. 2000 cavaliers mongols qui ont attaqué une unité d'infanterie allemande ont été tués, tandis qu'aucun soldat allemand n'est mort."
+    },
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "Il y avait des bains de l'Empire romain dans de nombreuses villes",
+        "conntent_2" : "Il ne serait pas juste de regarder les personnes qui ont vécu au Moyen Âge avec un regard de 'jamais lavé'. Cette idée fausse provient très probablement de l'opposition de l'église aux bains mixtes qui étaient courants à l'époque romaine. En réalité, l'église a fait construire des bains séparés pour les femmes et les hommes près des églises et dans les zones de pèlerinage. La possibilité de se baigner à la maison était un privilège pour les riches."
+    }
+
+}
