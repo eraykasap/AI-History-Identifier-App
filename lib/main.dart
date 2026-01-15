@@ -50,6 +50,7 @@ void main() async {
     child: ProviderScope(child: MyApp())
   )
   );
+  
 }
 
 class MyApp extends ConsumerStatefulWidget {
@@ -240,8 +241,7 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
         
         elevation: 0,
         
-        
-        fillColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor!,
+        fillColor: Color.fromRGBO(195, 150, 57, 1), /*Theme.of(context).bottomNavigationBarTheme.selectedItemColor!,*/
         shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(14)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -249,8 +249,8 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
             mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.photo_camera_outlined, color: Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,),
-                Text("navigation.scan".tr(), style: TextStyle(color: Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color),)
+                Icon(Icons.photo_camera_outlined, color: Colors.white /*Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,*/),
+                Text("navigation.scan".tr(), style: TextStyle(color: Colors.white /*Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color*/),)
               ],
             ),
         ),
