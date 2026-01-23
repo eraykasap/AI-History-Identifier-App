@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:history_identifier/config/data.dart';
+import 'package:history_identifier/main.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/pages/photo_aIanaliz.dart';
 import 'package:history_identifier/providers/providers.dart';
@@ -291,7 +292,8 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
           content: Text("navigation.daily_scan_limit".tr(), style: TextStyle(color: Colors.white),),
           actions: [
             TextButton(onPressed: () {
-              Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));
+              //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));
+              Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
             }, child: Text("Ok", style: TextStyle(color: Colors.white),))
           ],
         );
