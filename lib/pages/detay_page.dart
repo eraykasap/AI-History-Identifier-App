@@ -91,6 +91,10 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     _audioService.dispose();
   }
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
 

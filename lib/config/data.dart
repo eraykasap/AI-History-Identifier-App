@@ -140,10 +140,10 @@ class SubscriptionManager {
     try {
       CustomerInfo customerInfo = await Purchases.getCustomerInfo();
       bool isPro = customerInfo.entitlements.all["pro"]?.isActive ?? false;
-      print("ABONELİK DURUMU AKTİFİ DEGİLMİ : $isPro");
+      //print("ABONELİK DURUMU AKTİFİ DEGİLMİ : $isPro");
       return isPro;
     } catch (e) {
-      print("Abonelik kontrolü hatası : $e");
+      //print("Abonelik kontrolü hatası : $e");
       return false;
     }
   }
@@ -156,7 +156,7 @@ class SubscriptionManager {
       CustomerInfo customerInfo = await Purchases.getCustomerInfo();
       List<String> allPurchases = customerInfo.allPurchasedProductIdentifiers;
       bool hasEverpurcheses = allPurchases.isNotEmpty;
-      print("ABONELIK LISTESI : ${allPurchases.length}");
+      //print("ABONELIK LISTESI : ${allPurchases.length}");
 
       return hasEverpurcheses;
 
@@ -178,7 +178,7 @@ class SubscriptionManager {
       }
       return null;
     } catch (e) {
-      print("Paket getirme hatası : $e");
+      //print("Paket getirme hatası : $e");
       return null;
     }
 
@@ -191,22 +191,19 @@ class SubscriptionManager {
     try {
       final purchaseParams = PurchaseParams.package(package);
       PurchaseResult result = await Purchases.purchase(purchaseParams);
-
-      /* final purchaseParams = PurchaseParams.subscriptionOption(package.storeProduct.subscriptionOptions![0]);
-      PurchaseResult result = await Purchases.purchase(purchaseParams); */
       
       bool isPro = result.customerInfo.entitlements.all['pro']?.isActive ?? false;
       if (isPro) {
-        print('Satın alma başarılı! ✅');
+        //print('Satın alma başarılı! ✅');
         return true;
       }
       return false;
     } on PlatformException catch (e) {
       var errorCode = PurchasesErrorHelper.getErrorCode(e);
       if (errorCode == PurchasesErrorCode.purchaseCancelledError) {
-        print('Kullanıcı satın almayı iptal etti');
+        //print('Kullanıcı satın almayı iptal etti');
       } else {
-        print('Satın alma hatası: ${e.message}');
+        //print('Satın alma hatası: ${e.message}');
       }
       return false;
     }
@@ -220,14 +217,14 @@ class SubscriptionManager {
       bool isPro = customerInfo.entitlements.all['pro']?.isActive ?? false;
       
       if (isPro) {
-        print('Abonelik geri yüklendi! ✅');
+        //print('Abonelik geri yüklendi! ✅');
         return true;
       } else {
-        print('Geri yüklenecek abonelik bulunamadı');
+        //print('Geri yüklenecek abonelik bulunamadı');
         return false;
       }
     } catch (e) {
-      print('Geri yükleme hatası: $e');
+      //print('Geri yükleme hatası: $e');
       return false;
     }
   }
@@ -244,14 +241,14 @@ class DailyLimitManager {
     final toDay = DateTime.now().day;
     final savedDay = ref.read(savedDayProvider);
 
-    print("TODAY : $toDay");
-    print("KAYDEDİLEN GÜN : $savedDay");
+    //print("TODAY : $toDay");
+    //print("KAYDEDİLEN GÜN : $savedDay");
 
     if (toDay > savedDay || savedDay > toDay) {
       ref.read(saveFreePhotoTakeProvider.notifier).state = 0;
       ref.read(savedDayProvider.notifier).state = toDay;
 
-      print("YENI KAYDEDILEN GUN : ${ref.read(savedDayProvider)}");
+      //print("YENI KAYDEDILEN GUN : ${ref.read(savedDayProvider)}");
     }
     
     

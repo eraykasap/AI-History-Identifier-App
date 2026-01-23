@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,12 +90,12 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
 
   Future<void> initializeRevenueCat() async {
-    final apiKey = "goog_vMhnSxifPOsRTWyMLofGZZKPRuv";
+    final apiKey = Platform.isAndroid ? "goog_vMhnSxifPOsRTWyMLofGZZKPRuv" : "appl_aEwBKMUYjJIaEUdhbYwXuvPFWqf";
     await Purchases.configure(PurchasesConfiguration(apiKey));
 
     ref.read(isCustomerSubProvider.notifier).state = await SubscriptionManager.isUserSubscribed();
 
-    print("ABONELİK DURUMU : ${ref.read(isCustomerSubProvider)}");
+    //print("ABONELİK DURUMU : ${ref.read(isCustomerSubProvider)}");
   }
 
 
@@ -109,11 +111,11 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     ref.read(saveFreePhotoTakeProvider.notifier).state = freePhotoTake.get("freePhotoTake") ?? 0;
 
     savedDay.isNotEmpty ? ref.read(savedDayProvider.notifier).state = savedDay.get("savedDay") ?? 0 : DateTime.now().day;
-    print("YENİ SAVED DAY : ${ref.read(savedDayProvider)}");
+    //print("YENİ SAVED DAY : ${ref.read(savedDayProvider)}");
 
     
     saveOnboard.isNotEmpty ? ref.read(onBoardPageProvider.notifier).state = saveOnboard.get("saveOnboard") ?? false : ref.read(onBoardPageProvider);
-    print("KAYDEDİLEN PROVİDER ONBOARD DEĞERİ ${ref.read(onBoardPageProvider)}");
+    //print("KAYDEDİLEN PROVİDER ONBOARD DEĞERİ ${ref.read(onBoardPageProvider)}");
 
     //await DailyLimitManager.getDateTime(ref); //
     
@@ -148,7 +150,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       savedDay.put("savedDay", savedday);
 
       var saveonBoardPage = ref.read(onBoardPageProvider);
-      print("KAYDEDİLEN ONBOARD DEĞERİ $saveonBoardPage");
+      //print("KAYDEDİLEN ONBOARD DEĞERİ $saveonBoardPage");
       saveOnboard.put("saveOnboard", saveonBoardPage);
 
     }
@@ -160,7 +162,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
     final currentMode = ref.watch(themeModeProvider);
     final onBoardView = ref.watch(onBoardPageProvider);
-    print("MYAPP ONBOARD BOOL DEGERİ ${ref.read(onBoardPageProvider)}");
+    //print("MYAPP ONBOARD BOOL DEGERİ ${ref.read(onBoardPageProvider)}");
 
     return MaterialApp(
 

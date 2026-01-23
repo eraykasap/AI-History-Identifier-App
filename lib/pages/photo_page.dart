@@ -73,7 +73,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
   @override
   Widget build(BuildContext context) {
 
-    print("ABONELİK BİLGİSİ : $customerSub");
+    //print("ABONELİK BİLGİSİ : $customerSub");
 
     return SafeArea(
       child: Stack(
@@ -212,6 +212,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
                 icon: Icon(Icons.photo_library, color: Colors.white, size: 40),
               ),
             ),
+          
           ],
         ),
       ),

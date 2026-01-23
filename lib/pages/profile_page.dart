@@ -175,7 +175,7 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
                     ref.read(onSaveProvider.notifier).state = item.isSave;
                     ref.read(saveIdProvider.notifier).state = item.Id;
                     Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
-                    print("İTEM İNDEXİ : $index");
+                    //print("İTEM İNDEXİ : $index");
                   },
                   child: ContentSavedCard(image: item.image, allContent: item.allContent)
                 );

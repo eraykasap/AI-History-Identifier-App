@@ -1059,7 +1059,7 @@ class AudioService {
   Future<void> play () async {
 
     if (_currentText.isEmpty) {
-      print("Okunacak metin yok!");
+      //print("Okunacak metin yok!");
       return;
     }
 
@@ -1069,13 +1069,13 @@ class AudioService {
       
       await _tts.speak(remainingText);
       _isPlaying = true;
-      print("Kaldığı yerden devam ediyor: ${_pausedAt * 100}%");
+      //print("Kaldığı yerden devam ediyor: ${_pausedAt * 100}%");
     } else {
       // Baştan başla
       await _tts.speak(_currentText);
       _isPlaying = true;
       _progress = 0.0;
-      print("Ses okuma başladı!");
+      //print("Ses okuma başladı!");
     }
     
     if (onStatusChanged != null) {
@@ -1106,7 +1106,7 @@ class AudioService {
     _isPlaying = false;
     _progress = 0.0;
     _pausedAt = 0.0; // Tamamen sıfırla
-    print("Ses tamamen durduruldu!");
+    //print("Ses tamamen durduruldu!");
 
     if (onStatusChanged != null) {
       onStatusChanged!();

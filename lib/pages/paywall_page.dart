@@ -74,7 +74,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     });
 
     if (packages == null || packages.isEmpty) {
-      print('❌ Paket bulunamadı!');
+      //print('❌ Paket bulunamadı!');
       return;
     }
 
