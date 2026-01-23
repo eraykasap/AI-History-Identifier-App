@@ -142,7 +142,7 @@ class HomePage extends ConsumerWidget {
             label: "navigation.premium".tr(),
             icon: Icons.diamond,
             onTop: () {
-              //Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage()));
+              Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage()));
             },
           ),
 

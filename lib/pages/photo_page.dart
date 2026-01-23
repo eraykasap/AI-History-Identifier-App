@@ -292,7 +292,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
           content: Text("navigation.daily_scan_limit".tr(), style: TextStyle(color: Colors.white),),
           actions: [
             TextButton(onPressed: () {
-              //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));
+              Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
             }, child: Text("Ok", style: TextStyle(color: Colors.white),))
           ],

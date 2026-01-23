@@ -199,11 +199,11 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(195, 150, 57, 1)),
                         onPressed: () {
-                          /* Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage())).then((value) {
+                          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage())).then((value) {
                             if (value == true) {
                               _checkSubscription();
                             }
-                          }); */
+                          });
                         }, 
                         child: Text("navigation.moreDetails".tr(), style: Theme.of(context).textTheme.headlineSmall,)
                       ),

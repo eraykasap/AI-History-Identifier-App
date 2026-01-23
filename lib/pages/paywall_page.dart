@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +69,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     });
 
     final packages = await SubscriptionManager.getAvailablePackage();
+
+    print("İOS PAKETLERİ : $packages");
 
     setState(() {
       isLoading = false;
@@ -168,6 +172,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                     ),
                                 
                     SizedBox(height: 15,),
+
+
+
                         
                     
                     Visibility(
@@ -206,6 +213,14 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       period: "",
                       isDiscount: false
                     ),
+
+
+
+
+
+
+
+
 
                     SizedBox(height: 10,),
 
