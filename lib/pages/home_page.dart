@@ -62,13 +62,13 @@ class HomePage extends ConsumerWidget {
 
               //Text("BEDEVA FOTOĞRAF HAKKI : $freephototake"),
 
-              Text(ref.read(saveFreePhotoTakeProvider).toString()),
+              Text(ref.watch(saveFreePhotoTakeProvider).toString()),
 
-              Text(ref.read(savedDayProvider).toString()),
+              Text(ref.watch(savedDayProvider).toString()),
 
               const SizedBox(height: 30,),
 
-              mapViewMuseum(context),
+              //mapViewMuseum(context),
 
               const SizedBox(height: 50,),
 

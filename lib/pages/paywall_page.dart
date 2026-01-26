@@ -38,12 +38,12 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       subcheck();
     });
 
-    if (isHasEverSub) {
+    /* if (isHasEverSub) {
         selectedIndex = 2;
       }
       else {
         selectedIndex = 0;
-    }
+    } */
 
   }
 
@@ -86,20 +86,21 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
 
   Future<void> handlePurchase() async {
-
+    print("BİR");
     await subcheck();
-
+    print("İKİ");
     if (isSub == false) {
-
+      print("ÜÇ");
       if (_packeges == null || _packeges!.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Paketler Yüklenemedi")));
+        print("DÖRT");
         return;
       }
-
+      print("BEŞ");
       final selectedpackage = _packeges![selectedIndex];
 
       bool success = await SubscriptionManager.purchasePackage(selectedpackage);
-
+      print("ALTI");
       if (success) {
         //Navigator.pop(context, true);
         Navigator.of(context).pop(true);
@@ -177,13 +178,24 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
                         
                     
-                    Visibility(
+                    Platform.isAndroid ? Visibility(
                       visible: !isHasEverSub,
                       child: buildPackageCard(
                         index: 0, 
                         title: "navigation.monthly_30".tr(),  
                         subtitle: "", 
                         price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.introductoryPrice != null) ? "${_packeges![0].storeProduct.introductoryPrice!.priceString}" : "error",
+                        period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
+                        isDiscount: true
+                      ),
+                    ) :
+                    Visibility(
+                      visible: !isHasEverSub,
+                      child: buildPackageCard(
+                        index: 0, 
+                        title: "navigation.monthly_30".tr(),  
+                        subtitle: "", 
+                        price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.discounts != null) ? "${_packeges![0].storeProduct.discounts![0].priceString}" : "error",
                         period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
                         isDiscount: true
                       ),
