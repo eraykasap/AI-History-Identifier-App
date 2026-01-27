@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/providers/providers.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 
@@ -256,3 +258,51 @@ class DailyLimitManager {
   }
 
 }
+
+
+
+
+ 
+
+class Version {
+  
+
+  static Future<bool> versionCheck () async {
+
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    String currentVersion = "";
+    String latestversion = "";
+    bool version;
+
+    final response = await Dio().get("https://rxfbdpuisrrnmvbnifdc.supabase.co/storage/v1/object/public/json_dosyasi/version.json?v=$timestamp");
+    if (response.statusCode == 200) {
+      
+      latestversion = response.data["version"];
+
+    }
+
+    final info = await PackageInfo.fromPlatform();
+    currentVersion = info.version;
+
+    print("MEVCUT VERSİON : $currentVersion");
+    print("YENI VERSİON : $latestversion");
+
+    if (currentVersion != latestversion) {
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+
+}
+
+
+
+
+
+
+
+

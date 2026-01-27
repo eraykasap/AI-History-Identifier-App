@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:history_identifier/config/data.dart';
 import 'package:history_identifier/pages/full_map_page.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/pages/photo_page.dart';
@@ -131,10 +132,11 @@ class HomePage extends ConsumerWidget {
             label: "navigation.share".tr(),
             icon: Icons.share,
             onTop: () async {
-              final params = ShareParams(
-                uri: Uri(path: "https://pub.dev/packages/share_plus"),
-              );
-              SharePlus.instance.share(params);
+              //final params = ShareParams(uri: Uri(path: "https://pub.dev/packages/share_plus"),);
+              //SharePlus.instance.share(params);
+
+              Version.versionCheck();
+
             },
           ),
 

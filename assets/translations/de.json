@@ -27,9 +27,9 @@
         "onboardText_4" : "Erhalten Sie detaillierte Informationen",
         "onboardText_5" : "Willkommen bei History Identifier",
         "onboardText_6" : "Lassen Sie uns schnell beginnen",
-        "payWallContainer_1" : "Unbegrenzte \nScans",
-        "payWallContainer_2" : "Mehr \nDetails",
-        "payWallContainer_3" : "Jederzeit \nkündbar",
+        "payWallContainer_1" : "Unbegrenzte Scans",
+        "payWallContainer_2" : "Mehr Details",
+        "payWallContainer_3" : "Jederzeit kündbar",
         "monthly_30" : "Monatlich",
         "weekly" : "Wöchentlich",
         "continue" : "weiter",
@@ -38,11 +38,14 @@
         "moreDetails" : "Weitere Details",
         "onboardbutton_text_1" : "Weiter",
         "onboardbutton_text_2" : "Loslegen",
-        "discount_text" : "30% RABATT",
+        "discount_text" : "RABATT",
         "already_subscribed" : "Sie haben bereits ein Abonnement",
         "ok" : "Ok",
         "analiz_error" : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-        "daily_scan_limit" : "Ihr tägliches Scanlimit wurde erreicht."
+        "daily_scan_limit" : "Ihr tägliches Scanlimit wurde erreicht.",
+
+        "app_version_text" : "Neue App-Version verfügbar",
+        "app_version_text_button" : "OK"
     },
 
     "history_info_1" : {

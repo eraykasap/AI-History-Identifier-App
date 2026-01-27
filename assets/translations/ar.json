@@ -26,9 +26,9 @@
         "onboardText_4" : "احصل على معلومات تفصيلية",
         "onboardText_5" : "مرحباً بك في محدد التاريخ",
         "onboardText_6" : "لنبدأ بسرعة",
-        "payWallContainer_1" : "مسح \nغير محدود",
-        "payWallContainer_2" : "المزيد من \nالتفاصيل",
-        "payWallContainer_3" : "إلغاء في \nأي وقت",
+        "payWallContainer_1" : "تصفح غير محدود",
+        "payWallContainer_2" : "مزيد من التفاصيل",
+        "payWallContainer_3" : "إلغاء الاشتراك في أي وقت",
         "monthly_30" : "شهرياً",
         "weekly" : "أسبوعياً",
         "continue" : "متابعة",
@@ -37,11 +37,14 @@
         "moreDetails" : "المزيد من التفاصيل",
         "onboardbutton_text_1" : "التالي",
         "onboardbutton_text_2" : "ابدأ",
-        "discount_text" : "خصم 30%",
+        "discount_text" : "تخفيض",
         "already_subscribed" : "لقد اشتركت بالفعل",
         "ok" : "حسناً",
         "analiz_error" : "حدث خطأ. يرجى المحاولة مرة أخرى.",
-        "daily_scan_limit" : "تم الوصول إلى حد المسح اليومي."
+        "daily_scan_limit" : "تم الوصول إلى حد المسح اليومي.",
+
+        "app_version_text" : "يتوفر إصدار جديد من التطبيق",
+        "app_version_text_button" : "حسناً"
     },
 
     "history_info_1" : {

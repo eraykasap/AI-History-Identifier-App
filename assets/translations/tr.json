@@ -25,9 +25,9 @@
         "onboardText_4" : "Detaylı Bilgi Edinin",
         "onboardText_5" : "Tarih Tanımlayıcı'ya Hoş Geldiniz",
         "onboardText_6" : "Hızlıca başlayalım",
-        "payWallContainer_1" : "Sınırsız \nTarama",
-        "payWallContainer_2" : "Daha Fazla \nDetay",
-        "payWallContainer_3" : "İstediğiniz Zaman \nİptal Edin",
+        "payWallContainer_1" : "Sınırsız Tarama",
+        "payWallContainer_2" : "Daha Fazla Detay",
+        "payWallContainer_3" : "İstediğiniz Zaman İptal Edin",
         "monthly_30" : "Aylık",
         "weekly" : "Haftalık",
         "continue" : "devam et",
@@ -36,11 +36,14 @@
         "moreDetails" : "Daha Fazla Detay", 
         "onboardbutton_text_1" : "İleri",
         "onboardbutton_text_2" : "Başlayın",
-        "discount_text" : "%30 İNDİRİM",
+        "discount_text" : "İNDİRİM",
         "already_subscribed" : "Zaten abone oldunuz",
         "ok" : "Tamam",
         "analiz_error" : "Bir hata oluştu. Lütfen tekrar deneyin.",
-        "daily_scan_limit" : "Günlük tarama limitinize ulaşıldı."
+        "daily_scan_limit" : "Günlük tarama limitinize ulaşıldı.",
+
+        "app_version_text" : "Uygulamanın Yeni Sürümü Mevcut",
+        "app_version_text_button" : "Tamam"
     },
 
 

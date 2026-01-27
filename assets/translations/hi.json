@@ -27,9 +27,9 @@
         "onboardText_4" : "विस्तृत जानकारी प्राप्त करें",
         "onboardText_5" : "History Identifier में आपका स्वागत है",
         "onboardText_6" : "चलिए जल्दी से शुरू करते हैं",
-        "payWallContainer_1" : "असीमित\nस्कैन",
-        "payWallContainer_2" : "अधिक\nविवरण",
-        "payWallContainer_3" : "कभी भी\nरद्द करें",
+        "payWallContainer_1" : "असीमित स्कैन",
+        "payWallContainer_2" : "अधिक विवरण",
+        "payWallContainer_3" : "कभी भी रद्द करें",
         "monthly_30" : "मासिक",
         "weekly" : "साप्ताहिक",
         "continue" : "जारी रखें",
@@ -38,11 +38,14 @@
         "moreDetails" : "अधिक विवरण",
         "onboardbutton_text_1" : "अगला",
         "onboardbutton_text_2" : "शुरू करें",
-        "discount_text" : "30% छूट",
+        "discount_text" : "छूट",
         "already_subscribed" : "आप पहले से ही सब्सक्राइब कर चुके हैं",
         "ok" : "ठीक है",
         "analiz_error" : "एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
-        "daily_scan_limit" : "आपकी दैनिक स्कैनिंग सीमा पूरी हो गई है।"
+        "daily_scan_limit" : "आपकी दैनिक स्कैनिंग सीमा पूरी हो गई है।",
+
+        "app_version_text" : "ऐप का नया संस्करण उपलब्ध है",
+        "app_version_text_button" : "ठीक है"
     },
 
     "history_info_1" : {

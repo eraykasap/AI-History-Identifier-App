@@ -9,6 +9,7 @@ import 'package:history_identifier/main.dart';
 import 'package:history_identifier/widgets/widgets.dart';
 import 'package:purchases_flutter/models/package_wrapper.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PayWallPage extends StatefulWidget {
   const PayWallPage({super.key});
@@ -171,6 +172,15 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                         ContainerPayyWall(icon: Icons.payment, label: "navigation.payWallContainer_3".tr())
                       ],
                     ),
+
+                    /* Column(
+                      spacing: 20,
+                      children: [
+                        PayWallContainer(icon: Icons.document_scanner, text: "navigation.payWallContainer_1".tr()),
+                        PayWallContainer(icon: Icons.article_outlined, text: "navigation.payWallContainer_2".tr()),
+                        PayWallContainer(icon: Icons.payment, text: "navigation.payWallContainer_3".tr())
+                      ],
+                    ), */
                                 
                     SizedBox(height: 15,),
 
@@ -185,7 +195,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                         title: "navigation.monthly_30".tr(),  
                         subtitle: "", 
                         price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.introductoryPrice != null) ? "${_packeges![0].storeProduct.introductoryPrice!.priceString}" : "error",
-                        period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
+                        period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "NULL",
                         isDiscount: true
                       ),
                     ) :
@@ -261,6 +271,29 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                                 
                   ],
                 ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator())),
+
+
+  
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(onPressed: () async {
+
+                        final url = Uri.parse("https://sites.google.com/view/endlesfootball/ana-sayfa");
+                        await launchUrl(url, mode: LaunchMode.externalApplication);
+
+                      }, child: Text("Privacy Policy", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
+                      TextButton(onPressed: () async {
+
+                        final url = Uri.parse("https://www.apple.com/legal/internet-services/itunes/dev/stdeula/");
+                        await launchUrl(url, mode: LaunchMode.externalApplication);
+
+                      }, child: Text("User License Agreement", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
+                    ],
+                  ),
+                )
             
             
               ],

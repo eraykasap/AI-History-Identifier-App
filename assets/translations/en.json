@@ -25,9 +25,9 @@
         "onboardText_4" : "Get Detailed Information",
         "onboardText_5" : "Welcome to History Identifier",
         "onboardText_6" : "Let's get started quickly",
-        "payWallContainer_1" : "Unlimited \nScans",
-        "payWallContainer_2" : "More \nDetail",
-        "payWallContainer_3" : "Cancel \nAnytime",
+        "payWallContainer_1" : "Unlimited Scans",
+        "payWallContainer_2" : "More Detail",
+        "payWallContainer_3" : "Cancel Anytime",
         "monthly_30" : "Monthly",
         "weekly" : "Weekly",
         "continue" : "continue",
@@ -36,82 +36,77 @@
         "moreDetails" : "More Details",
         "onboardbutton_text_1" : "Next",
         "onboardbutton_text_2" : "Get Started",
-        "discount_text" : "%30 DİSCOUNT",
+        "discount_text" : "DİSCOUNT",
         "already_subscribed" : "You have already subscribed",
         "ok" : "Ok",
         "analiz_error" : "An error occurred. Please try again.",
-        "daily_scan_limit" : "Your daily screening limit has been reached."
+        "daily_scan_limit" : "Your daily screening limit has been reached.",
+
+        "app_version_text" : "New App Version Available",
+        "app_version_text_button" : "OK"
         
     },
 
 
     "history_info_1" : {
-        "conntent_0" : "assets/images/history/photo3.png",
-        "conntent_1" : "Büyük İskender yanlışlıkla diri diri gömüldü",
-        "conntent_2" : "Bilim insanları, Büyük İskender'in, Guillain-Barré Sendromu adı verilen nörolojik bir bozukluktan muzdarip olduğunu düşünüyorlar. Ayrıca öldüğü düşünüldüğü sıralarda aslında felç olduğuna ve zihinsel olarak her şeyin farkında olduğuna inanıyorlar."
-        
+    "conntent_0" : "assets/images/history/photo3.png",
+    "conntent_1" : "Alexander the Great was accidentally buried alive",
+    "conntent_2" : "Scientists believe that Alexander the Great suffered from a neurological disorder called Guillain-Barré Syndrome. They also believe that when he was thought to be dead, he was actually paralyzed and mentally aware of everything."
     },
 
     "history_info_2" : {
         "conntent_0" : "assets/images/history/photo8.png",
-        "conntent_1" : "Papa IV.Gregory kedilere karşı savaş ilan etti",
-        "conntent_2" : "Papa IV. Gregory 13. yüzyılda kedilere savaş ilan etti. Kara kedilerin şeytanın aletleri olduğunu söyledi. Bu inançtan dolayı, tüm Avrupa'da bu kedigillerin yok edilmesini emretti. Ancak bu plan, veba taşıyan farelerin popülasyonunda bir artışa neden olduğu için geri tepti."
-        
+        "conntent_1" : "Pope Gregory IV declared war on cats",
+        "conntent_2" : "Pope Gregory IV declared war on cats in the 13th century. He said that black cats were instruments of the devil. Because of this belief, he ordered the extermination of these felines throughout Europe. However, this plan backfired as it caused an increase in the population of plague-carrying rats."
     },
 
     "history_info_3" : {
         "conntent_0" : "assets/images/history/photo6.png",
-        "conntent_1" : "1940'larda bir giysi parçası saldırılara yol açtı.",
-        "conntent_2" : "1940'larda, Smithsonian web sitesine göre, Zoot Suits (gevşek bir pantolon ve ceket) Latin, Siyahi ve diğer erkekler tarafından yaygın olarak giyilirdi. Ancak bazılarının bir moda anlayışı olarak gördüklerini, diğerleri Amerika'ya ve askerlerine karşı bir hakaret olarak gördü. Sonuç olarak, tarihi kaynaklara göre, 1943 yazı Los Angeles'taki bu azınlık topluluklarının saldırıları ile dünya gündemine oturdu. Saldırıları durdurmak için Los Angeles Belediye Meclisi, Zoot Suits'i yasakladı."
-        
+        "conntent_1" : "In the 1940s, a piece of clothing led to attacks",
+        "conntent_2" : "In the 1940s, according to the Smithsonian website, Zoot Suits (loose pants and jacket) were commonly worn by Latino, Black, and other men. However, what some saw as a fashion statement, others viewed as an insult to America and its soldiers. As a result, according to historical sources, the summer of 1943 made world headlines with attacks on these minority communities in Los Angeles. To stop the attacks, the Los Angeles City Council banned Zoot Suits."
     },
 
     "history_info_4" : {
         "conntent_0" : "assets/images/history/photo5.png",
-        "conntent_1" : "The Anglo-Zanzibar Savaşı tarihteki en kısa savaştır.",
-        "conntent_2" : "1896 Anglo-Zanzibar Savaşı, 1890'da İngiltere ile Almanya arasında Heligoland-Zanzibar anlaşmasının imzalanmasından sonra başladı. Zanzibar, Britanya İmparatorluğu'nun himayesi olarak ilan edildikten sonra, Britanya, onu denetlemek için kendi padişahını başa geçirdi: Sultan Hamad bin Thuwaini. Ancak padişah 1896'da aniden öldü ve  Sultan Khalid bin Barghash, İngiltere'ye danışmadan tahta geçti. İngiltere bu durumdan mutlu değildi bu yüzden ondan geri çekilmesini istediler. Yeni padişah istifa etmeyi reddetti ve İngilizler sarayı bombaladılar. Çatışma 38 dakikada sona erdi."
-        
+        "conntent_1" : "The Anglo-Zanzibar War is the shortest war in history",
+        "conntent_2" : "The 1896 Anglo-Zanzibar War began after the signing of the Heligoland-Zanzibar Treaty between Britain and Germany in 1890. After Zanzibar was declared a protectorate of the British Empire, Britain installed its own sultan to control it: Sultan Hamad bin Thuwaini. However, the sultan suddenly died in 1896, and Sultan Khalid bin Barghash took the throne without consulting Britain. Britain was not happy with this situation, so they asked him to step down. The new sultan refused to abdicate, and the British bombarded the palace. The conflict ended in 38 minutes."
     },
 
     "history_info_5" : {
         "conntent_0" : "assets/images/history/photo4.png",
-        "conntent_1" : "Eskiden kadın Gladyatörler vardı",
-        "conntent_2" : "Bir kadın gladyatöre Gladiatrix veya çoğul olarak Gladiatrices deniyordu. Erkek meslektaşlarından daha nadirdiler. Gladiatrices, suçluları infaz etmek, diğer Gladyatörlerle savaşmak ve Roma'nın çeşitli dövüş çukurlarında hayvanlarla savaşmak gibi görevleri vardı."
-        
+        "conntent_1" : "There used to be female Gladiators",
+        "conntent_2" : "A female gladiator was called a Gladiatrix, or Gladiatrices in plural. They were rarer than their male counterparts. Gladiatrices had duties such as executing criminals, fighting other Gladiators, and fighting animals in Rome's various fighting pits."
     },
 
     "history_info_6" : {
         "conntent_0" : "assets/images/history/photo7.png",
-        "conntent_1" : "Tarihte dünyanın en başarılı korsanı bir kadındı",
-        "conntent_2" : "Adı Ching Shih olan bu kadın, Kızıl Bayrak Filosu Komutanı onu satın alıp evlenene kadar Çin'de bir eskorttu. Ancak kocası onu sadece bir eş olarak görmektense, onun eşiti olarak gördü ve filoda aktif bir korsan komutanı oldu."
-        
+        "conntent_1" : "History's most successful pirate was a woman",
+        "conntent_2" : "This woman, named Ching Shih, was an escort in China until the Commander of the Red Flag Fleet bought and married her. However, rather than seeing her merely as a wife, he saw her as his equal, and she became an active pirate commander in the fleet."
     },
 
     "history_info_7" : {
         "conntent_0" : "assets/images/history/photo1.png",
-        "conntent_1" : "Persler, MÖ 525'te bir Mısır saldırısını durdurmak için kedileri kullandılar.",
-        "conntent_2" : "Eski Mısır hakkında az çok bilgi sahibi olanlar tanırlar, Mısırlılar kedilere saygı duyarlardı ve hatta bazıları onlara tapardı (Bastet adında bir kedi tanrıçaları bile vardı). Pelusium Savaşı sırasında, II. Cambyses liderliğindeki işgalci Pers Ordusu, Mısır dininden yararlanarak savaşın önemli bir aşamasını kazandı. Makedon tarihçi Polyaeunus'a göre,  Pers Komutanı, askerlerine kendilerini Mısır saldırısından korumak için 'kutsal' kediyi kullanmalarını emretti. Perslerin zaferi kaçınılmaz bir sonuç olmasına rağmen, bu taktiği kullanarak birçok askeri kurtardılar. Herodot, savaşta sadece 7000 Pers'in düştüğünü ve 50000'den fazla Mısırlı'nın hayatını kaybettiğini yazmıştır."
-        
+        "conntent_1" : "The Persians used cats to stop an Egyptian attack in 525 BC",
+        "conntent_2" : "Those who know something about ancient Egypt will recognize that Egyptians respected cats and some even worshipped them (they even had a cat goddess named Bastet). During the Battle of Pelusium, the invading Persian Army led by Cambyses II won a crucial phase of the battle by taking advantage of Egyptian religion. According to Macedonian historian Polyaenus, the Persian Commander ordered his soldiers to use 'sacred' cats to protect themselves from Egyptian attack. Although the Persian victory was an inevitable outcome, they saved many soldiers by using this tactic. Herodotus wrote that only 7,000 Persians fell in the battle, while more than 50,000 Egyptians lost their lives."
     },
 
     "history_info_8" : {
         "conntent_0" : "assets/images/history/photo2.png",
-        "conntent_1" : "Aztek",
-        "conntent_2" : "1487 yılında Aztek tapınağındaki ayinlerde 20 binin üzerinde insan kurban edilmiştir."
-        
+        "conntent_1" : "Aztec",
+        "conntent_2" : "In 1487, more than 20,000 people were sacrificed in rituals at the Aztec temple."
     },
 
     "history_info_9" : {
         "conntent_0" : "assets/images/history/photo10.png",
-        "conntent_1" : "2. Dünya Savaşı",
-        "conntent_2" : "En son süvari birliği 2. Dünya Savaşı sırasında kullanılmıştır. Alman piyade birliğine saldıran Moğol süvarilerinden 2000 kişi öldürülmüş, buna karşın hiç Alman askeri ölmemiştir."
-        
+        "conntent_1" : "World War II",
+        "conntent_2" : "The last cavalry unit was used during World War II. 2,000 Mongolian cavalrymen who attacked a German infantry unit were killed, while no German soldiers died."
     },
 
     "history_info_10" : {
         "conntent_0" : "assets/images/history/photo9.png",
-        "conntent_1" : "Pek çok şehirde Roma İmparatorluğu'ndan kalma hamamlar vardı",
-        "conntent_2" : "Orta Çağ'da yaşamış olan insanlara 'hiç yıkanmamış' gözüyle bakmak pek adil olmayacaktır. Bu yanılgı büyük olasılıkla, kilisenin Roma döneminde yaygın olan karma banyolara karşı çıkmasından kaynaklanmaktadır. Gerçekte kilise, kilise yakınlarına ve hac bölgelerine kadınlar ve erkekler için ayrı olmak üzere hamamlar yaptırdı. Evde banyo yapabilmek ise zenginler için bir ayrıcalıktı."
-        
+        "conntent_1" : "Many cities had bathhouses from the Roman Empire",
+        "conntent_2" : "It would not be fair to look at people who lived in the Middle Ages as 'never having bathed'. This misconception most likely stems from the church's opposition to the mixed baths that were common during the Roman period. In reality, the church had bathhouses built near churches and pilgrimage sites, separate for women and men. Being able to bathe at home was a privilege for the wealthy."
     }
+
+    
 }

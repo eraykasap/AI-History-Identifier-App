@@ -27,9 +27,9 @@
         "onboardText_4" : "Получите подробную информацию",
         "onboardText_5" : "Добро пожаловать в History Identifier",
         "onboardText_6" : "Давайте быстро начнем",
-        "payWallContainer_1" : "Неограниченное \nсканирование",
-        "payWallContainer_2" : "Больше \nдеталей",
-        "payWallContainer_3" : "Отмена в \nлюбое время",
+        "payWallContainer_1" : "Неограниченное сканирование",
+        "payWallContainer_2" : "Больше деталей",
+        "payWallContainer_3" : "Отмена в любое время",
         "monthly_30" : "Ежемесячно",
         "weekly" : "Еженедельно",
         "continue" : "продолжить",
@@ -38,11 +38,14 @@
         "moreDetails" : "Подробнее",
         "onboardbutton_text_1" : "Далее",
         "onboardbutton_text_2" : "Начать",
-        "discount_text" : "СКИДКА 30%",
+        "discount_text" : "СКИДКА",
         "already_subscribed" : "Вы уже подписаны",
         "ok" : "Ок",
         "analiz_error" : "Произошла ошибка. Пожалуйста, попробуйте еще раз.",
-        "daily_scan_limit" : "Достигнут дневной лимит сканирования."
+        "daily_scan_limit" : "Достигнут дневной лимит сканирования.",
+
+        "app_version_text" : "Доступна новая версия приложения",
+        "app_version_text_button" : "ОК"
     },
 
     "history_info_1" : {

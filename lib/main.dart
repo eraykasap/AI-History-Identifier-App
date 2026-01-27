@@ -99,7 +99,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   }
 
 
-  Future<void> loadHiveBox () async {
+  Future<void> loadHiveBox () async { 
 
     await ref.read(contentSaveProvider.notifier).loadFromBox();
     ref.read(photoCounterProvider.notifier).state = box.get("photoCounter") ?? 0;
@@ -194,6 +194,7 @@ class BottomNavBarCustom extends ConsumerStatefulWidget {
 class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 
   int selectedIndex = 0;
+  bool version = true;
   
 
   late PhotoScannerPage photoScannerPage;
@@ -205,12 +206,21 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
   void initState() {
     super.initState();
 
-
-
     photoScannerPage = PhotoScannerPage();
     homePage = HomePage();
     profilePage = ProfilePage();
     allPages = [homePage, profilePage];
+
+    //versionControl();
+
+  }
+
+  Future<void> versionControl() async {
+    version = await Version.versionCheck();
+    print("VERSİON NUMARASI : $version");
+    setState(() {
+      
+    });
   }
 
   
@@ -218,7 +228,12 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
+    return !version ? Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: shoeMessage()
+      ),
+    ) : Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
       body: allPages[selectedIndex],
@@ -260,6 +275,26 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 
     );
   }
+
+
+  Widget shoeMessage () {
+     return AlertDialog(
+        backgroundColor: const Color.fromARGB(255, 50, 50, 50),
+        title: Text("navigation.app_version_text".tr(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        actions: [
+          TextButton(onPressed: () {
+            if (Platform.isAndroid) {
+              
+            }
+            else {
+
+            }
+          }, child: Text("navigation.app_version_text_button".tr()))
+        ],
+      );
+  }
+
+
 }
 
 

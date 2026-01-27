@@ -27,9 +27,9 @@
         "onboardText_4" : "자세한 정보 얻기",
         "onboardText_5" : "History Identifier에 오신 것을 환영합니다",
         "onboardText_6" : "빠르게 시작해봅시다",
-        "payWallContainer_1" : "무제한\n스캔",
-        "payWallContainer_2" : "더 많은\n세부 정보",
-        "payWallContainer_3" : "언제든지\n취소",
+        "payWallContainer_1" : "무제한 스캔",
+        "payWallContainer_2" : "더 많은 세부 정보",
+        "payWallContainer_3" : "언제든지 취소",
         "monthly_30" : "월간",
         "weekly" : "주간",
         "continue" : "계속",
@@ -38,11 +38,14 @@
         "moreDetails" : "자세히 보기",
         "onboardbutton_text_1" : "다음",
         "onboardbutton_text_2" : "시작하기",
-        "discount_text" : "30% 할인",
+        "discount_text" : "할인",
         "already_subscribed" : "이미 구독하셨습니다",
         "ok" : "확인",
         "analiz_error" : "오류가 발생했습니다. 다시 시도해주세요.",
-        "daily_scan_limit" : "일일 스캔 한도에 도달했습니다."
+        "daily_scan_limit" : "일일 스캔 한도에 도달했습니다.",
+
+        "app_version_text" : "새로운 앱 버전 사용 가능",
+        "app_version_text_button" : "확인"
     },
 
     "history_info_1" : {
