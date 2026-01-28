@@ -293,7 +293,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
           actions: [
             TextButton(onPressed: () {
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => PayWallPage()));
-              Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+              //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
             }, child: Text("Ok", style: TextStyle(color: Colors.white),))
           ],
         );

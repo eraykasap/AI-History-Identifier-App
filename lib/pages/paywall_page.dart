@@ -159,7 +159,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                   
                   children: [
                                 
-                    Text("navigation.paywall_title".tr(), style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
+                    Text("navigation.paywall_title".tr(), textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
                                 
                     SizedBox(height: 20,),
                     
@@ -183,9 +183,6 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                     ), */
                                 
                     SizedBox(height: 15,),
-
-
-
                         
                     
                     Platform.isAndroid ? Visibility(
@@ -212,7 +209,6 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                     ),
 
                     
-                                
                     Visibility(
                       visible: isHasEverSub,
                       child: buildPackageCard(
@@ -237,20 +233,11 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                     ),
 
 
-
-
-
-
-
-
-
                     SizedBox(height: 10,),
 
                     Text("ABONELIK DURUMU : $isSub", style: TextStyle(color: Colors.white, fontSize: 22),),
-                    Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),),
-                        
+                    Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),), 
                     
-                    //Spacer(),
                                 
                     SafeArea(child: PulsAnimation(
                       scaleFactor: 1.2,
@@ -307,8 +294,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
               child: Align(
                 alignment: AlignmentGeometry.topLeft,
                 child: IconButton(onPressed: () {
-                  //Navigator.of(context).pop();
-                  Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+                  Navigator.of(context).pop();
+                  //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
                 }, icon: Icon(Icons.arrow_back_ios, size: 36, color: Colors.white,))
               ),
             ),
