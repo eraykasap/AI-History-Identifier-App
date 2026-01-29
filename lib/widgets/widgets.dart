@@ -69,6 +69,7 @@ class ContentSavedCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
@@ -81,10 +82,10 @@ class ContentSavedCard extends StatelessWidget {
                 child: Image.file(image, fit: BoxFit.cover,),
               ),
             ),
-            SizedBox(height: 10,),
+            //SizedBox(height: 10,),
             //
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 8, 10, 5),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
               child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
             )
 

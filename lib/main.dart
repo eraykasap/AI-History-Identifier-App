@@ -47,7 +47,7 @@ void main() async {
 
   runApp(EasyLocalization(
     path: "assets/translations",
-    supportedLocales: [Locale("en"), Locale("tr"), Locale("ar"), Locale("de"), Locale("es"), Locale("fr"), Locale("hi"), Locale("it"), Locale("ja"), Locale("ko"), Locale("pl"), Locale("pt"), Locale("ru")],
+    supportedLocales: [Locale("en"), Locale("tr"), Locale("ar"), Locale("chi"), Locale("de"), Locale("es"), Locale("fr"), Locale("hi"), Locale("it"), Locale("ja"), Locale("ko"), Locale("pl"), Locale("pt"), Locale("ru")],
     fallbackLocale: Locale("en"),
     child: ProviderScope(child: MyApp())
   )

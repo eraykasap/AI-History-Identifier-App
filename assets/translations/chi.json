@@ -1,0 +1,118 @@
+
+
+
+
+{
+
+    "navigation" : {
+        "home" : "首页",
+        "profil" : "个人资料",
+        "kaleler" : "简短信息",
+        "share" : "分享",
+        "premium" : "高级版",
+        "scan" : "扫描",
+        "yes" : "是",
+        "no" : "否",
+        "thememodetext" : "浅色/深色",
+        "favoriAlert" : "您确定要从收藏夹中删除吗？",
+        "save" : "已添加",
+        "fullmap" : "显示完整地图",
+        "themeSettings" : "重置照片分析\n计数器",
+        "sayacReset" : "您确定要重置计数器吗？",
+        "sayacResetBtn" : "重置",
+        "sayacMessage" : "重置成功",
+        "kameraHataText" : "相机初始化错误",
+        "fotografSayacText" : "已拍照片数量",
+        "onboardText_1" : "按下扫描按钮",
+        "onboardText_2" : "上传或拍摄照片",
+        "onboardText_3" : "让AI进行分析",
+        "onboardText_4" : "获取详细信息",
+        "onboardText_5" : "欢迎使用历史识别器",
+        "onboardText_6" : "让我们快速开始",
+        "payWallContainer_1" : "无限扫描",
+        "payWallContainer_2" : "更多详情",
+        "payWallContainer_3" : "随时可取消",
+        "monthly_30" : "月度",
+        "weekly" : "每周",
+        "continue" : "继续",
+        "paywall_title" : "发现历史的\n隐藏秘密",
+
+        "moreDetails" : "更多详情",
+        "onboardbutton_text_1" : "继续",
+        "onboardbutton_text_2" : "开始使用",
+        "discount_text" : "折扣",
+        "already_subscribed" : "您已经订阅",
+        "ok" : "确定",
+        "analiz_error" : "发生错误。请重试。",
+        "daily_scan_limit" : "您的每日扫描限额已达到。",
+
+        "app_version_text" : "新应用版本可用",
+        "app_version_text_button" : "确定"
+    },
+
+
+
+
+    "history_info_1" : {
+    "conntent_0" : "assets/images/history/photo3.png",
+    "conntent_1" : "亚历山大大帝被活埋",
+    "conntent_2" : "科学家认为亚历山大大帝患有一种名为吉兰-巴雷综合征的神经系统疾病。他们还认为，当他被认为已经死亡时，实际上他只是瘫痪了，但精神上对一切都有意识。"
+    },
+
+    "history_info_2" : {
+        "conntent_0" : "assets/images/history/photo8.png",
+        "conntent_1" : "教皇格里高利四世向猫宣战",
+        "conntent_2" : "教皇格里高利四世在13世纪向猫宣战。他说黑猫是魔鬼的工具。由于这一信念，他下令在整个欧洲消灭这些猫科动物。然而，这个计划适得其反，因为它导致携带瘟疫的老鼠数量增加。"
+    },
+
+    "history_info_3" : {
+        "conntent_0" : "assets/images/history/photo6.png",
+        "conntent_1" : "20世纪40年代，一件衣服引发了袭击",
+        "conntent_2" : "根据史密森尼网站的说法，在20世纪40年代，拉丁裔、黑人和其他男性普遍穿着阔腿西装（宽松的裤子和夹克）。然而，一些人认为这是一种时尚宣言，而另一些人则认为这是对美国及其士兵的侮辱。根据历史资料，1943年夏天，洛杉矶对这些少数族裔社区的袭击成为世界头条新闻。为了制止袭击，洛杉矶市议会禁止了阔腿西装。"
+    },
+
+    "history_info_4" : {
+        "conntent_0" : "assets/images/history/photo5.png",
+        "conntent_1" : "英桑战争是历史上最短的战争",
+        "conntent_2" : "1896年英桑战争始于1890年英国和德国签署黑尔戈兰-桑给巴尔条约之后。桑给巴尔被宣布为大英帝国的保护国后，英国安插了自己的苏丹来控制它：苏丹哈马德·本·图韦尼。然而，苏丹在1896年突然去世，苏丹哈立德·本·巴尔加什在未咨询英国的情况下继承了王位。英国对这种情况不满意，因此要求他退位。新苏丹拒绝退位，英国人炮轰了宫殿。冲突在38分钟内结束。"
+    },
+
+    "history_info_5" : {
+        "conntent_0" : "assets/images/history/photo4.png",
+        "conntent_1" : "过去有女性角斗士",
+        "conntent_2" : "女性角斗士被称为Gladiatrix，复数形式为Gladiatrices。她们比男性同行更罕见。女角斗士的职责包括处决罪犯、与其他角斗士战斗，以及在罗马的各种斗兽场与动物搏斗。"
+    },
+
+    "history_info_6" : {
+        "conntent_0" : "assets/images/history/photo7.png",
+        "conntent_1" : "历史上最成功的海盗是一位女性",
+        "conntent_2" : "这位名叫郑氏（Ching Shih）的女性曾是中国的一名陪侍，直到红旗舰队指挥官买下并娶了她。然而，他并没有仅仅把她视为妻子，而是把她视为平等的伙伴，她成为了舰队中一名活跃的海盗指挥官。"
+    },
+
+    "history_info_7" : {
+        "conntent_0" : "assets/images/history/photo1.png",
+        "conntent_1" : "公元前525年，波斯人用猫来阻止埃及的进攻",
+        "conntent_2" : "对古埃及有所了解的人都知道，埃及人尊重猫，有些人甚至崇拜猫（他们甚至有一位名叫芭丝特的猫女神）。在培琉喜阿姆战役期间，由冈比西斯二世率领的入侵波斯军队利用埃及宗教赢得了战斗的关键阶段。根据马其顿历史学家波利埃努斯的说法，波斯指挥官命令他的士兵使用 神圣 的猫来保护自己免受埃及的攻击。尽管波斯的胜利是不可避免的结果，但他们通过使用这一战术拯救了许多士兵。希罗多德写道，只有7000名波斯人在战斗中阵亡，而超过50000名埃及人失去了生命。"
+    },
+
+    "history_info_8" : {
+        "conntent_0" : "assets/images/history/photo2.png",
+        "conntent_1" : "阿兹特克",
+        "conntent_2" : "1487年，阿兹特克神庙的仪式中祭献了超过20000人。"
+    },
+
+    "history_info_9" : {
+        "conntent_0" : "assets/images/history/photo10.png",
+        "conntent_1" : "第二次世界大战",
+        "conntent_2" : "最后一支骑兵部队在第二次世界大战期间使用。2000名袭击德国步兵部队的蒙古骑兵被杀，而没有德国士兵死亡。"
+    },
+
+    "history_info_10" : {
+        "conntent_0" : "assets/images/history/photo9.png",
+        "conntent_1" : "许多城市都有罗马帝国时期的浴场",
+        "conntent_2" : "将生活在中世纪的人视为 从未洗过澡 是不公平的。这种误解很可能源于教会反对罗马时期常见的混合浴场。实际上，教会在教堂和朝圣地附近建造了男女分开的浴场。能够在家洗澡是富人的特权。"
+    }
+
+    
+    
+}

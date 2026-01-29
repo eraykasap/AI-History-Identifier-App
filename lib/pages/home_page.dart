@@ -69,7 +69,7 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 30,),
 
-              //mapViewMuseum(context),
+              mapViewMuseum(context),
 
               const SizedBox(height: 50,),
 
@@ -191,28 +191,25 @@ class HomePage extends ConsumerWidget {
               height: 240,
               //color: Colors.amber,
               child: Align(
-            
-                child: Align(
-                  alignment: AlignmentGeometry.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.primaryFixed),
-                      onPressed: () {
-                        //StaticClass.openAllInGoogleMaps();
-                        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => FullMapViewPage()));
-                      }, child: 
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text("navigation.fullmap".tr(), style: Theme.of(context).textTheme.labelSmall,),
-                          const SizedBox(width: 10,),
-                          Icon(Icons.open_in_full, color: Theme.of(context).iconTheme.color,)
-                        ],
-                      )
-                    ),
+                alignment: AlignmentGeometry.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.primaryFixed),
+                    onPressed: () {
+                      //StaticClass.openAllInGoogleMaps();
+                      Navigator.of(context).push(CupertinoPageRoute(builder: (context) => FullMapViewPage()));
+                    }, child: 
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("navigation.fullmap".tr(), style: Theme.of(context).textTheme.labelSmall,),
+                        const SizedBox(width: 10,),
+                        Icon(Icons.open_in_full, color: Theme.of(context).iconTheme.color,)
+                      ],
+                    )
                   ),
-                )
+                ),
               ),
             )
 
