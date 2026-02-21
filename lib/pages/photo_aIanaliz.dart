@@ -8,6 +8,7 @@ import 'package:history_identifier/main.dart';
 import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/detay_page.dart';
 import 'package:history_identifier/providers/providers.dart';
+import 'package:history_identifier/widgets/widgets.dart';
 
 
 class PhotoAIanalizPage extends ConsumerStatefulWidget {
@@ -66,7 +67,7 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
             height: double.maxFinite,
             color: Colors.black.withAlpha(80),
             child: Center(
-              child: analizEdiliyor ? CircularProgressIndicator() : Container(),
+              child: analizEdiliyor ? SparkleLoader() : Container(),
             ),
           )
 

@@ -69,6 +69,8 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 30,),
 
+              //SparkleLoader(),
+
               mapViewMuseum(context),
 
               const SizedBox(height: 50,),

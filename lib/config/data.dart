@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/providers/providers.dart';
+import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
@@ -67,9 +68,9 @@ class AiApiContent {
 
 class ApiOperations {
   
-  Future<List<ContentModel>> sendImageAndGetJson (File imageFile) async {
+  /* Future<List<ContentModel>> sendImageAndGetJson (File imageFile) async {
 
-    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "AIzaSyDRT7ZhDDQjwDvf-JplrZTmskaylcWvXis");
+    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "");
     List<ContentModel> icerikListesi = [];
 
     final jsonSchema = Schema(
@@ -122,7 +123,43 @@ class ApiOperations {
 
     return icerikListesi;
 
+  } */
+
+
+
+  Future<List<ContentModel>> sendImageAndGetJson (File imageFile) async {
+
+    List<ContentModel> icerikListesi = [];
+
+    final String languageCode = await getDeviceLanguageCode();
+    final bytes = await imageFile.readAsBytes();
+    final base64Image = base64Encode(bytes);
+
+    final response = await http.post(
+      Uri.parse('https://us-central1-history-identifier.cloudfunctions.net/analyzeImage'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'imageBase64': base64Image,
+        'languageCode': languageCode,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final responseBody = jsonDecode(response.body);
+      final jsonString = responseBody['data'];
+      final jsonObject = jsonDecode(jsonString);
+      if (jsonObject is List) {
+        icerikListesi = (jsonObject as List).map((e) => ContentModel.fromMap(e as Map<String, dynamic>)).toList();
+      }
+    }
+
+    return icerikListesi;
+
   }
+
+
+
+
 
   Future<String> getDeviceLanguageCode () async {
 

@@ -164,7 +164,7 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 0.95, mainAxisSpacing: 10), 
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 0.90, mainAxisSpacing: 10), 
               itemCount: contentGridList.length,
               itemBuilder: (context, index) {
                 final item = contentGridList[index];

@@ -1,6 +1,7 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -85,7 +86,7 @@ class ContentSavedCard extends StatelessWidget {
             //SizedBox(height: 10,),
             //
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
               child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
             )
 
@@ -677,4 +678,191 @@ class _AnimatedContentWidgetState extends State<AnimatedContentWidget> with Sing
 
 
 }
+
+
+
+
+class SparkleLoader extends StatefulWidget {
+
+  final Color primaryColor;
+  final Color secondaryColor;
+  final Color tertiaryColor;
+
+  const SparkleLoader({
+    super.key,
+    this.primaryColor = Colors.orange,
+    this.secondaryColor = Colors.deepOrange,
+    this.tertiaryColor = Colors.orange,
+  });
+
+  
+
+  @override
+  State<SparkleLoader> createState() => _SparkleLoaderState();
+}
+
+class _SparkleLoaderState extends State<SparkleLoader> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1800),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    
+    _controller.dispose();
+    super.dispose();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, _) {
+        return SizedBox(
+          width: 90,
+          height: 110,
+          child: Stack(
+            children: [
+              // Büyük yıldız
+              Positioned(
+                top: 0,
+                left: 0,
+                child: _AnimatedStar(
+                  progress: _controller.value,
+                  delay: 0.0,
+                  size: 50,
+                  color: widget.primaryColor,
+                ),
+              ),
+              // Orta yıldız
+              Positioned(
+                top: 35,
+                right: 0,
+                child: _AnimatedStar(
+                  progress: _controller.value,
+                  delay: 0.25,
+                  size: 34,
+                  color: widget.secondaryColor,
+                ),
+              ),
+              // Küçük yıldız
+              Positioned(
+                bottom: 0,
+                left: 22,
+                child: _AnimatedStar(
+                  progress: _controller.value,
+                  delay: 0.5,
+                  size: 22,
+                  color: widget.tertiaryColor,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _AnimatedStar extends StatelessWidget {
+  final double progress;
+  final double delay;
+  final double size;
+  final Color color;
+
+  const _AnimatedStar({
+    required this.progress,
+    required this.delay,
+    required this.size,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double p = (progress - delay) % 1.0;
+    // Pulse efekti
+    double scale = 0.5 + 0.5 * sin(p * pi);
+    // Opacity efekti
+    double opacity = 0.4 + 0.6 * sin(p * pi);
+
+    return Opacity(
+      opacity: opacity.clamp(0.0, 1.0),
+      child: Transform.scale(
+        scale: scale,
+        child: CustomPaint(
+          size: Size(size, size),
+          painter: _FourPointStarPainter(color: color),
+        ),
+      ),
+    );
+  }
+}
+
+class _FourPointStarPainter extends CustomPainter {
+  final Color color;
+
+  const _FourPointStarPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final cx = size.width / 2;
+    final cy = size.height / 2;
+    final outerRadius = size.width / 1.5;
+    final innerRadius = outerRadius * 0.45; // Ne kadar ince olduğu
+
+    final paint = Paint()
+      ..shader = RadialGradient(
+        colors: [
+          color,
+          color.withOpacity(0.5),
+        ],
+        stops: const [0.3, 1.0],
+      ).createShader(Rect.fromCircle(
+        center: Offset(cx, cy),
+        radius: outerRadius,
+      ));
+
+    final path = Path();
+    const pointCount = 4;
+
+    for (int i = 0; i < pointCount * 2; i++) {
+      final isOuter = i % 2 == 0;
+      final radius = isOuter ? outerRadius : innerRadius;
+      final angle = (i * pi / pointCount) - pi / 2;
+      final x = cx + radius * cos(angle);
+      final y = cy + radius * sin(angle);
+
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+
+    path.close();
+    canvas.drawPath(path, paint);
+
+    // Parlama efekti (opsiyonel)
+    final glowPaint = Paint()
+      ..color = color.withOpacity(0.2)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
+    canvas.drawPath(path, glowPaint);
+  }
+
+  @override
+  bool shouldRepaint(_FourPointStarPainter old) => old.color != color;
+}
+
+
 
