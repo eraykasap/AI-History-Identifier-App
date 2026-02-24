@@ -193,6 +193,7 @@ class BottomNavBarCustom extends ConsumerStatefulWidget {
 
 class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 
+
   int selectedIndex = 0;
   bool version = true;
   
@@ -237,6 +238,7 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
       body: allPages[selectedIndex],
+      
 
       bottomNavigationBar: bottomNavgationBar(
         selectedIndex, 

@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 part 'model.g.dart';
 
@@ -58,6 +59,22 @@ class ContentSaveModel extends HiveObject {
   //ContentSaveModel.kategori ({required this.allContent, required this.imagePath});
 
   File get image => File(imagePath);
+
+  /* Future<File> get image async {
+    final dir = await getApplicationDocumentsDirectory();
+    return File('${dir.path}/$imagePath');
+  } */
+
+ /* Future<File>? _imageFuture;
+  Future<File> get image {
+    _imageFuture ??= _getImage();
+    return _imageFuture!;
+  }
+
+  Future<File> _getImage() async {
+    final dir = await getApplicationDocumentsDirectory();
+    return File('${dir.path}/$imagePath');
+  } */
 
   @override
   String toString() {

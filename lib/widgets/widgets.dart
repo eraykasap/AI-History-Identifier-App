@@ -63,7 +63,7 @@ class ContentSavedCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Card(
       color: Theme.of(context).cardColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(12)),
@@ -260,7 +260,19 @@ class CustomSearchDelegate extends SearchDelegate {
               ref.read(saveIdProvider.notifier).state = item.Id;
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
             },
-            child: ContentSavedCard(image: item.image, allContent: item.allContent)
+            child: ContentSavedCard(image: item.image/*File(item.imagePath)*/, allContent: item.allContent)
+                  /*FutureBuilder<File>(
+                    future: item.image, 
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ContentSavedCard(image: snapshot.data!, allContent: item.allContent);
+                      }
+                      return Container(
+                        color: Colors.grey[200],
+                        child: Center(child: CircularProgressIndicator(),),
+                      );
+                    }
+                  )*/
           );
         });
       },

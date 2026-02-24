@@ -11,6 +11,7 @@ import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/widgets.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 class DetaySayfasi extends ConsumerStatefulWidget {
@@ -225,7 +226,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
 
-          audioPlayerline(),
+          //audioPlayerline(),
 
           SizedBox(width: 16,),
 
@@ -267,7 +268,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   }
 
 
-  Widget audioPlayerline () {
+  /* Widget audioPlayerline () {
     return Container(
       height: 55,
       //width: double.infinity,
@@ -324,7 +325,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
         ],
       ),
     );
-  }
+  } */
 
 
   Widget floatingActionButton (bool isSave, List<ContentModel> contentList, File? image) {
@@ -333,7 +334,12 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
             
             if (!isSave) {
               saveID = Uuid().v4();
-              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath: image!.path, Id: saveID, isSave: true));
+
+              //final dir = await getApplicationDocumentsDirectory();
+              //final fileName = "${saveID}.jpg";
+              //await image!.copy("${dir.path}/$fileName");
+
+              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath: image!.path /*fileName*/, Id: saveID, isSave: true));
               ref.read(onSaveProvider.notifier).state = true;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("navigation.save".tr(), style: Theme.of(context).textTheme.bodyMedium,), backgroundColor: Theme.of(context).cardColor, duration: Duration(milliseconds: 500),));
             }

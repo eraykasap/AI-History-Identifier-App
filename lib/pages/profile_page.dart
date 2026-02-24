@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +40,11 @@ class ProfilePage extends StatelessWidget {
 
         body: TabBarView(
           children: <Widget> [
-
+            
+            //Container(),
+            //Container()
             SavedContentTab(),
+            //Text("dsfsdf"),
             ProfilSettingsTab()
 
           ]
@@ -169,7 +174,7 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
               itemBuilder: (context, index) {
                 final item = contentGridList[index];
                 return GestureDetector(
-                  onTap: () {
+                  onTap: ()  {
                     ref.read(contentProvider.notifier).state = item.allContent;
                     ref.read(photoTakenProvider.notifier).state = item.image;
                     ref.read(onSaveProvider.notifier).state = item.isSave;
@@ -177,7 +182,8 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
                     Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
                     //print("İTEM İNDEXİ : $index");
                   },
-                  child: ContentSavedCard(image: item.image, allContent: item.allContent)
+                  child: ContentSavedCard(image: item.image /*File(item.imagePath)*/, allContent: item.allContent)
+                        
                 );
               }
             ),
