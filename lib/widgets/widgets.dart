@@ -70,7 +70,9 @@ class ContentSavedCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //mainAxisSize: MainAxisSize.min,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
@@ -85,11 +87,8 @@ class ContentSavedCard extends StatelessWidget {
             ),
             //SizedBox(height: 10,),
             //
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-              child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
-            )
-
+            Expanded(child: Center(child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,)))
+        
           ],
         ),
       )
