@@ -330,16 +330,12 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
 
   Widget floatingActionButton (bool isSave, List<ContentModel> contentList, File? image) {
     return FloatingActionButton(
-            onPressed: () {
+            onPressed: () async {
             
             if (!isSave) {
               saveID = Uuid().v4();
 
-              //final dir = await getApplicationDocumentsDirectory();
-              //final fileName = "${saveID}.jpg";
-              //await image!.copy("${dir.path}/$fileName");
-
-              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath: image!.path /*fileName*/, Id: saveID, isSave: true));
+              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath: /*image!.path*/ await _saveImageToDocuments(image!) , Id: saveID, isSave: true));
               ref.read(onSaveProvider.notifier).state = true;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("navigation.save".tr(), style: Theme.of(context).textTheme.bodyMedium,), backgroundColor: Theme.of(context).cardColor, duration: Duration(milliseconds: 500),));
             }
@@ -354,6 +350,15 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
           );
   }
   
+
+  Future<String> _saveImageToDocuments (File image) async {
+
+    final directory = await getApplicationDocumentsDirectory();
+    final fileName = "${DateTime.now().microsecondsSinceEpoch}.jpg";
+    final savedFile = await image.copy('${directory.path}/$fileName');
+    return savedFile.path;
+
+  }
 
 
 }

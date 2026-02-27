@@ -56,25 +56,9 @@ class ContentSaveModel extends HiveObject {
 
   ContentSaveModel({required this.allContent, required this.imagePath, required this.Id, required this.isSave});
 
-  //ContentSaveModel.kategori ({required this.allContent, required this.imagePath});
 
   File get image => File(imagePath);
 
-  /* Future<File> get image async {
-    final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/$imagePath');
-  } */
-
- /* Future<File>? _imageFuture;
-  Future<File> get image {
-    _imageFuture ??= _getImage();
-    return _imageFuture!;
-  }
-
-  Future<File> _getImage() async {
-    final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/$imagePath');
-  } */
 
   @override
   String toString() {
