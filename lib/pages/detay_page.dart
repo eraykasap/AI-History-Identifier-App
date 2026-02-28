@@ -31,8 +31,9 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   bool isSubscribed = false;
   bool _showButton = false;
   late int contenetLenght;
-  StringBuffer combineText = StringBuffer();
+  //StringBuffer combineText = StringBuffer();
   final AudioService _audioService = AudioService();
+  StringBuffer combinedText = StringBuffer();
 
   @override
   void initState() {
@@ -40,7 +41,8 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     super.initState();
     _checkSubscription();
     _initAudio();
-    
+
+    buffer();
 
     var contentList = ref.read(contentProvider);
     contenetLenght = widget.itemIndex < 0 ? contentList.fold(0, (sum, item) => sum + contentList[0].title.length + contentList[0].content.length) : contentList.fold(0, (sum, item) => sum + item.title.length + item.content.length);
@@ -58,7 +60,35 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   }
 
 
-  
+  Future<void> buffer () async {
+
+    await TTSService().init();
+
+    await _checkSubscription();
+
+    var contentList = ref.read(contentProvider);
+
+    if (isSubscribed) {
+      for (var item in contentList) {
+        combinedText.write(item.title);
+        combinedText.write(".");
+        combinedText.write(item.content);
+        combinedText.write(".");
+
+      }
+    }
+    else {
+      combinedText.write(contentList[0].title);
+        combinedText.write(".");
+        combinedText.write(contentList[0].content);
+        combinedText.write(".");
+    }
+
+    
+
+    print(combinedText.toString());
+
+  }
 
 
   Future<void> _checkSubscription() async {
@@ -161,36 +191,11 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                     itemBuilder: (context, index) {
                   
                       var item = contentList[index];
-
                       
-
-                      /* if (index > 0 && isSubscribed) {
-                        return Stack(
-                          children: [
-
-                            ImageFiltered(
-                              imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-                              child: IgnorePointer(
-                                child: Opacity(
-                                  opacity: 0.6,
-                                  child: ContentModelWidget(title: item.title, content: item.content),
-                                ),
-                              ),
-                            ),
-
-                            ElevatedButton(onPressed: () {}, child: Text("data"))
-
-                          ],
-                        );
-                      } */
-
                       return ContentModelWidget(title: item.title, content: item.content);
 
-
-                    
                     }
                   ),
-
 
                   Visibility(
                     visible: !isSubscribed,
@@ -233,7 +238,37 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
           floatingActionButton(isSave, contentList, image)
         
         ],
-      )
+      ),
+
+      bottomNavigationBar: SafeArea(
+        child: SizedBox(
+          height: 100, 
+          child: Container(
+            color: Colors.amber,
+            child: IconButton(onPressed: () {
+
+              if (isAudioPlay) {
+                
+                TTSService().stop();
+                setState(() {
+                  isAudioPlay = false;
+                });
+
+              }
+              else {
+                
+                TTSService().speak(combinedText);
+                setState(() {
+                  isAudioPlay = true;
+                });
+
+              }
+
+            }, icon: isAudioPlay ? Icon(Icons.pause) : Icon(Icons.play_arrow))
+          )
+        )
+      ),
+
     
     );
   }
@@ -353,9 +388,10 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
 
   Future<String> _saveImageToDocuments (File image) async {
 
-    final directory = await getApplicationDocumentsDirectory();
+    final directory = await getApplicationSupportDirectory();
     final fileName = "${DateTime.now().microsecondsSinceEpoch}.jpg";
     final savedFile = await image.copy('${directory.path}/$fileName');
+    print("SAVED PATH: ${savedFile.path}"); // bunu ekle
     return savedFile.path;
 
   }
