@@ -59,12 +59,16 @@ class ContentSaveModel extends HiveObject {
 
   File get image => File(imagePath);
 
+  
+
 
   @override
   String toString() {
     // TODO: implement toString
     return "ContentSaveModel İD = $Id";
   }
+
+  
   
 
 }

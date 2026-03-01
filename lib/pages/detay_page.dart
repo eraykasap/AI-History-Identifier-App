@@ -13,6 +13,7 @@ import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
+import 'package:path/path.dart' as path;
 
 class DetaySayfasi extends ConsumerStatefulWidget {
   
@@ -370,7 +371,9 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
             if (!isSave) {
               saveID = Uuid().v4();
 
-              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath: /*image!.path*/ await _saveImageToDocuments(image!) , Id: saveID, isSave: true));
+              final permanentPath = await saveImagePermanently(image!);
+
+              ref.read(contentSaveProvider.notifier).add(ContentSaveModel(allContent: contentList, imagePath:  permanentPath, Id: saveID, isSave: true));
               ref.read(onSaveProvider.notifier).state = true;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("navigation.save".tr(), style: Theme.of(context).textTheme.bodyMedium,), backgroundColor: Theme.of(context).cardColor, duration: Duration(milliseconds: 500),));
             }
@@ -386,14 +389,11 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   }
   
 
-  Future<String> _saveImageToDocuments (File image) async {
-
-    final directory = await getApplicationSupportDirectory();
-    final fileName = "${DateTime.now().microsecondsSinceEpoch}.jpg";
-    final savedFile = await image.copy('${directory.path}/$fileName');
-    print("SAVED PATH: ${savedFile.path}"); // bunu ekle
-    return savedFile.path;
-
+  Future<String> saveImagePermanently(File imageFile) async {
+    final appDir = await getApplicationDocumentsDirectory();
+    final fileName = '${DateTime.now().millisecondsSinceEpoch}_${path.basename(imageFile.path)}';
+    final savedImage = await imageFile.copy('${appDir.path}/$fileName');
+    return savedImage.path;
   }
 
 

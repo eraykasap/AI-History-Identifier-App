@@ -70,9 +70,7 @@ class ContentSavedCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //mainAxisSize: MainAxisSize.min,
-          //crossAxisAlignment: CrossAxisAlignment.center,
+          
           children: [
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
@@ -85,8 +83,6 @@ class ContentSavedCard extends StatelessWidget {
                 child: Image.file(image, fit: BoxFit.cover,),
               ),
             ),
-            //SizedBox(height: 10,),
-            //
             Expanded(child: Center(child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,)))
         
           ],
@@ -259,19 +255,23 @@ class CustomSearchDelegate extends SearchDelegate {
               ref.read(saveIdProvider.notifier).state = item.Id;
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
             },
-            child: ContentSavedCard(image: item.image/*File(item.imagePath)*/, allContent: item.allContent)
-                  /*FutureBuilder<File>(
-                    future: item.image, 
+            child: ContentSavedCard(image: item.image /*File(item.imagePath)*/, allContent: item.allContent)
+              /* child: FutureBuilder<String>(
+                    future: ContentSaveModel.getFullFilePath(item.imagePath), 
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return ContentSavedCard(image: snapshot.data!, allContent: item.allContent);
+                        // snapshot.data bize güncel tam yolu (String) verir.
+                        // Bunu File nesnesine çevirip karta gönderiyoruz.
+                        return ContentSavedCard(
+                          image: File(snapshot.data!), 
+                          allContent: item.allContent,
+                        );
+                      } else {
+                        // Resim yolu hesaplanırken boş bir kutu veya loading göster
+                        return const Center(child: CircularProgressIndicator());
                       }
-                      return Container(
-                        color: Colors.grey[200],
-                        child: Center(child: CircularProgressIndicator(),),
-                      );
                     }
-                  )*/
+                  ),    */ 
           );
         });
       },

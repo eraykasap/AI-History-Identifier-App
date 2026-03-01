@@ -9,6 +9,7 @@ import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/detay_page.dart';
 import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/widgets.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -41,10 +42,9 @@ class ProfilePage extends StatelessWidget {
         body: TabBarView(
           children: <Widget> [
             
-            //Container(),
-            //Container()
+            
             SavedContentTab(),
-            //Text("dsfsdf"),
+            
             ProfilSettingsTab()
 
           ]
@@ -174,15 +174,31 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
               itemBuilder: (context, index) {
                 final item = contentGridList[index];
                 return GestureDetector(
-                  onTap: ()  {
+                  onTap: () {
                     ref.read(contentProvider.notifier).state = item.allContent;
                     ref.read(photoTakenProvider.notifier).state = item.image;
                     ref.read(onSaveProvider.notifier).state = item.isSave;
                     ref.read(saveIdProvider.notifier).state = item.Id;
                     Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
-                    //print("İTEM İNDEXİ : $index");
+                    
                   },
-                  child: ContentSavedCard(image: item.image /*File(item.imagePath)*/, allContent: item.allContent)
+                  child: ContentSavedCard(image: item.image, allContent: item.allContent)
+                  /* child: FutureBuilder<String>(
+                    future: ContentSaveModel.getFullFilePath(item.imagePath), 
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        // snapshot.data bize güncel tam yolu (String) verir.
+                        // Bunu File nesnesine çevirip karta gönderiyoruz.
+                        return ContentSavedCard(
+                          image: File(snapshot.data!), 
+                          allContent: item.allContent,
+                        );
+                      } else {
+                        // Resim yolu hesaplanırken boş bir kutu veya loading göster
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    }
+                  ), */
                         
                 );
               }
@@ -194,7 +210,10 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
     );
   }
 
-   searcItem (List<ContentSaveModel> list) {
+  
+
+
+  searcItem (List<ContentSaveModel> list) {
     showSearch(context: context, delegate: CustomSearchDelegate(list));
   }
 }

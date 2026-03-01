@@ -52,13 +52,19 @@ class ContentSaveNotifier extends StateNotifier<List<ContentSaveModel>> {
 
   Future<void> loadFromBox () async {
     state = await _box.values.toList();
+    /* print("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+    final values = await _box.values.toList();
+    for (var v in values) {
+      print("ID: ${v.Id} | imagePath: ${v.imagePath}");
+    }
+    state = values; */
   }
 
   //Hive.box<ContentSaveModel>('savedContent').values.toList()
 
 
   Future<void> add (ContentSaveModel model) async {
-    print("HATA BURADA");
+    
     state = [...state, model];
     
     await _box.put(model.Id, model);
