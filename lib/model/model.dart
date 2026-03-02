@@ -57,9 +57,17 @@ class ContentSaveModel extends HiveObject {
   ContentSaveModel({required this.allContent, required this.imagePath, required this.Id, required this.isSave});
 
 
-  File get image => File(imagePath);
+  //File get image => File(imagePath);
 
-  
+  Future<String> get fullImagePath async {
+    final appDir = await getApplicationDocumentsDirectory();
+    return '${appDir.path}/$imagePath'; // imagePath artık sadece "123456_image.jpg"
+  }
+
+  Future<File> get imageFile async {
+    final appDir = await getApplicationDocumentsDirectory();
+    return File('${appDir.path}/$imagePath');
+  }
 
 
   @override

@@ -53,12 +53,14 @@ class ContentModelWidget extends StatelessWidget {
 
 class ContentSavedCard extends StatelessWidget {
 
-  final File image;
+  //final File image;
+  final Future<String> imagePath;
   final List<ContentModel> allContent;
 
   const ContentSavedCard({
     super.key,
-    required this.image,
+    //required this.image,
+    required this.imagePath,
     required this.allContent
   });
 
@@ -80,7 +82,17 @@ class ContentSavedCard extends StatelessWidget {
                 ),
                 width: double.maxFinite,
                 height: 160,
-                child: Image.file(image, fit: BoxFit.cover,),
+                //child: Image.file(image, fit: BoxFit.cover,),
+                child: FutureBuilder<String>(
+                  future: imagePath, 
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Image.file(File(snapshot.data!), fit: BoxFit.cover);
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  }
+                ),
               ),
             ),
             Expanded(child: Center(child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,)))
@@ -248,30 +260,15 @@ class CustomSearchDelegate extends SearchDelegate {
           
           final item = suggestions[index];
           return GestureDetector(
-            onTap: () {
+            onTap: () async {
               ref.read(contentProvider.notifier).state = item.allContent;
-              ref.read(photoTakenProvider.notifier).state = item.image;
+              ref.read(photoTakenProvider.notifier).state = await item.imageFile;
               ref.read(onSaveProvider.notifier).state = item.isSave;
               ref.read(saveIdProvider.notifier).state = item.Id;
               Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
             },
-            child: ContentSavedCard(image: item.image /*File(item.imagePath)*/, allContent: item.allContent)
-              /* child: FutureBuilder<String>(
-                    future: ContentSaveModel.getFullFilePath(item.imagePath), 
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        // snapshot.data bize güncel tam yolu (String) verir.
-                        // Bunu File nesnesine çevirip karta gönderiyoruz.
-                        return ContentSavedCard(
-                          image: File(snapshot.data!), 
-                          allContent: item.allContent,
-                        );
-                      } else {
-                        // Resim yolu hesaplanırken boş bir kutu veya loading göster
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    }
-                  ),    */ 
+            child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
+              
           );
         });
       },

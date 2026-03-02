@@ -389,11 +389,19 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
   }
   
 
-  Future<String> saveImagePermanently(File imageFile) async {
+  /* Future<String> saveImagePermanently(File imageFile) async {
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = '${DateTime.now().millisecondsSinceEpoch}_${path.basename(imageFile.path)}';
     final savedImage = await imageFile.copy('${appDir.path}/$fileName');
     return savedImage.path;
+    
+  } */
+
+ Future<String> saveImagePermanently(File imageFile) async {
+    final appDir = await getApplicationDocumentsDirectory();
+    final fileName = '${DateTime.now().millisecondsSinceEpoch}_${path.basename(imageFile.path)}';
+    await imageFile.copy('${appDir.path}/$fileName');
+    return fileName; // ← sadece dosya adını kaydet, tam path'i değil!
   }
 
 

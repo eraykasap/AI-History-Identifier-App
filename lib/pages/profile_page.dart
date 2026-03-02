@@ -174,31 +174,16 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
               itemBuilder: (context, index) {
                 final item = contentGridList[index];
                 return GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     ref.read(contentProvider.notifier).state = item.allContent;
-                    ref.read(photoTakenProvider.notifier).state = item.image;
+                    ref.read(photoTakenProvider.notifier).state = await item.imageFile;
                     ref.read(onSaveProvider.notifier).state = item.isSave;
                     ref.read(saveIdProvider.notifier).state = item.Id;
                     Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
                     
                   },
-                  child: ContentSavedCard(image: item.image, allContent: item.allContent)
-                  /* child: FutureBuilder<String>(
-                    future: ContentSaveModel.getFullFilePath(item.imagePath), 
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        // snapshot.data bize güncel tam yolu (String) verir.
-                        // Bunu File nesnesine çevirip karta gönderiyoruz.
-                        return ContentSavedCard(
-                          image: File(snapshot.data!), 
-                          allContent: item.allContent,
-                        );
-                      } else {
-                        // Resim yolu hesaplanırken boş bir kutu veya loading göster
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    }
-                  ), */
+                  child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
+                  
                         
                 );
               }
