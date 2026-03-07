@@ -55,17 +55,9 @@ class HomePage extends ConsumerWidget {
 
               castelsList(context),
 
-              //const SizedBox(height: 30,),
+              //Text(ref.watch(saveFreePhotoTakeProvider).toString()),
 
-              /* ElevatedButton(onPressed: () {
-                Navigator.of(context).push(CupertinoPageRoute(builder: (context) => Paywall_2_page()));
-              }, child: Text("data")), */
-
-              //Text("BEDEVA FOTOĞRAF HAKKI : $freephototake"),
-
-              Text(ref.watch(saveFreePhotoTakeProvider).toString()),
-
-              Text(ref.watch(savedDayProvider).toString()),
+              //Text(ref.watch(savedDayProvider).toString()),
 
               const SizedBox(height: 30,),
 
@@ -75,7 +67,7 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 50,),
 
-              identifierCounter(),
+              //identifierCounter(),
 
               const SizedBox(height: 60,),
 

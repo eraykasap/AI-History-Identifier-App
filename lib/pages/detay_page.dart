@@ -11,6 +11,7 @@ import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/widgets.dart';
+import 'package:lottie/lottie.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:path/path.dart' as path;
@@ -25,23 +26,26 @@ class DetaySayfasi extends ConsumerStatefulWidget {
   ConsumerState<DetaySayfasi> createState() => _DetaySayfasiState();
 }
 
-class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
+class _DetaySayfasiState extends ConsumerState<DetaySayfasi> with TickerProviderStateMixin {
 
   String saveID = "";
   bool isAudioPlay = false;
   bool isSubscribed = false;
   bool _showButton = false;
+  bool isAudioAnimPlay = false;
   late int contenetLenght;
   //StringBuffer combineText = StringBuffer();
   final AudioService _audioService = AudioService();
   StringBuffer combinedText = StringBuffer();
+  AnimationController? _lottieController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _lottieController = AnimationController(vsync: this);
     _checkSubscription();
-    _initAudio();
+    //_initAudio();
 
     buffer();
 
@@ -65,9 +69,18 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
 
     await TTSService().init();
 
+    TTSService().onCompleted = () {
+      setState(() {
+        isAudioPlay = false;
+      });
+    };
+
     await _checkSubscription();
 
     var contentList = ref.read(contentProvider);
+
+    print("-------------------- LİSTE UZUNLUĞU ------------------------");
+    print(contentList.length);
 
     if (isSubscribed) {
       for (var item in contentList) {
@@ -121,6 +134,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     // TODO: implement dispose
     super.dispose();
     _audioService.dispose();
+    _lottieController?.dispose();
   }
 
 
@@ -134,6 +148,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
     var image = ref.read(photoTakenProvider);
     var isSave = ref.watch(onSaveProvider);
     var freePhotoTake = ref.watch(saveFreePhotoTakeProvider);
+    
     saveID = ref.read(saveIdProvider);
 
     
@@ -204,7 +219,8 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                       width: 280,
                       height: 60,
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(195, 150, 57, 1)),
+                        style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(195, 150, 57, 1), elevation: 5),
+                        
                         onPressed: () {
                           Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage())).then((value) {
                             if (value == true) {
@@ -212,7 +228,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
                             }
                           });
                         }, 
-                        child: Text("navigation.moreDetails".tr(), style: Theme.of(context).textTheme.headlineSmall,)
+                        child: Text("navigation.moreDetails".tr(), style: TextStyle(color: Colors.white, fontSize: 25),)
                       ),
                     )
                   ),
@@ -234,40 +250,75 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
 
           //audioPlayerline(),
 
+          Container(
+            width: 130,
+            height: 60,
+            
+            decoration: BoxDecoration(
+              color: Theme.of(context).floatingActionButtonTheme.backgroundColor,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 6)
+                )
+              ]
+            ),
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                IconButton(onPressed: () {
+
+                  if (isAudioPlay) {
+                    
+                    TTSService().stop();
+                    setState(() {
+                      isAudioPlay = false;
+                      _lottieController?.stop();
+                      
+                      //isAudioAnimPlay = false;
+                    });
+
+                  }
+                  else {
+                    
+                    TTSService().speak(combinedText);
+                    setState(() {
+                      isAudioPlay = true;
+                      _lottieController?.repeat();
+                      //isAudioAnimPlay = true;
+                    });
+
+                  }
+
+                }, icon: isAudioPlay ? Icon(Icons.pause, size: 34,) : Icon(Icons.play_arrow, size: 34,), splashColor: Colors.transparent, highlightColor: Colors.transparent,),
+                
+
+                Lottie.asset(
+                  "assets/animations/Recording.json",
+                  controller: _lottieController,
+                  onLoaded: (composition) {
+                    _lottieController?.duration = composition.duration;
+                    // Başlangıçta durdur
+                    _lottieController?.stop();
+                  },
+                )
+
+
+              ],
+            ),
+
+
+          ),
+
           SizedBox(width: 16,),
 
           floatingActionButton(isSave, contentList, image)
         
         ],
-      ),
-
-      bottomNavigationBar: SafeArea(
-        child: SizedBox(
-          height: 100, 
-          child: Container(
-            color: Colors.amber,
-            child: IconButton(onPressed: () {
-
-              if (isAudioPlay) {
-                
-                TTSService().stop();
-                setState(() {
-                  isAudioPlay = false;
-                });
-
-              }
-              else {
-                
-                TTSService().speak(combinedText);
-                setState(() {
-                  isAudioPlay = true;
-                });
-
-              }
-
-            }, icon: isAudioPlay ? Icon(Icons.pause) : Icon(Icons.play_arrow))
-          )
-        )
       ),
 
     
@@ -362,6 +413,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
       ),
     );
   } */
+ 
 
 
   Widget floatingActionButton (bool isSave, List<ContentModel> contentList, File? image) {
@@ -387,22 +439,19 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> {
             child: Icon(isSave ? Icons.bookmark : Icons.bookmark_outline, color: Theme.of(context).iconTheme.color,),
           );
   }
-  
 
-  /* Future<String> saveImagePermanently(File imageFile) async {
-    final appDir = await getApplicationDocumentsDirectory();
-    final fileName = '${DateTime.now().millisecondsSinceEpoch}_${path.basename(imageFile.path)}';
-    final savedImage = await imageFile.copy('${appDir.path}/$fileName');
-    return savedImage.path;
-    
-  } */
 
- Future<String> saveImagePermanently(File imageFile) async {
+  Future<String> saveImagePermanently(File imageFile) async {
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = '${DateTime.now().millisecondsSinceEpoch}_${path.basename(imageFile.path)}';
     await imageFile.copy('${appDir.path}/$fileName');
     return fileName; // ← sadece dosya adını kaydet, tam path'i değil!
   }
+  
+
+  
+
+ 
 
 
 }

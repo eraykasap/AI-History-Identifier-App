@@ -132,7 +132,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
             
                 Stack(
                   children: [
-                    Image.asset("assets/images/history/ayasofya.png", width: double.maxFinite, height: MediaQuery.of(context).size.height * 0.3, fit: BoxFit.cover,),
+                    Image.asset("assets/images/history/history.jpeg", width: double.maxFinite, height: MediaQuery.of(context).size.height * 0.3, fit: BoxFit.cover,),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.3,
                       decoration: BoxDecoration(

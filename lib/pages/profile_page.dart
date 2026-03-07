@@ -87,7 +87,7 @@ class ProfilSettingsTab extends ConsumerWidget {
         
         Divider(color: Theme.of(context).dividerColor),
 
-        ListTile(
+        /* ListTile(
           leading: Text("navigation.themeSettings".tr(), style: Theme.of(context).textTheme.bodyLarge,),
           trailing: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
@@ -96,7 +96,7 @@ class ProfilSettingsTab extends ConsumerWidget {
             }, 
             child: Text("navigation.sayacResetBtn".tr(), style: Theme.of(context).textTheme.labelSmall,)
           ),
-        )
+        ) */
 
 
       ],

@@ -56,7 +56,6 @@ class ContentSaveModel extends HiveObject {
 
   ContentSaveModel({required this.allContent, required this.imagePath, required this.Id, required this.isSave});
 
-
   //File get image => File(imagePath);
 
   Future<String> get fullImagePath async {
@@ -1162,25 +1161,38 @@ class AudioService {
 
 class TTSService {
   
+  static final TTSService _instance = TTSService._internal();
+  factory TTSService() => _instance;
+  TTSService._internal();
+
   final FlutterTts _tts = FlutterTts();
   bool _isSpeaking = false;
   bool get isSpeaking => _isSpeaking;
 
+  // Callback ekle
+  VoidCallback? onCompleted;
+
   Future<void> init() async {
-    await _tts.setLanguage("tr-TR"); // Türkçe için
-    await _tts.setSpeechRate(0.5);   // Hız (0.0 - 1.0)
+    String languageCode = await getDeviceLanguageCode();
+    await _tts.setLanguage(languageCode);
+    await _tts.setSpeechRate(0.5);
     await _tts.setVolume(1.0);
     await _tts.setPitch(1.0);
 
     _tts.setStartHandler(() => _isSpeaking = true);
-    _tts.setCompletionHandler(() => _isSpeaking = false);
-    _tts.setCancelHandler(() => _isSpeaking = false);
+    _tts.setCompletionHandler(() {
+      _isSpeaking = false;
+      onCompleted?.call(); 
+    });
+    _tts.setCancelHandler(() {
+      _isSpeaking = false;
+      onCompleted?.call();
+    });
   }
 
   Future<void> speak(StringBuffer buffer) async {
     final text = buffer.toString();
     if (text.isEmpty) return;
-
     await _tts.speak(text);
     _isSpeaking = true;
   }
@@ -1193,6 +1205,13 @@ class TTSService {
   Future<void> dispose() async {
     await _tts.stop();
   }
+
+
+  Future<String> getDeviceLanguageCode() async {
+    final Locale deviceLocale = await PlatformDispatcher.instance.locales.first;
+    return deviceLocale.languageCode;
+  } 
+
 
 }
 

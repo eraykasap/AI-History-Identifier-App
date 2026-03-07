@@ -17,6 +17,7 @@ import 'package:history_identifier/pages/photo_page.dart';
 import 'package:history_identifier/pages/profile_page.dart';
 import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/theme.dart';
+import 'package:history_identifier/widgets/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -230,35 +231,35 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
   Widget build(BuildContext context) {
     
     return !version ? Scaffold(
+      extendBody: true,
       backgroundColor: Colors.black,
       body: Center(
         child: shoeMessage()
       ),
     ) : Scaffold(
+      extendBody: true,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
       body: allPages[selectedIndex],
       
 
-      bottomNavigationBar: bottomNavgationBar(
+      bottomNavigationBar: bottomNavigationBar(
         selectedIndex, 
-        context,
-        ref,
-        (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        }
-        
-        
-      ),
+        context, 
+        ref, 
+        (index) => setState(() {
+          selectedIndex = index;
+        }), 
+        () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()))
+      ),  
 
-      floatingActionButton: RawMaterialButton(
+      /* floatingActionButton: RawMaterialButton(
         onPressed: () {
           Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()));
         },
         
         elevation: 0,
+        
         
         fillColor: Color.fromRGBO(195, 150, 57, 1), /*Theme.of(context).bottomNavigationBarTheme.selectedItemColor!,*/
         shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(14)),
@@ -273,7 +274,7 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
               ],
             ),
         ),
-      )
+      ) */
 
     );
   }
@@ -300,8 +301,104 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 }
 
 
+Widget bottomNavigationBar(int selectIndex, BuildContext context, WidgetRef ref, Function(int) onSelect, VoidCallback onScanTap) {
+  return Container(
+    
+    decoration: BoxDecoration(
+      color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+      borderRadius: BorderRadius.circular(35),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withAlpha(50),
+          blurRadius: 15,
+          offset: Offset(0, 0)
+        )
+      ]
+    ),
+    child: SizedBox(
+      height: 100,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          // Arka plan bar
+          Positioned(
+            bottom: 0,
+            left: 16,
+            right: 16,
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                //color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+                /* boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.12),
+                    blurRadius: 12,
+                    offset: const Offset(0, 0),
+                  ),
+                ], */
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Home butonu
+                  NavItem(
+                    icon: Icons.home_outlined,
+                    activeIcon: Icons.home_rounded,
+                    label: "navigation.home".tr(),
+                    isSelected: selectIndex == 0,
+                    onTap: () => onSelect(0),
+                    context: context,
+                  ),
+    
+                  // FAB için boşluk
+                  const SizedBox(width: 72),
+    
+                  // Profil butonu
+                  NavItem(
+                    icon: Icons.person_outline,
+                    activeIcon: Icons.person_rounded,
+                    label: "navigation.profil".tr(),
+                    isSelected: selectIndex == 1,
+                    onTap: () => onSelect(1),
+                    context: context,
+                  ),
+                ],
+              ),
+            ),
+          ),
+    
+          // Ortadaki FAB (scan butonu)
+          Positioned(
+            top: -20,
+            child: GestureDetector(
+              onTap: onScanTap,
+              child: Container(
+                width: 84,
+                height: 84,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromRGBO(195, 150, 57, 1),
+                  
+                ),
+                child: const Icon(
+                  Icons.camera_alt_rounded, // ya da Icons.document_scanner
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
-Widget bottomNavgationBar(int selectindex, BuildContext context, WidgetRef ref, Function(int) onSelect) {
+
+
+/* Widget bottomNavgationBar(int selectindex, BuildContext context, WidgetRef ref, Function(int) onSelect) {
   
   return SafeArea(
     child: Row(
@@ -343,34 +440,10 @@ Widget bottomNavgationBar(int selectindex, BuildContext context, WidgetRef ref, 
           width: 10,
         ),
 
-        /* SizedBox(
-          height: 85,
-          child: ElevatedButton(
-            onPressed: () {
-
-              Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()));
-              
-            }, 
-            child: Row(children: [
-              Icon(Icons.photo_camera_outlined, size: 34, color: Theme.of(context).colorScheme.secondary,),
-              SizedBox(width: 8,),
-              Text("navigation.scan".tr(), style: TextStyle(color: Theme.of(context).colorScheme.secondary),)
-            ],),
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(24)),
-              shadowColor: Colors.transparent,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              overlayColor: Colors.grey.shade800
-            ),
-          ),
-        ) */
-
-
-
       ],
     ),
   );
-}
+} */
 
 
 
