@@ -54,7 +54,7 @@ class HomePage extends ConsumerWidget {
               const SizedBox(height: 20,),
 
               castelsList(context),
-
+              
               //Text(ref.watch(saveFreePhotoTakeProvider).toString()),
 
               //Text(ref.watch(savedDayProvider).toString()),
