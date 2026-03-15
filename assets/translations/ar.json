@@ -47,6 +47,13 @@
         "app_version_text_button" : "حسناً"
     },
 
+    "upgrader": {
+        "title": "تحديث التطبيق؟",
+        "message": "يتوفر إصدار جديد من {appName}! الإصدار {versionInfo} متاح الآن - لديك {installedVersion}.",
+        "prompt": "هل تريد التحديث الآن؟",
+        "button_update": "تحديث الآن"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "دُفن الإسكندر الأكبر حياً عن طريق الخطأ",

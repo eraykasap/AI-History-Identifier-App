@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "App aktualisieren?",
+        "message": "Eine neue Version von {appName} ist verfügbar! Version {versionInfo} ist jetzt verfügbar – Sie haben {installedVersion}.",
+        "prompt": "Möchten Sie jetzt aktualisieren?",
+        "button_update": "JETZT AKTUALISIEREN"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Alexander der Große wurde versehentlich lebendig begraben",

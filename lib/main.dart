@@ -21,13 +21,18 @@ import 'package:history_identifier/widgets/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:upgrader/upgrader.dart';
 
 
 
 void main() async {
 
+  
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
+  await Upgrader.clearSavedSettings();
   
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.transparent),
@@ -70,6 +75,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   var freePhotoTake = Hive.box<int>("freePhotoTake");
   var savedDay = Hive.box<int>("savedDay");
   var saveOnboard = Hive.box<bool>("saveOnboard");
+  
 
   @override
   void initState() {
@@ -77,6 +83,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+
+    
 
     loadHiveBox();
     initializeRevenueCat();
@@ -166,19 +174,35 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     //print("MYAPP ONBOARD BOOL DEGERİ ${ref.read(onBoardPageProvider)}");
 
     return MaterialApp(
-
+    
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.deviceLocale,
-
+    
       debugShowCheckedModeBanner: false,
-
+    
       themeMode: currentMode,
       theme: lightTheme,
       darkTheme: darkTheme,
-
-      home: onBoardView ? BottomNavBarCustom() : OnboardPage(),
-
+    
+      home: UpgradeAlert(
+        upgrader: Upgrader(
+          messages: LocalizedUpgraderMessages()
+        ),
+        dialogStyle: UpgradeDialogStyle.cupertino,
+        barrierDismissible: false,
+        showIgnore: false,
+        showLater: false,
+        onIgnore: () => false,
+        onLater: () => false,
+        onUpdate: () {
+          SystemNavigator.pop();
+          return true;
+        } ,
+        cupertinoButtonTextStyle: TextStyle(color: Colors.black),
+        child: onBoardView ? BottomNavBarCustom() : OnboardPage(),
+      ) 
+    
     );
   }
 }
@@ -231,18 +255,16 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
   Widget build(BuildContext context) {
     
     return !version ? Scaffold(
-      extendBody: true,
-      backgroundColor: Colors.black,
+      
       body: Center(
         child: shoeMessage()
       ),
     ) : Scaffold(
       extendBody: true,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-
+      backgroundColor: /*Colors.blue,*/ Theme.of(context).scaffoldBackgroundColor, 
       body: allPages[selectedIndex],
       
-
+    
       bottomNavigationBar: bottomNavigationBar(
         selectedIndex, 
         context, 
@@ -252,30 +274,9 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
         }), 
         () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()))
       ),  
-
-      /* floatingActionButton: RawMaterialButton(
-        onPressed: () {
-          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()));
-        },
-        
-        elevation: 0,
-        
-        
-        fillColor: Color.fromRGBO(195, 150, 57, 1), /*Theme.of(context).bottomNavigationBarTheme.selectedItemColor!,*/
-        shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(14)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.photo_camera_outlined, color: Colors.white /*Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,*/),
-                Text("navigation.scan".tr(), style: TextStyle(color: Colors.white /*Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color*/),)
-              ],
-            ),
-        ),
-      ) */
-
+    
+      
+    
     );
   }
 
@@ -300,13 +301,30 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 
 }
 
+class LocalizedUpgraderMessages extends UpgraderMessages {
+  
+  String get title => 'upgrader.title'.tr();
+
+  
+  String get messages => 'upgrader.message'.tr();
+
+  
+  String get prompt => 'upgrader.prompt'.tr();
+
+  
+  String get buttonTitleUpdate => 'upgrader.button_update'.tr();
+
+  
+
+}
+
 
 Widget bottomNavigationBar(int selectIndex, BuildContext context, WidgetRef ref, Function(int) onSelect, VoidCallback onScanTap) {
   return Container(
     
     decoration: BoxDecoration(
       color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-      borderRadius: BorderRadius.circular(35),
+      
       boxShadow: [
         BoxShadow(
           color: Colors.black.withAlpha(50),
@@ -321,24 +339,14 @@ Widget bottomNavigationBar(int selectIndex, BuildContext context, WidgetRef ref,
         clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
-          // Arka plan bar
+          // Arka plan bar 
           Positioned(
             bottom: 0,
             left: 16,
             right: 16,
             child: Container(
               height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                //color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-                /* boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.12),
-                    blurRadius: 12,
-                    offset: const Offset(0, 0),
-                  ),
-                ], */
-              ),
+              
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

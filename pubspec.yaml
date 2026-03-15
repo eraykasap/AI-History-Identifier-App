@@ -62,6 +62,7 @@ dependencies:
   path_provider: ^2.1.5
   path: ^1.9.1
   lottie: ^3.3.2
+  upgrader: ^12.5.0
   
   
   

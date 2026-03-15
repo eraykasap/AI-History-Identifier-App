@@ -31,13 +31,15 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
   void initState() {
 
     super.initState();
-    loadPackages();
+    
 
     
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       subcheck();
     });
+
+    loadPackages();
 
     /* if (isHasEverSub) {
         selectedIndex = 2;
@@ -55,6 +57,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     final hasEverSub = await SubscriptionManager.hasEverSubscribed();
     
     setState(() {
+      if (hasEverSub) {
+        selectedIndex = 2;
+      }
       isSub = subscriptionStatus;
       isHasEverSub = hasEverSub;
     });
@@ -79,7 +84,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     });
 
     if (packages == null || packages.isEmpty) {
-      //print('❌ Paket bulunamadı!');
+      
       return;
     }
 
@@ -87,23 +92,23 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
 
   Future<void> handlePurchase() async {
-    print("BİR");
+    
     await subcheck();
-    print("İKİ");
+    
     if (isSub == false) {
-      print("ÜÇ");
+      
       if (_packeges == null || _packeges!.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Paketler Yüklenemedi")));
-        print("DÖRT");
+        
         return;
       }
-      print("BEŞ");
+      
       final selectedpackage = _packeges![selectedIndex];
 
       bool success = await SubscriptionManager.purchasePackage(selectedpackage);
-      print("ALTI");
+      
       if (success) {
-        //Navigator.pop(context, true);
+        
         Navigator.of(context).pop(true);
       }
 
@@ -173,14 +178,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       ],
                     ),
 
-                    /* Column(
-                      spacing: 20,
-                      children: [
-                        PayWallContainer(icon: Icons.document_scanner, text: "navigation.payWallContainer_1".tr()),
-                        PayWallContainer(icon: Icons.article_outlined, text: "navigation.payWallContainer_2".tr()),
-                        PayWallContainer(icon: Icons.payment, text: "navigation.payWallContainer_3".tr())
-                      ],
-                    ), */
+                    
                                 
                     SizedBox(height: 15,),
                         
@@ -215,7 +213,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                         index: 2, 
                         title: "navigation.monthly_30".tr(), 
                         subtitle: "", 
-                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "*", 
+                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "error", 
                         period: "", 
                         isDiscount: false
                       ),
@@ -227,16 +225,16 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       index: 1, 
                       title: "navigation.weekly".tr(), 
                       subtitle: "", 
-                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "*", 
+                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "error", 
                       period: "",
                       isDiscount: false
                     ),
 
 
-                    SizedBox(height: 10,),
+                    //SizedBox(height: 10,),
 
-                    Text("ABONELIK DURUMU : $isSub", style: TextStyle(color: Colors.white, fontSize: 22),),
-                    Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),), 
+                    //Text("ABONELIK DURUMU : $isSub", style: TextStyle(color: Colors.white, fontSize: 22),),
+                    //Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),), 
                     
                                 
                     SafeArea(child: PulsAnimation(
@@ -261,7 +259,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
 
   
-                Padding(
+                Platform.isIOS ? Padding(
                   padding: const EdgeInsets.fromLTRB(8, 0, 8, 6),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -280,7 +278,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                       }, child: Text("User License Agreement", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
                     ],
                   ),
-                )
+                ) : Container()
             
             
               ],

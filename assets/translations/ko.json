@@ -48,6 +48,13 @@
         "app_version_text_button" : "확인"
     },
 
+    "upgrader": {
+        "title": "앱을 업데이트하시겠습니까?",
+        "message": "{appName}의 새 버전이 출시되었습니다! 버전 {versionInfo}를 사용할 수 있으며, 현재 버전은 {installedVersion}입니다.",
+        "prompt": "지금 업데이트하시겠습니까?",
+        "button_update": "지금 업데이트"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "알렉산더 대왕은 실수로 산 채로 묻혔다",

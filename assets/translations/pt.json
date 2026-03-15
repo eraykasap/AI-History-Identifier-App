@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "Atualizar o app?",
+        "message": "Uma nova versão de {appName} está disponível! A versão {versionInfo} já está disponível - você tem {installedVersion}.",
+        "prompt": "Gostaria de atualizar agora?",
+        "button_update": "ATUALIZAR AGORA"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Alexandre, o Grande foi enterrado vivo por engano",

@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "Mettre à jour l'app ?",
+        "message": "Une nouvelle version de {appName} est disponible ! La version {versionInfo} est maintenant disponible - vous avez {installedVersion}.",
+        "prompt": "Voulez-vous mettre à jour maintenant ?",
+        "button_update": "METTRE À JOUR"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Alexandre le Grand a été enterré vivant par erreur",

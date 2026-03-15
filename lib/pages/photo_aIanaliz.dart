@@ -9,6 +9,7 @@ import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/detay_page.dart';
 import 'package:history_identifier/providers/providers.dart';
 import 'package:history_identifier/widgets/widgets.dart';
+import 'package:lottie/lottie.dart';
 
 
 class PhotoAIanalizPage extends ConsumerStatefulWidget {
@@ -24,16 +25,18 @@ class PhotoAIanalizPage extends ConsumerStatefulWidget {
   ConsumerState<PhotoAIanalizPage> createState() => _PhotoAIanalizPageState();
 }
 
-class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
+class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> with TickerProviderStateMixin {
 
   String result = "";
   bool analizEdiliyor = true;
+  AnimationController? _lottieController;
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _lottieController = AnimationController(vsync: this);
     _startAnalysis();
 
     Future.microtask(() {
@@ -62,12 +65,21 @@ class _PhotoAIanalizPageState extends ConsumerState<PhotoAIanalizPage> {
             ),
           ),
 
+
           Container(
             width: double.maxFinite,
             height: double.maxFinite,
-            color: Colors.black.withAlpha(80),
+            color: Colors.black.withAlpha(150),
             child: Center(
-              child: analizEdiliyor ? SparkleLoader() : Container(),
+              child: Container(
+                width: 200,
+                height: 200,
+                //color: Colors.amber,
+                child: LottieBuilder.asset(
+                  "assets/animations/Sparkles Loop Loader ai.json",
+                  repeat: true,
+                ),
+              ),
             ),
           )
 

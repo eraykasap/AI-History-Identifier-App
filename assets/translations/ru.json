@@ -48,6 +48,13 @@
         "app_version_text_button" : "ОК"
     },
 
+    "upgrader": {
+        "title": "Обновить приложение?",
+        "message": "Доступна новая версия {appName}! Версия {versionInfo} уже вышла — у вас установлена {installedVersion}.",
+        "prompt": "Хотите обновить сейчас?",
+        "button_update": "ОБНОВИТЬ СЕЙЧАС"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Александр Македонский был случайно похоронен заживо",

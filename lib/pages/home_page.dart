@@ -129,7 +129,7 @@ class HomePage extends ConsumerWidget {
               //final params = ShareParams(uri: Uri(path: "https://pub.dev/packages/share_plus"),);
               //SharePlus.instance.share(params);
 
-              Version.versionCheck();
+              //Version.versionCheck();
 
             },
           ),
@@ -280,7 +280,7 @@ class HomePage extends ConsumerWidget {
       builder: (context, ref, child) {
         final counter = ref.watch(photoCounterProvider);
         return Container(
-          width: 350,
+          width: MediaQuery.of(context).size.width * 1,
           height: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),

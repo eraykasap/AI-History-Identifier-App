@@ -48,6 +48,13 @@
         "app_version_text_button" : "ठीक है"
     },
 
+    "upgrader": {
+        "title": "ऐप अपडेट करें?",
+        "message": "{appName} का एक नया संस्करण उपलब्ध है! संस्करण {versionInfo} अब उपलब्ध है - आपके पास {installedVersion} है।",
+        "prompt": "क्या आप अभी अपडेट करना चाहते हैं?",
+        "button_update": "अभी अपडेट करें"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "सिकंदर महान को गलती से जीवित दफना दिया गया था",

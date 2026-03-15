@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "アプリを更新しますか？",
+        "message": "{appName} の新しいバージョンが利用可能です！バージョン {versionInfo} が公開されました。現在のバージョンは {installedVersion} です。",
+        "prompt": "今すぐ更新しますか？",
+        "button_update": "今すぐ更新"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "アレクサンドロス大王は誤って生き埋めにされた",

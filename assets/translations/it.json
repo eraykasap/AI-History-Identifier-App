@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "Aggiornare l'app?",
+        "message": "È disponibile una nuova versione di {appName}! La versione {versionInfo} è ora disponibile - hai {installedVersion}.",
+        "prompt": "Vuoi aggiornare adesso?",
+        "button_update": "AGGIORNA ORA"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Alessandro Magno fu sepolto vivo per errore",

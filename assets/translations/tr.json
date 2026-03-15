@@ -46,6 +46,13 @@
         "app_version_text_button" : "Tamam"
     },
 
+    "upgrader": {
+        "title": "Güncelleme Mevcut",
+        "message": "{appName} uygulamasının yeni sürümü çıktı! {versionInfo} sürümü yayında, sizde {installedVersion} var.",
+        "prompt": "Şimdi güncellemek ister misiniz?",
+        "button_update": "ŞİMDİ GÜNCELLE"
+    },
+
 
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",

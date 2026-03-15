@@ -48,6 +48,13 @@
         "app_version_text_button" : "OK"
     },
 
+    "upgrader": {
+        "title": "Zaktualizować aplikację?",
+        "message": "Dostępna jest nowa wersja {appName}! Wersja {versionInfo} jest już dostępna - masz {installedVersion}.",
+        "prompt": "Czy chcesz zaktualizować teraz?",
+        "button_update": "AKTUALIZUJ TERAZ"
+    },
+
     "history_info_1" : {
         "conntent_0" : "assets/images/history/photo3.png",
         "conntent_1" : "Aleksander Wielki został przez pomyłkę pochowany żywcem",
