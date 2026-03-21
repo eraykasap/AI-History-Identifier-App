@@ -222,7 +222,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
 
   Future<void> _takePicture() async {
 
-    if (ref.read(saveFreePhotoTakeProvider) < 5 || customerSub) {
+    if (ref.read(saveFreePhotoTakeProvider) < 3 || customerSub) {
 
       final image = await _controller!.takePicture();
       File imageFile = File(image.path);
@@ -243,7 +243,7 @@ class _PhotoScannerPageState extends ConsumerState<PhotoScannerPage> {
 
   Future<void> _pickImage() async {
 
-    if (ref.read(saveFreePhotoTakeProvider) < 5 || customerSub) {
+    if (ref.read(saveFreePhotoTakeProvider) < 3 || customerSub) {
 
       final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
 

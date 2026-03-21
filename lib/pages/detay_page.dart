@@ -72,6 +72,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> with TickerProvider
     TTSService().onCompleted = () {
       setState(() {
         isAudioPlay = false;
+        _lottieController?.stop();
       });
     };
 
