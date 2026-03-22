@@ -50,7 +50,7 @@
 
     "upgrader": {
         "title": "App aktualisieren?",
-        "message": "Eine neue Version von {appName} ist verfügbar! Version {versionInfo} ist jetzt verfügbar – Sie haben {installedVersion}.",
+        "message": "Eine neue Version der App ist verfügbar",
         "prompt": "Möchten Sie jetzt aktualisieren?",
         "button_update": "JETZT AKTUALISIEREN"
     },

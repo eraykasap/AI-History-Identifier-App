@@ -48,7 +48,7 @@
 
     "upgrader": {
         "title": "Güncelleme Mevcut",
-        "message": "{appName} uygulamasının yeni sürümü çıktı! {versionInfo} sürümü yayında, sizde {installedVersion} var.",
+        "message": "uygulamanın yeni bir sürümü mevcut",
         "prompt": "Şimdi güncellemek ister misiniz?",
         "button_update": "ŞİMDİ GÜNCELLE"
     },

@@ -70,7 +70,7 @@ class ApiOperations {
   
   /* Future<List<ContentModel>> sendImageAndGetJson (File imageFile) async {
 
-    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "");
+    final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: "AIzaSyA3Hbmoi43zuUDaNr-bTbg9dK3u-DqMb1I");
     List<ContentModel> icerikListesi = [];
 
     final jsonSchema = Schema(
@@ -131,7 +131,42 @@ class ApiOperations {
 
     List<ContentModel> icerikListesi = [];
 
-    final String languageCode = await getDeviceLanguageCode();
+    try {
+      final String languageCode = await getDeviceLanguageCode();
+      final bytes = await imageFile.readAsBytes();
+      final base64Image = base64Encode(bytes);
+
+      final response = await http.post(
+        Uri.parse('https://us-central1-history-identifier.cloudfunctions.net/analyzeImage'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'imageBase64': base64Image,
+          'languageCode': languageCode,
+        }),
+      ).timeout(const Duration(seconds: 60));
+
+      print('STATUS: ${response.statusCode}');
+      print('BODY: ${response.body}');
+
+      if (response.statusCode == 200) {
+        final responseBody = jsonDecode(response.body);
+        final jsonString = responseBody['data'];
+        final jsonObject = jsonDecode(jsonString);
+        if (jsonObject is List) {
+          icerikListesi = (jsonObject as List)
+              .map((e) => ContentModel.fromMap(e as Map<String, dynamic>))
+              .toList();
+        }
+      } else {
+        throw Exception('Sunucu hatası: ${response.statusCode} - ${response.body}');
+      }
+
+    } catch (e) {
+      print('HATA: $e');
+      rethrow; // hatayı yukarı ilet
+    }
+
+    /* final String languageCode = await getDeviceLanguageCode();
     final bytes = await imageFile.readAsBytes();
     final base64Image = base64Encode(bytes);
 
@@ -151,7 +186,7 @@ class ApiOperations {
       if (jsonObject is List) {
         icerikListesi = (jsonObject as List).map((e) => ContentModel.fromMap(e as Map<String, dynamic>)).toList();
       }
-    }
+    } */
 
     return icerikListesi;
 

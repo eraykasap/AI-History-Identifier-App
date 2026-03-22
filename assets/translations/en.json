@@ -48,8 +48,8 @@
     },
 
     "upgrader": {
-        "title": "Update App?",
-        "message": "A new version of {appName} is available! Version {versionInfo} is now available-you have {installedVersion}.",
+        "title": "Update App",
+        "message": "A new version of the app is available",
         "prompt": "Would you like to update it now?",
         "button_update": "UPDATE NOW"
     },

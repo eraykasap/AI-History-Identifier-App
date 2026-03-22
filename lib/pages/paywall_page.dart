@@ -39,14 +39,33 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       subcheck();
     });
 
+
+
+    selectedPackege();
+
+
     loadPackages();
 
-    /* if (isHasEverSub) {
+    
+
+    
+
+  }
+
+  Future<void> selectedPackege () async {
+
+    await subcheck();
+
+    setState(() {
+
+      if (isHasEverSub) {
         selectedIndex = 2;
       }
       else {
-        selectedIndex = 0;
-    } */
+          selectedIndex = 0;
+      }
+
+    });
 
   }
 
@@ -57,9 +76,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     final hasEverSub = await SubscriptionManager.hasEverSubscribed();
     
     setState(() {
-      if (hasEverSub) {
+     /*  if (hasEverSub) {
         selectedIndex = 2;
-      }
+      } */
       isSub = subscriptionStatus;
       isHasEverSub = hasEverSub;
     });

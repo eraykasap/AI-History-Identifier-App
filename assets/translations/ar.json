@@ -49,7 +49,7 @@
 
     "upgrader": {
         "title": "تحديث التطبيق؟",
-        "message": "يتوفر إصدار جديد من {appName}! الإصدار {versionInfo} متاح الآن - لديك {installedVersion}.",
+        "message": "يتوفر إصدار جديد من التطبيق",
         "prompt": "هل تريد التحديث الآن؟",
         "button_update": "تحديث الآن"
     },

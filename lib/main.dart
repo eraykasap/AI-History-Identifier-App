@@ -306,13 +306,16 @@ class LocalizedUpgraderMessages extends UpgraderMessages {
   String get title => 'upgrader.title'.tr();
 
   
-  String get messages => 'upgrader.message'.tr();
+  //String get messages => 'upgrader.message'.tr();
+  String get messages => " ";
 
   
-  String get prompt => 'upgrader.prompt'.tr();
+  //String get prompt => 'upgrader.prompt'.tr();
+  String get prompt => " ";
 
   
   String get buttonTitleUpdate => 'upgrader.button_update'.tr();
+  
 
   
 
