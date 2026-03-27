@@ -1,11 +1,14 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/providers/providers.dart';
@@ -61,6 +64,72 @@ class AiApiContent {
   """;
   }
 
+}
+
+
+
+
+class WikipediaHistoryService {
+  static Future<List<HistoricalEvent>> getEventForDate({
+    required int month,
+    required int day,
+    String lang = 'en',
+  }) async {
+    // 1. Önce istenen dilde dene
+    List<HistoricalEvent> events = await _fetchRandomEvent(month: month, day: day, lang: lang,);
+
+    // 2. Bulamazsa İngilizce'ye fallback
+    if (events.isEmpty && lang != 'en') {
+      events = await _fetchRandomEvent(
+        month: month,
+        day: day,
+        lang: 'en',
+      );
+    }
+
+    return events;
+  }
+
+  static Future<List<HistoricalEvent>> _fetchRandomEvent({
+    required int month,
+    required int day,
+    required String lang,
+  }) async {
+    try {
+      final url = Uri.parse(
+        'https://$lang.wikipedia.org/api/rest_v1/feed/onthisday/events/$month/$day',
+      );
+
+      final response = await http.get(
+        url,
+        headers: {'Accept': 'application/json'},
+      );
+
+      if (response.statusCode != 200) return [];
+
+      final data = jsonDecode(response.body);
+      final allEvents = data['events'] as List?;
+
+      if (allEvents == null || allEvents.isEmpty) return [];
+
+      return allEvents.map((e) => HistoricalEvent.fromJson(e)).toList();
+
+      // Fotoğraflı event'leri filtrele (varsa)
+      /* final eventsWithImage = allEvents.where((e) {
+        final pages = e['pages'] as List?;
+        return pages != null && pages.any((p) => p['thumbnail'] != null);
+      }).toList(); */
+
+      // Fotoğraflı yoksa tüm listeden seç
+      //final pool = eventsWithImage.isNotEmpty ? eventsWithImage : allEvents;
+
+      //final random = Random();
+      //return HistoricalEvent.fromJson(pool[random.nextInt(pool.length)]);
+    } catch (e) {
+      debugPrint('Wikipedia fetch error: $e');
+      return [];
+    }
+  }
 }
 
 
@@ -193,14 +262,39 @@ class ApiOperations {
   }
 
 
-
-
-
   Future<String> getDeviceLanguageCode () async {
 
     final Locale deviceLocale = await PlatformDispatcher.instance.locales.first;
 
     return deviceLocale.languageCode;
+  }
+
+
+  static Future<Position> getUserLatLang() async {
+
+    bool servicesEnabled;
+    LocationPermission permission;
+
+    servicesEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!servicesEnabled) {
+      return Future.error("Konum servisleri kapalı.");
+    }
+    /* else {
+      return await Geolocator.getCurrentPosition();
+    } */
+
+    permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      // İzin verilmemişse kullanıcıdan izin iste
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Konum izni reddedildi.');
+      }
+    }
+
+    return await Geolocator.getCurrentPosition();
+
   }
 
 

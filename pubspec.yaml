@@ -63,6 +63,8 @@ dependencies:
   path: ^1.9.1
   lottie: ^3.3.2
   upgrader: ^12.5.0
+  geolocator: ^14.0.2
+  cached_network_image: ^3.4.1
   
   
   

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -107,8 +108,8 @@ class ContentSavedCard extends StatelessWidget {
 
 class Contentcard extends StatelessWidget {
 
-  final String image;
-  final String title;
+  final String? image;
+  final String? title;
   
 
   const Contentcard({
@@ -136,14 +137,25 @@ class Contentcard extends StatelessWidget {
                   ),
                   width: double.maxFinite,
                   height: 160,
-                  child: Image.asset(image, fit: BoxFit.cover,),
+                  child: (image != null && image!.isNotEmpty) 
+                  ? CachedNetworkImage(
+                    imageUrl: image!,
+                    fit: BoxFit.cover,
+                    memCacheWidth: 150,
+                    memCacheHeight: 150,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => 
+                        const Icon(Icons.broken_image),
+                  ) : const Icon(Icons.image_not_supported), /*Image.network(image!, fit: BoxFit.cover,) : const Icon(Icons.image_not_supported),*/ //! image bull check ekle
                 ),
               ),
               SizedBox(height: 10,),
       
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Text(title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
+                child: Text(title ?? "", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,), //! title bull check ekle
               ),
       
             ],
@@ -344,14 +356,19 @@ class StaticContentkalelerList {
 }
 
 
-class MapViewWidget extends StatelessWidget {
+class MapViewWidget extends ConsumerWidget {
   MapViewWidget({super.key});
 
   
   var place = StaticClass.place;
+  
+  
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref ) {
+
+    //var listLatLng = ref.watch(nearLatLngPlace);
+
     return FlutterMap(
       options: MapOptions(
         initialZoom: 3,
@@ -403,7 +420,7 @@ class MapViewWidget extends StatelessWidget {
               width: 40,
               height: 40,
               child: GestureDetector(
-                onTap: () => StaticClass.showPlaceOptions(context, place),
+                onTap: () => StaticClass.showPlaceOptions(context, place,),
                 child: Icon(Icons.location_on, color: Colors.red, size: 40,)
               )
             );

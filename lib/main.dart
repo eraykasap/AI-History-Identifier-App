@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:history_identifier/config/data.dart';
 import 'package:history_identifier/model/model.dart';
@@ -20,6 +22,7 @@ import 'package:history_identifier/widgets/theme.dart';
 import 'package:history_identifier/widgets/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:http/http.dart' as http;
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -75,6 +78,10 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   var freePhotoTake = Hive.box<int>("freePhotoTake");
   var savedDay = Hive.box<int>("savedDay");
   var saveOnboard = Hive.box<bool>("saveOnboard");
+
+  List<dynamic> nearLocationHistory = []; 
+
+  List<NearLatLng> nearLatLngList = [];
   
 
   @override
@@ -88,6 +95,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
     loadHiveBox();
     initializeRevenueCat();
+    
+    getEventWikiPedia();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       DailyLimitManager.getDateTime(ref);
@@ -95,7 +104,104 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     
   }
 
+
+  /* Future<void> fetchhistoricalPlace () async {
+
+    try {
+      Position position = await ApiOperations.getUserLatLang();
+      print("!!!!!!!!! KONUM ALINDI !!!!!!!!!!: ${position.latitude}, ${position.longitude}");
+      nearLocationHistory = await getNearbyHistoricalPlaces(position.latitude, position.longitude);
+      print("!!!!!!!!!! ${nearLocationHistory.length} !!!!!!!!!!"); 
+      ref.read(nearHistoryPlace.notifier).state = nearLocationHistory;
+      
+
+      List<NearHistoricalPlace> places = nearLocationHistory.map((e) => NearHistoricalPlace.fromJson(e)).toList();
+
+
+
+      for (var element in places) {
+        //nearLatLngList.add(NearLatLng(lat: element.lat, lng: element.lon));
+        ref.read(nearLatLngPlace.notifier).state.add(NearLatLng(lat: element.lat, lng: element.lon, name: element.name));
+        //print("!!!!!!!!!!!!!!!!!!!!!!!!! ${ref.read(nearLatLngPlace).length} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      }
+
+
+
+    } catch (e) {
+      print("!!!!! HATA !!!!! : $e");
+    }
+
+  }  */
+
+  /* Future<List<dynamic>> getNearbyHistoricalPlaces (double lat, double lng) async {
+
+    const int radius = 50000;
+
+    final query = '''
+    [out:json][timeout:25];
+    (
+      node["tourism"~"museum"](around:$radius, $lat, $lng);
+      
+      node["historic"](around:$radius, $lat, $lng);
+      
+      
+    );
+    out center; ''';
+
+    final url = Uri.parse("https://overpass-api.de/api/interpreter");
+    //final url = Uri.parse("https://overpass.kumi.systems/api/interpreter");
+
+    try {
+
+      final response = await http.post(
+        url,
+        body: {'data': query},
+        headers: {
+          'User-Agent': 'History Identifier/1.0', // 
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(utf8.decode(response.bodyBytes));
+        return data['elements'] ?? [];
+      }
+      else {
+        print("!!!!! API Hatası !!!!! : ${response.statusCode}");
+        return [];
+      }
+      
+    } catch (e) {
+
+      print("!!!!! Bağlantı Hatası !!!!! : $e");
+      return [];
+
+    }
+
+
+    
+
+  } */
+
   
+  Future<void> getEventWikiPedia () async {
+
+    final now = DateTime.now();
+    final language = await ApiOperations().getDeviceLanguageCode();
+    final event = await WikipediaHistoryService.getEventForDate(month: now.month, day: now.day, lang: language);
+    final limited = event.take(10).toList();
+    ref.read(historicalEventsProvider.notifier).state = limited;
+
+    print('Toplam ${event.length} olay bulundu');
+    for (final event in event) {
+      print('Yıl: ${event.year} /n');
+      print('Başlık: ${event.title} /n');
+      print('Başlık: ${event.text} /n');
+      print('Fotoğraf: ${event.imageUrl} /n');
+      print('---');
+    }
+
+  }
 
 
   Future<void> initializeRevenueCat() async {

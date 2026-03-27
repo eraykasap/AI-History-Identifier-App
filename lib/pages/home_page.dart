@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:history_identifier/config/data.dart';
+import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/pages/full_map_page.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/pages/photo_page.dart';
@@ -37,7 +38,9 @@ class HomePage extends ConsumerWidget {
 
     //var freephototake = ref.watch(saveFreePhotoTakeProvider);
 
-    
+    //var nearLocationPlace = ref.watch(nearHistoryPlace);
+
+    var historyEvents = ref.watch(historicalEventsProvider);
 
 
     return SafeArea(
@@ -53,7 +56,7 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 20,),
 
-              castelsList(context),
+              historicalEventsListt(context, historyEvents),
               
               //Text(ref.watch(saveFreePhotoTakeProvider).toString()),
 
@@ -71,6 +74,8 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 60,),
 
+              //buildNearbyPlaces(nearLocationPlace)
+
             ]
           ),
         ),
@@ -78,7 +83,7 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget castelsList(BuildContext context) {
+  Widget historicalEventsListt(BuildContext context, List<HistoricalEvent> historyList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,21 +93,21 @@ class HomePage extends ConsumerWidget {
         SizedBox(
           height: 230,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
+          child: historyList.isNotEmpty ? ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: historyInfo.length,
+            itemCount: historyList.length,
             itemBuilder: (context, index) {
-              var item = historyInfo[index];
+              var item = historyList[index]; /*historyInfo[index];*/
 
               return GestureDetector(
                 onTap: () {
-                  showContent(context, item[0], item);
+                  showContent(context, item.imageUrl, item.title, item.text);
                   //Navigator.of(context).push(CupertinoPageRoute(builder: (context) => StaticContentPage(content: item, imagePath: item[0]),),);
                 },
-                child: Contentcard(image: item[0], title: item[1]),
+                child: Contentcard(image: item.imageUrl, title: item.title),
               );
             },
-          ),
+          ) : CircularProgressIndicator(),
         ),
       ],
     );
@@ -216,7 +221,7 @@ class HomePage extends ConsumerWidget {
   }
 
 
-  Future showContent (BuildContext context, String imagePath, List<String> list) async {
+  Future showContent (BuildContext context, String? imagePath, /*List<String> list*/ String? title, String content) async {
     return showDialog(
       useSafeArea: true,
       barrierDismissible: false,
@@ -231,28 +236,41 @@ class HomePage extends ConsumerWidget {
                 height: 600,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                  child: Column(
-                    children: [
-            
-                      ClipRRect(
-                        borderRadius: BorderRadiusGeometry.circular(16),
-                        child: Image.asset(imagePath)
-                      ),
-                  
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: list.length - 1,
-                          itemBuilder: (context, index) {
-                          var item = list[index + 1];
-                          
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: item == list[1] ? Center(child: Text(item, style:  Theme.of(context).textTheme.headlineLarge)) : Text(item, style:  Theme.of(context).textTheme.bodyMedium),
-                          ); 
-                        }),
-                      )
-                  
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                                
+                        ClipRRect(
+                          borderRadius: BorderRadiusGeometry.circular(16),
+                          child: (imagePath != null && imagePath!.isNotEmpty) ? Image.network(imagePath!, fit: BoxFit.cover,) : const Icon(Icons.image_not_supported), 
+                        ),
+                    
+                        /* Expanded(
+                          child: ListView.builder(
+                            itemCount: list.length - 1,
+                            itemBuilder: (context, index) {
+                            var item = list[index + 1];
+                            
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: item == list[1] ? Center(child: Text(item, style:  Theme.of(context).textTheme.headlineLarge)) : Text(item, style:  Theme.of(context).textTheme.bodyMedium),
+                            ); 
+                          }),
+                        ), */
+                    
+                        
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Text(title ?? "", style: Theme.of(context).textTheme.headlineLarge),
+                        ),
+                        
+                        Text(content, style: Theme.of(context).textTheme.bodyMedium,)
+                    
+                    
+                    
+                    
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -308,6 +326,66 @@ class HomePage extends ConsumerWidget {
       
     );
   }
+
+
+  /* Widget buildNearbyPlaces(List<dynamic> rawData) {
+    // Gelen ham veriyi modele çeviriyoruz
+    List<NearHistoricalPlace> places = rawData.map((e) => NearHistoricalPlace.fromJson(e)).toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Text("Yakınındaki Tarihi Duraklar", 
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+          height: 150, // Kartların yüksekliği
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: places.length,
+            itemBuilder: (context, index) {
+              final place = places[index];
+              return Container(
+                width: 160,
+                margin: const EdgeInsets.only(left: 16),
+                child: Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  child: InkWell(
+                    onTap: () => StaticClass.openInGoogleMaps(place.lat, place.lon, place.name), /* openMap(place.lat, place.lon), */ // Haritaya fırlat
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.museum_outlined, size: 40, color: Colors.brown),
+                          const SizedBox(height: 8),
+                          Text(
+                            place.name,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            place.category.toUpperCase(),
+                            style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  } */
 
 }
 

@@ -94,6 +94,38 @@ class HistoricalPlace {
 
 
 
+
+class HistoricalEvent {
+  final String text;
+  final int year;
+  final String? title;
+  final String? extract;
+  final String? imageUrl;
+
+  HistoricalEvent({
+    required this.text,
+    required this.year,
+    this.title,
+    this.extract,
+    this.imageUrl,
+  });
+
+  factory HistoricalEvent.fromJson(Map<String, dynamic> json) {
+    final pages = json['pages'] as List?;
+    final firstPage = (pages != null && pages.isNotEmpty) ? pages[0] : null;
+
+    return HistoricalEvent(
+      text: json['text'] ?? '',
+      year: json['year'] ?? 0,
+      title: firstPage?['titles']?['normalized'],
+      extract: firstPage?['extract'],
+      imageUrl: firstPage?['thumbnail']?['source'],
+    );
+  }
+}
+
+
+
 class StaticClass {
   
 
@@ -929,7 +961,7 @@ class StaticClass {
     HistoricalPlace(name: "Arthur's Seat", lat: 55.944444, lang: -3.161667),
   ];
 
-  static void showPlaceOptions (BuildContext context, HistoricalPlace place) {
+  static void showPlaceOptions (BuildContext context, HistoricalPlace place,) {
     showModalBottomSheet(
       context: context, 
       builder: (context) => Container(
@@ -983,6 +1015,18 @@ class StaticClass {
     }
   }
 
+
+}
+
+
+class NearLatLng {
+
+  final double lat;
+  final double lng;
+  final String name;
+
+  NearLatLng({required this.lat, required this.lng, required this.name});
+  
 
 }
 
@@ -1232,3 +1276,28 @@ class OnboardingStep {
 
   
 }
+
+
+
+
+class NearHistoricalPlace {
+  final String name;
+  final double lat;
+  final double lon;
+  final String category;
+
+  NearHistoricalPlace({required this.name, required this.lat, required this.lon, required this.category});
+
+  factory NearHistoricalPlace.fromJson(Map<String, dynamic> json) {
+    return NearHistoricalPlace(
+      name: json['tags']?['name'] ?? "Bilinmeyen Eser",
+      lat: json['lat'] ?? json['center']?['lat'] ?? 0.0,
+      lon: json['lon'] ?? json['center']?['lon'] ?? 0.0,
+      category: json['tags']?['tourism'] ?? json['tags']?['historic'] ?? "Tarihi Yer",
+    );
+  }
+}
+
+
+
+
