@@ -138,24 +138,34 @@ class Contentcard extends StatelessWidget {
                   width: double.maxFinite,
                   height: 160,
                   child: (image != null && image!.isNotEmpty) 
-                  ? CachedNetworkImage(
-                    imageUrl: image!,
-                    fit: BoxFit.cover,
-                    memCacheWidth: 150,
-                    memCacheHeight: 150,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(),
+                  ? ColorFiltered(
+                    colorFilter: const ColorFilter.matrix([
+                      0.393, 0.769, 0.189, 0, 0,
+                      0.349, 0.686, 0.168, 0, 0,
+                      0.272, 0.534, 0.131, 0, 0,
+                      0,     0,     0,     1, 0,
+                    ]),
+                    child: CachedNetworkImage(
+                      imageUrl: image!,
+                      fit: BoxFit.cover,
+                      memCacheWidth: 150,
+                      memCacheHeight: 150,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                    
+                      
+                    
                     ),
-                    errorWidget: (context, url, error) => 
-                        const Icon(Icons.broken_image),
-                  ) : const Icon(Icons.image_not_supported), /*Image.network(image!, fit: BoxFit.cover,) : const Icon(Icons.image_not_supported),*/ //! image bull check ekle
+                  ) : const Icon(Icons.image_not_supported), /*Image.network(image!, fit: BoxFit.cover,) : const Icon(Icons.image_not_supported),*/ 
                 ),
               ),
               SizedBox(height: 10,),
       
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Text(title ?? "", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,), //! title bull check ekle
+                child: Text(title ?? "", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,), 
               ),
       
             ],
@@ -165,6 +175,68 @@ class Contentcard extends StatelessWidget {
     );
   }
 }
+
+
+class WikiArticleCard extends StatelessWidget {
+
+  String? image;
+  String? title;
+
+  WikiArticleCard({
+    super.key,
+    required this.image,
+    required this.title
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Theme.of(context).cardColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Column(
+          children: [
+        
+            ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(12),
+              child: Container(
+                width: double.maxFinite,
+                height: 180,
+                child: (image != null && image!.isNotEmpty)
+                ? ColorFiltered(colorFilter: ColorFilter.matrix([
+                  0.393, 0.769, 0.189, 0, 0,
+                  0.349, 0.686, 0.168, 0, 0,
+                  0.272, 0.534, 0.131, 0, 0,
+                  0,     0,     0,     1, 0,
+                ]),
+                child: CachedNetworkImage(
+                  imageUrl: image!,
+                  fit: BoxFit.cover,
+                  memCacheWidth: 150,
+                  memCacheHeight: 150,
+                  placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
+                  errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                ),
+                ) :  const Icon(Icons.image_not_supported),
+              ),
+            ),
+        
+            SizedBox(height: 10,),
+        
+        
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Text(title ?? "", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,), 
+            ),
+        
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 class ContainerBTN extends StatelessWidget {

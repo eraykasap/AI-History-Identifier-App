@@ -97,6 +97,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     initializeRevenueCat();
     
     getEventWikiPedia();
+    getWikiArticals();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       DailyLimitManager.getDateTime(ref);
@@ -189,19 +190,30 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     final now = DateTime.now();
     final language = await ApiOperations().getDeviceLanguageCode();
     final event = await WikipediaHistoryService.getEventForDate(month: now.month, day: now.day, lang: language);
-    final limited = event.take(10).toList();
+    final limited = event.take(20).toList();
     ref.read(historicalEventsProvider.notifier).state = limited;
 
-    print('Toplam ${event.length} olay bulundu');
+    //print('Toplam ${event.length} olay bulundu');
     for (final event in event) {
-      print('Yıl: ${event.year} /n');
-      print('Başlık: ${event.title} /n');
-      print('Başlık: ${event.text} /n');
-      print('Fotoğraf: ${event.imageUrl} /n');
-      print('---');
+      //print('Yıl: ${event.year} /n');
+      //print('Başlık: ${event.title} /n');
+      //print('Başlık: ${event.text} /n');
+      //print('Fotoğraf: ${event.imageUrl} /n');
+      //print('---');
     }
 
   }
+
+
+  Future<void> getWikiArticals () async {
+
+    final articles = await WikiArticleService.fetchHistoryArticles();
+    ref.read(wikiArticlesProvider.notifier).state = articles;
+
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!! toplam makale : ${articles.length} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+  }
+
 
 
   Future<void> initializeRevenueCat() async {

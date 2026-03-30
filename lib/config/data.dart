@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
+import 'dart:ui' as ui;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -75,22 +76,23 @@ class WikipediaHistoryService {
     required int day,
     String lang = 'en',
   }) async {
-    // 1. Önce istenen dilde dene
-    List<HistoricalEvent> events = await _fetchRandomEvent(month: month, day: day, lang: lang,);
+    // Cihaz dilinde dene
+    List<HistoricalEvent> events = await _fetchEvents(
+      month: month,
+      day: day,
+      lang: lang,
+    );
 
-    // 2. Bulamazsa İngilizce'ye fallback
-    if (events.isEmpty && lang != 'en') {
-      events = await _fetchRandomEvent(
-        month: month,
-        day: day,
-        lang: 'en',
-      );
+    // Cihaz dilinde 5'ten az geldiyse hiç gösterme, boş döndür
+    if (events.length < 5 && lang != 'en') {
+      debugPrint('⚠️ Cihaz dilinde yetersiz içerik, atlanıyor');
+      return [];
     }
 
     return events;
   }
 
-  static Future<List<HistoricalEvent>> _fetchRandomEvent({
+  static Future<List<HistoricalEvent>> _fetchEvents({
     required int month,
     required int day,
     required String lang,
@@ -109,28 +111,357 @@ class WikipediaHistoryService {
 
       final data = jsonDecode(response.body);
       final allEvents = data['events'] as List?;
-
       if (allEvents == null || allEvents.isEmpty) return [];
 
-      return allEvents.map((e) => HistoricalEvent.fromJson(e)).toList();
+      // 2000 öncesi filtresi
+      final oldEvents = allEvents.where((e) {
+        final year = e['year'] as int?;
+        return year != null && year < 2000;
+      }).toList();
 
-      // Fotoğraflı event'leri filtrele (varsa)
-      /* final eventsWithImage = allEvents.where((e) {
+      final pool = oldEvents.isNotEmpty ? oldEvents : allEvents;
+
+      // Fotoğrafı olan eventleri filtrele
+      final withImage = pool.where((e) {
         final pages = e['pages'] as List?;
-        return pages != null && pages.any((p) => p['thumbnail'] != null);
-      }).toList(); */
+        if (pages == null || pages.isEmpty) return false;
+        return pages.any((p) => p['thumbnail'] != null);
+      }).toList();
 
-      // Fotoğraflı yoksa tüm listeden seç
-      //final pool = eventsWithImage.isNotEmpty ? eventsWithImage : allEvents;
+      debugPrint('📸 Fotoğraflı event: ${withImage.length}/${pool.length}');
 
-      //final random = Random();
-      //return HistoricalEvent.fromJson(pool[random.nextInt(pool.length)]);
+      return withImage
+          .map((e) => HistoricalEvent.fromJson(e))
+          .toList();
+
     } catch (e) {
       debugPrint('Wikipedia fetch error: $e');
       return [];
     }
   }
 }
+
+
+class WikiArticleService {
+
+  static const Map<String, List<String>> _categoriesByLang = {
+    'tr': [
+      'Antik_tarih',
+      'Ortaçağ_tarihi',
+      'Askeri_tarih',
+      'Arkeoloji',
+      'Antik_Mısır',
+      'Roma_İmparatorluğu',
+      'Osmanlı_İmparatorluğu',
+      'Bizans_İmparatorluğu',
+      'Tarih',
+      'Antik_Yunan',
+    ],
+    'en': [
+      'Ancient_history',
+      'Medieval_history',
+      'Military_history',
+      'Archaeological_discoveries',
+      'Ancient_civilizations',
+      'Ancient_Egypt',
+      'Roman_Empire',
+      'Ottoman_Empire',
+      'Byzantine_Empire',
+      'History_by_period',
+    ],
+    'de': [
+      'Alte_Geschichte',
+      'Mittelalter',
+      'Militärgeschichte',
+      'Archäologie',
+      'Altes_Ägypten',
+      'Römisches_Reich',
+      'Osmanisches_Reich',
+      'Byzantinisches_Reich',
+      'Geschichte',
+      'Antike',
+    ],
+    'fr': [
+      'Histoire_ancienne',
+      'Histoire_médiévale',
+      'Histoire_militaire',
+      'Archéologie',
+      'Égypte_antique',
+      'Empire_romain',
+      'Empire_ottoman',
+      'Empire_byzantin',
+      'Histoire',
+      'Antiquité',
+    ],
+    'es': [
+      'Historia_antigua',
+      'Historia_medieval',
+      'Historia_militar',
+      'Arqueología',
+      'Antiguo_Egipto',
+      'Imperio_romano',
+      'Imperio_otomano',
+      'Imperio_bizantino',
+      'Historia',
+      'Civilizaciones_antiguas',
+    ],
+    'it': [
+      'Storia_antica',
+      'Medioevo',
+      'Storia_militare',
+      'Archeologia',
+      'Antico_Egitto',
+      'Impero_romano',
+      'Impero_ottomano',
+      'Impero_bizantino',
+      'Storia',
+      'Civiltà_antiche',
+    ],
+    'ru': [
+      'Древняя_история',
+      'Средневековье',
+      'Военная_история',
+      'Археология',
+      'Древний_Египет',
+      'Римская_империя',
+      'Османская_империя',
+      'Византийская_империя',
+      'История',
+      'Древние_цивилизации',
+    ],
+    'ja': [
+      '古代史',
+      '中世史',
+      '軍事史',
+      '考古学',
+      '古代エジプト',
+      'ローマ帝国',
+      'オスマン帝国',
+      'ビザンツ帝国',
+      '歴史',
+      '古代文明',
+    ],
+    'ko': [
+      '고대사',
+      '중세사',
+      '군사사',
+      '고고학',
+      '고대_이집트',
+      '로마_제국',
+      '오스만_제국',
+      '비잔틴_제국',
+      '역사',
+      '고대_문명',
+    ],
+    'pt': [
+      'História_antiga',
+      'História_medieval',
+      'História_militar',
+      'Arqueologia',
+      'Antigo_Egito',
+      'Império_Romano',
+      'Império_Otomano',
+      'Império_Bizantino',
+      'História',
+      'Civilizações_antigas',
+    ],
+    'ar': [
+      'تاريخ_قديم',
+      'تاريخ_العصور_الوسطى',
+      'تاريخ_عسكري',
+      'علم_الآثار',
+      'مصر_القديمة',
+      'الإمبراطورية_الرومانية',
+      'الدولة_العثمانية',
+      'الإمبراطورية_البيزنطية',
+      'تاريخ',
+      'حضارات_قديمة',
+    ],
+    'hi': [
+      'प्राचीन_इतिहास',
+      'मध्यकालीन_इतिहास',
+      'सैन्य_इतिहास',
+      'पुरातत्व',
+      'प्राचीन_मिस्र',
+      'रोमन_साम्राज्य',
+      'उस्मानी_साम्राज्य',
+      'बीजान्टिन_साम्राज्य',
+      'इतिहास',
+      'प्राचीन_सभ्यताएँ',
+    ],
+    'zh': [
+      '古代史',
+      '中世纪历史',
+      '军事历史',
+      '考古学',
+      '古埃及',
+      '罗马帝国',
+      '奥斯曼帝国',
+      '拜占庭帝国',
+      '历史',
+      '古代文明',
+    ],
+  };
+
+  static const Map<String, String> _supportedLanguages = {
+    'tr': 'tr',
+    'en': 'en',
+    'de': 'de',
+    'fr': 'fr',
+    'es': 'es',
+    'it': 'it',
+    'ja': 'ja',
+    'ko': 'ko',
+    'pt': 'pt',
+    'ru': 'ru',
+    'ar': 'ar',
+    'hi': 'hi',
+    'zh': 'zh',
+  };
+
+  static String _getLanguageCode() {
+    final locale = ui.PlatformDispatcher.instance.locale;
+    return _supportedLanguages[locale.languageCode] ?? 'en';
+  }
+
+  static List<String> _getCategoriesForLang(String lang) {
+    return _categoriesByLang[lang] ?? _categoriesByLang['en']!;
+  }
+
+  static Future<List<int>> _fetchPageIdsFromCategory(
+    String category,
+    String lang,
+  ) async {
+    try {
+      final uri = Uri.parse(
+        'https://$lang.wikipedia.org/w/api.php'
+        '?action=query'
+        '&list=categorymembers'
+        '&cmtitle=Category:$category'
+        '&cmtype=page'
+        '&cmlimit=50'
+        '&format=json'
+        '&origin=*',
+      );
+
+      final response = await http.get(uri);
+      if (response.statusCode != 200) return [];
+
+      final data = jsonDecode(response.body);
+      final members = data['query']?['categorymembers'] as List?;
+      if (members == null) return [];
+
+      return members.map<int>((m) => m['pageid'] as int).toList();
+    } catch (e) {
+      debugPrint('Category fetch error: $e');
+      return [];
+    }
+  }
+
+  static Future<WikiArticle?> _fetchArticle(
+    int pageId,
+    String lang,
+  ) async {
+    try {
+      final uri = Uri.parse(
+        'https://$lang.wikipedia.org/w/api.php'
+        '?action=query'
+        '&pageids=$pageId'
+        '&prop=extracts|pageimages'
+        '&exintro=true'
+        '&explaintext=true'
+        '&piprop=thumbnail'
+        '&pithumbsize=500'
+        '&format=json'
+        '&origin=*',
+      );
+
+      final response = await http.get(uri);
+      if (response.statusCode != 200) return null;
+
+      final data = jsonDecode(response.body);
+      final pages = data['query']?['pages'] as Map<String, dynamic>?;
+      if (pages == null) return null;
+
+      final page = pages.values.first;
+
+      if (page['thumbnail'] == null) return null;
+
+      final content = page['extract']?.toString().trim() ?? '';
+      if (content.isEmpty) return null;
+
+      return WikiArticle(
+        title: page['title'] ?? '',
+        content: content,
+        thumbnailUrl: page['thumbnail']?['source'],
+      );
+    } catch (e) {
+      debugPrint('Article fetch error: $e');
+      return null;
+    }
+  }
+
+  // Belirli bir dil için makale çek
+  static Future<List<WikiArticle>> _fetchArticlesForLang(String lang) async {
+    final categories = List.of(_getCategoriesForLang(lang))..shuffle();
+
+    final categoryResults = await Future.wait(
+      categories.map((cat) => _fetchPageIdsFromCategory(cat, lang)),
+    );
+
+    final allPageIds = <int>[];
+    for (final ids in categoryResults) {
+      allPageIds.addAll(ids);
+    }
+
+    if (allPageIds.isEmpty) return [];
+
+    allPageIds.shuffle();
+
+    final List<WikiArticle> articles = [];
+    int index = 0;
+
+    // 10 fotoğraflı makale bulana kadar 5'er 5'er dene
+    while (articles.length < 10 && index < allPageIds.length) {
+      final batch = allPageIds.skip(index).take(5).toList();
+
+      final results = await Future.wait(
+        batch.map((id) => _fetchArticle(id, lang)),
+      );
+
+      // _fetchArticle zaten fotoğrafsızları null döndürüyor
+      // whereType<WikiArticle>() null olanları otomatik eler
+      articles.addAll(results.whereType<WikiArticle>());
+
+      debugPrint('🔍 index: $index → toplam: ${articles.length}');
+      index += 5;
+    }
+
+    return articles.take(10).toList();
+  }
+
+  // Ana fonksiyon
+  static Future<List<WikiArticle>> fetchHistoryArticles() async {
+    final lang = _getLanguageCode();
+    debugPrint('🌍 Dil: $lang');
+
+    // Önce cihaz dilinde dene
+    List<WikiArticle> articles = await _fetchArticlesForLang(lang);
+    debugPrint('📦 Cihaz dilinde gelen makale: ${articles.length}');
+
+    // 5'ten az geldiyse tamamen İngilizce'ye geç
+    if (articles.length < 5 && lang != 'en') {
+      debugPrint('🔄 Yetersiz makale, tamamen EN\'e geçiliyor');
+      articles = await _fetchArticlesForLang('en');
+    }
+
+    debugPrint('🎯 Toplam makale: ${articles.length}');
+    return articles;
+  }
+}
+
+
+
 
 
 

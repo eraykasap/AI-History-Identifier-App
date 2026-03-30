@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:history_identifier/config/data.dart';
 import 'package:history_identifier/model/model.dart';
+import 'package:history_identifier/pages/articles_details_page.dart';
 import 'package:history_identifier/pages/full_map_page.dart';
 import 'package:history_identifier/pages/paywall_page.dart';
 import 'package:history_identifier/pages/photo_page.dart';
@@ -42,6 +44,8 @@ class HomePage extends ConsumerWidget {
 
     var historyEvents = ref.watch(historicalEventsProvider);
 
+    var articlesAsync = ref.watch(wikiArticlesProvider);
+
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -66,6 +70,11 @@ class HomePage extends ConsumerWidget {
 
               //SparkleLoader(),
 
+              Align(
+                alignment: AlignmentGeometry.centerLeft,
+                child: Text("Müzeler", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)
+              ),
+
               mapViewMuseum(context),
 
               const SizedBox(height: 50,),
@@ -75,6 +84,8 @@ class HomePage extends ConsumerWidget {
               const SizedBox(height: 60,),
 
               //buildNearbyPlaces(nearLocationPlace)
+
+              wikiArticlesNews(articlesAsync)
 
             ]
           ),
@@ -239,11 +250,24 @@ class HomePage extends ConsumerWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                                
+
+                        if (imagePath != null && imagePath.isNotEmpty)
                         ClipRRect(
-                          borderRadius: BorderRadiusGeometry.circular(16),
-                          child: (imagePath != null && imagePath!.isNotEmpty) ? Image.network(imagePath!, fit: BoxFit.cover,) : const Icon(Icons.image_not_supported), 
+                          borderRadius: BorderRadius.circular(16),
+                          child: CachedNetworkImage(
+                            imageUrl: imagePath,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 200,
+                            placeholder: (context, url) => const SizedBox(
+                              height: 200,
+                              child: Center(child: CircularProgressIndicator()),
+                            ),
+                            errorWidget: (context, url, error) => const SizedBox.shrink(), // hata olunca hiç gösterme
+                          ),
                         ),
+                                
+                        
                     
                         /* Expanded(
                           child: ListView.builder(
@@ -386,6 +410,28 @@ class HomePage extends ConsumerWidget {
       ],
     );
   } */
+
+
+  Widget wikiArticlesNews (List<WikiArticle> liste) {
+
+    return liste.isNotEmpty ? ListView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), itemCount: liste.length, itemBuilder: (context, index) {
+      final item = liste[index];
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: GestureDetector(
+          onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ArticlesDetailPage(image: item.thumbnailUrl, title: item.title, content: item.content))),
+          child: WikiArticleCard(image: item.thumbnailUrl, title: item.title)
+        ),
+      );
+    }) : CircularProgressIndicator();
+
+  }
+
+
+
+
+
+
 
 }
 

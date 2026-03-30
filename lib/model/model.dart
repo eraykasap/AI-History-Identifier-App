@@ -126,6 +126,20 @@ class HistoricalEvent {
 
 
 
+class WikiArticle {
+  final String title;
+  final String content;
+  final String? thumbnailUrl;
+
+  WikiArticle({
+    required this.title,
+    required this.content,
+    this.thumbnailUrl,
+  });
+}
+
+
+
 class StaticClass {
   
 

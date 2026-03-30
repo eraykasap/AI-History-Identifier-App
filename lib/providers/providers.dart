@@ -21,6 +21,8 @@ final contentProvider = StateProvider<List<ContentModel>>((ref) => []);
 
 final historicalEventsProvider = StateProvider<List<HistoricalEvent>>((ref) => []);
 
+final wikiArticlesProvider = StateProvider<List<WikiArticle>>((ref) => []);
+
 final onSaveProvider = StateProvider<bool>((ref) => false);
 
 final photoCounterProvider = StateProvider<int>((ref) => 0);
