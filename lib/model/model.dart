@@ -112,14 +112,19 @@ class HistoricalEvent {
 
   factory HistoricalEvent.fromJson(Map<String, dynamic> json) {
     final pages = json['pages'] as List?;
-    final firstPage = (pages != null && pages.isNotEmpty) ? pages[0] : null;
+    //final firstPage = (pages != null && pages.isNotEmpty) ? pages[0] : null;
+
+    final pageWithImage = pages?.firstWhere(
+      (p) => p['thumbnail']?['source'] != null,
+      orElse: () => pages.isNotEmpty ? pages[0] : null,
+    );
 
     return HistoricalEvent(
       text: json['text'] ?? '',
       year: json['year'] ?? 0,
-      title: firstPage?['titles']?['normalized'],
-      extract: firstPage?['extract'],
-      imageUrl: firstPage?['thumbnail']?['source'],
+      title: pageWithImage?['titles']?['normalized'],
+      extract: pageWithImage?['extract'],
+      imageUrl: pageWithImage?['thumbnail']?['source'],
     );
   }
 }

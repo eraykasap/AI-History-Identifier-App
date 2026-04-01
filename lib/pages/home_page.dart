@@ -77,11 +77,11 @@ class HomePage extends ConsumerWidget {
 
               mapViewMuseum(context),
 
-              const SizedBox(height: 50,),
+              const SizedBox(height: 10,),
 
               //identifierCounter(),
 
-              const SizedBox(height: 60,),
+              const SizedBox(height: 20,),
 
               //buildNearbyPlaces(nearLocationPlace)
 

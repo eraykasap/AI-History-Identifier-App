@@ -131,7 +131,7 @@ class WikipediaHistoryService {
       debugPrint('📸 Fotoğraflı event: ${withImage.length}/${pool.length}');
 
       return withImage
-          .map((e) => HistoricalEvent.fromJson(e))
+          .map((e) => HistoricalEvent.fromJson(e)).where((e) => e.imageUrl != null && e.imageUrl!.isNotEmpty)
           .toList();
 
     } catch (e) {
@@ -344,7 +344,12 @@ class WikiArticleService {
         '&origin=*',
       );
 
-      final response = await http.get(uri);
+      final response = await http.get(
+        uri,
+        headers: {
+          'User-Agent': 'HistoryLens/1.0 (Flutter app)',
+        },
+      );
       if (response.statusCode != 200) return [];
 
       final data = jsonDecode(response.body);
@@ -370,13 +375,19 @@ class WikiArticleService {
         '&prop=extracts|pageimages'
         '&exintro=true'
         '&explaintext=true'
-        '&piprop=thumbnail'
-        '&pithumbsize=500'
+        '&piprop=thumbnail|name'
+        '&pithumbsize=400'
         '&format=json'
         '&origin=*',
       );
 
-      final response = await http.get(uri);
+      final response = await http.get(
+        uri,
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'HistoryLens/1.0 (Flutter app)',
+        },
+      );
       if (response.statusCode != 200) return null;
 
       final data = jsonDecode(response.body);
@@ -385,15 +396,31 @@ class WikiArticleService {
 
       final page = pages.values.first;
 
-      if (page['thumbnail'] == null) return null;
-
       final content = page['extract']?.toString().trim() ?? '';
       if (content.isEmpty) return null;
+
+      // Thumbnail URL güvenli şekilde al
+      String? thumbnailUrl = page['thumbnail']?['source'] as String?;
+
+      // thumbnail null ise pageimage'dan URL oluştur
+      if (thumbnailUrl == null) {
+        final pageimage = page['pageimage'] as String?;
+        if (pageimage != null) {
+          final encoded = Uri.encodeComponent(pageimage);
+          thumbnailUrl =
+              'https://$lang.wikipedia.org/wiki/Special:FilePath/$encoded?width=400';
+        }
+      }
+
+      // İkisi de yoksa atla
+      if (thumbnailUrl == null) return null;
+
+      debugPrint('🖼️ Thumbnail: $thumbnailUrl');
 
       return WikiArticle(
         title: page['title'] ?? '',
         content: content,
-        thumbnailUrl: page['thumbnail']?['source'],
+        thumbnailUrl: thumbnailUrl,
       );
     } catch (e) {
       debugPrint('Article fetch error: $e');
@@ -401,7 +428,6 @@ class WikiArticleService {
     }
   }
 
-  // Belirli bir dil için makale çek
   static Future<List<WikiArticle>> _fetchArticlesForLang(String lang) async {
     final categories = List.of(_getCategoriesForLang(lang))..shuffle();
 
@@ -421,35 +447,32 @@ class WikiArticleService {
     final List<WikiArticle> articles = [];
     int index = 0;
 
-    // 10 fotoğraflı makale bulana kadar 5'er 5'er dene
     while (articles.length < 10 && index < allPageIds.length) {
-      final batch = allPageIds.skip(index).take(5).toList();
+      final batch = allPageIds.skip(index).take(3).toList();
 
       final results = await Future.wait(
         batch.map((id) => _fetchArticle(id, lang)),
       );
 
-      // _fetchArticle zaten fotoğrafsızları null döndürüyor
-      // whereType<WikiArticle>() null olanları otomatik eler
       articles.addAll(results.whereType<WikiArticle>());
 
+      // Rate limit aşmamak için bekle
+      await Future.delayed(const Duration(milliseconds: 300));
+
       debugPrint('🔍 index: $index → toplam: ${articles.length}');
-      index += 5;
+      index += 3;
     }
 
     return articles.take(10).toList();
   }
 
-  // Ana fonksiyon
   static Future<List<WikiArticle>> fetchHistoryArticles() async {
     final lang = _getLanguageCode();
     debugPrint('🌍 Dil: $lang');
 
-    // Önce cihaz dilinde dene
     List<WikiArticle> articles = await _fetchArticlesForLang(lang);
     debugPrint('📦 Cihaz dilinde gelen makale: ${articles.length}');
 
-    // 5'ten az geldiyse tamamen İngilizce'ye geç
     if (articles.length < 5 && lang != 'en') {
       debugPrint('🔄 Yetersiz makale, tamamen EN\'e geçiliyor');
       articles = await _fetchArticlesForLang('en');

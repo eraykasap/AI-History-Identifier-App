@@ -2,10 +2,26 @@
 import 'package:flutter/material.dart';
 
 
+class colors {
+
+  final Color scafoldColor_1 = Color.fromRGBO(240, 234, 222, 1);
+  final Color scafoldColor_2 = Color.fromRGBO(245, 236, 213, 1);
+  final Color scafoldColor_3 = Color.fromRGBO(229, 225, 213, 1);
+
+  final Color cardColor_1 = Color.fromRGBO(251, 239, 213, 1);
+  final Color cardColor_2 = Color.fromRGBO(138, 93, 67, 1);
+  final Color cardColor_3 = Color.fromRGBO(176, 151, 129, 1);
+  final Color cardColor_4 = Color.fromRGBO(116, 88, 77, 1);
+  final Color cardColor_5 = Color.fromRGBO(198, 184, 158, 1);
+
+}
+
+
+
 
 final ThemeData lightTheme = ThemeData(
 
-  scaffoldBackgroundColor: Colors.grey.shade200,
+  scaffoldBackgroundColor: Color.fromRGBO(229, 225, 213, 1), /*Colors.grey.shade200,*/ //!
 
   textTheme: TextTheme(
 
@@ -78,7 +94,7 @@ final ThemeData lightTheme = ThemeData(
 
 
   appBarTheme: AppBarTheme(
-    backgroundColor: Colors.grey.shade200,
+    backgroundColor: Color.fromRGBO(229, 225, 213, 1),
     iconTheme: IconThemeData(
       color: Colors.grey
     ),
@@ -96,7 +112,7 @@ final ThemeData lightTheme = ThemeData(
     color: Colors.black
   ),
 
-  cardColor: Colors.white,
+  cardColor: Color.fromRGBO(198, 184, 158, 1), /*Colors.white,*/ //!
 
   shadowColor: Colors.grey.shade400,
 
@@ -114,6 +130,9 @@ final ThemeData lightTheme = ThemeData(
 
 
 );
+
+
+
 
 
 

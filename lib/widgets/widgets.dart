@@ -148,12 +148,16 @@ class Contentcard extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: image!,
                       fit: BoxFit.cover,
+                      cacheKey: image!,
                       memCacheWidth: 150,
                       memCacheHeight: 150,
                       placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                      errorWidget: (context, url, error) {
+                        CachedNetworkImage.evictFromCache(image!);
+                        return const Icon(Icons.broken_image);
+                      } 
                     
                       
                     
@@ -213,10 +217,17 @@ class WikiArticleCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: image!,
                   fit: BoxFit.cover,
+                  cacheKey: image!,
                   memCacheWidth: 150,
                   memCacheHeight: 150,
                   placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
-                  errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                  //errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                  errorWidget: (context, url, error) {
+                    CachedNetworkImage.evictFromCache(image!);
+                    debugPrint('❌ Resim yüklenemedi: $url');
+                    debugPrint('❌ Hata: $error');
+                    return const SizedBox.shrink();
+                  },
                 ),
                 ) :  const Icon(Icons.image_not_supported),
               ),
