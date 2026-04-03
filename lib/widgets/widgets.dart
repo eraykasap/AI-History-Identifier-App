@@ -181,6 +181,110 @@ class Contentcard extends StatelessWidget {
 }
 
 
+class WikiEventContentCard extends StatelessWidget {
+
+  final String? title;
+  final String content;
+  final String year;
+
+  WikiEventContentCard({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.year
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 350,
+      
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: Container(
+
+          
+        
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: Color.fromRGBO(255, 255, 255, 1),
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromRGBO(195, 150, 57, 1),
+                offset: Offset(0, 8)
+              )
+            ]
+          ),
+          
+        
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+            
+                Align(
+                  alignment: AlignmentGeometry.centerLeft,
+                  child: title!.isNotEmpty || title != null 
+                  ? Container(
+                    //color: Colors.blue,
+                    height: 25,
+                    child: Text(title!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+                  ) : Text("error")
+                ),
+                SizedBox(height: 10,),
+                Align(
+                  alignment: AlignmentGeometry.centerLeft,
+                  child: Container(
+                    height: 60,
+                    //color: Colors.amber,
+                    child: Text(content, style: TextStyle(fontSize: 16), overflow: TextOverflow.ellipsis, maxLines: 2,)
+                  )
+                ),
+        
+                SizedBox(height: 10,),
+        
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 130,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(44, 32, 14, 1),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(child: Text(year, style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontSize: 26, fontWeight: FontWeight.bold),)),
+                    ),
+                    Spacer(),
+                    Text("Oku", style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold),),
+                    SizedBox(width: 7,),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromRGBO(195, 150, 57, 1)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(Icons.arrow_forward, color: Colors.white, size: 20,),
+                      )
+                    )
+                  ],
+                )
+            
+              ],
+            ),
+          ),
+          
+          
+        ),
+      ),
+    );
+  }
+}
+
+
+
 class WikiArticleCard extends StatelessWidget {
 
   String? image;
@@ -195,7 +299,7 @@ class WikiArticleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Theme.of(context).cardColor,
+      color: Color.fromRGBO(255, 255, 255, 1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(12)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),

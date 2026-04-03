@@ -21,7 +21,7 @@ class colors {
 
 final ThemeData lightTheme = ThemeData(
 
-  scaffoldBackgroundColor: Color.fromRGBO(229, 225, 213, 1), /*Colors.grey.shade200,*/ //!
+  scaffoldBackgroundColor: Color.fromRGBO(237, 234, 227, 1), /*Colors.grey.shade200,*/ //!
 
   textTheme: TextTheme(
 
@@ -112,7 +112,7 @@ final ThemeData lightTheme = ThemeData(
     color: Colors.black
   ),
 
-  cardColor: Color.fromRGBO(198, 184, 158, 1), /*Colors.white,*/ //!
+  cardColor: Color.fromRGBO(255, 255, 255, 1), /*Colors.white,*/ //!
 
   shadowColor: Colors.grey.shade400,
 

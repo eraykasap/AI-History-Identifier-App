@@ -115,7 +115,7 @@ class HomePage extends ConsumerWidget {
                   showContent(context, item.imageUrl, item.title, item.text);
                   //Navigator.of(context).push(CupertinoPageRoute(builder: (context) => StaticContentPage(content: item, imagePath: item[0]),),);
                 },
-                child: Contentcard(image: item.imageUrl, title: item.title),
+                child: WikiEventContentCard(title: item.title, content: item.text, year: item.year.toString()), /*Contentcard(image: item.imageUrl, title: item.title),*/
               );
             },
           ) : CircularProgressIndicator(),
