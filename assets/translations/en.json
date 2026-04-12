@@ -3,7 +3,7 @@
     "navigation" : {
         "home" : "Home",
         "profil" : "Profile",
-        "kaleler" : "Brief Information",
+        "kaleler" : "Today in History",
         "share" : "Share",
         "premium" : "Premium",
         "scan" : "Scan",
@@ -41,9 +41,14 @@
         "ok" : "Ok",
         "analiz_error" : "An error occurred. Please try again.",
         "daily_scan_limit" : "Your daily screening limit has been reached.",
+        "paketError" : "Packages Could Not Be Loaded",
 
         "app_version_text" : "New App Version Available",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "Read",
+        "muzeler" : "Museums",
+        "kesfet" : "Explore"
         
     },
 

@@ -149,8 +149,190 @@ class StaticClass {
   
 
   static List<HistoricalPlace> place = [
+
+
+    // AVRUPA
+    HistoricalPlace(name: "The British Museum", lat: 51.519400, lang: -0.126900),
+    HistoricalPlace(name: "The National Gallery", lat: 51.508900, lang: -0.128200),
+    HistoricalPlace(name: "Louvre Museum", lat: 48.860300, lang: 2.337600),
+    HistoricalPlace(name: "Musée d'Orsay", lat: 48.860000, lang: 2.326500),
+    HistoricalPlace(name: "Rijksmuseum", lat: 52.360000, lang: 4.885300),
+    HistoricalPlace(name: "Pergamon Museum", lat: 52.521200, lang: 13.396800),
+    HistoricalPlace(name: "Kunsthistorisches Museum", lat: 48.203600, lang: 16.361600),
+    HistoricalPlace(name: "Prado Museum", lat: 40.413800, lang: -3.692000),
+    HistoricalPlace(name: "Uffizi Gallery", lat: 43.768500, lang: 11.255300),
+    HistoricalPlace(name: "Vatican Museums", lat: 41.906300, lang: 12.453400),
+    HistoricalPlace(name: "Acropolis Museum", lat: 37.971700, lang: 23.729600),
+    HistoricalPlace(name: "Hermitage Museum", lat: 59.940700, lang: 30.314600),
+    HistoricalPlace(name: "Musée de Cluny", lat: 48.852100, lang: 2.344200),
+    HistoricalPlace(name: "Centre Pompidou", lat: 48.860600, lang: 2.352200),
+    HistoricalPlace(name: "Château de Versailles", lat: 48.804900, lang: 2.120400),
+    HistoricalPlace(name: "National Museum of Scotland", lat: 55.947000, lang: -3.189700),
+    HistoricalPlace(name: "Victoria and Albert Museum", lat: 51.496700, lang: -0.172400),
+    HistoricalPlace(name: "Natural History Museum London", lat: 51.496700, lang: -0.176300),
+    HistoricalPlace(name: "Science Museum London", lat: 51.497800, lang: -0.174400),
+    HistoricalPlace(name: "Tate Modern", lat: 51.507600, lang: -0.099300),
+    HistoricalPlace(name: "Museum of London", lat: 51.517600, lang: -0.096800),
+    HistoricalPlace(name: "Alte Pinakothek", lat: 48.148600, lang: 11.569700),
+    HistoricalPlace(name: "Deutsches Museum", lat: 48.130100, lang: 11.583400),
+    HistoricalPlace(name: "Dresden State Art Collections", lat: 51.053600, lang: 13.745400),
+    HistoricalPlace(name: "Städel Museum", lat: 50.105500, lang: 8.682300),
+    HistoricalPlace(name: "Belvedere Museum", lat: 48.191400, lang: 16.381000),
+    HistoricalPlace(name: "Leopold Museum", lat: 48.203300, lang: 16.358500),
+    HistoricalPlace(name: "Albertina Museum", lat: 48.204600, lang: 16.368100),
+    HistoricalPlace(name: "Swiss National Museum", lat: 47.378900, lang: 8.539700),
+    HistoricalPlace(name: "Musée d'Art et d'Histoire Geneva", lat: 46.200400, lang: 6.153700),
+    HistoricalPlace(name: "Royal Museums of Fine Arts of Belgium", lat: 50.842200, lang: 4.357400),
+    HistoricalPlace(name: "Bruges City Museums", lat: 51.208900, lang: 3.224700),
+    HistoricalPlace(name: "Van Gogh Museum", lat: 52.358400, lang: 4.881100),
+    HistoricalPlace(name: "Anne Frank House", lat: 52.375200, lang: 4.883900),
+    HistoricalPlace(name: "Stedelijk Museum Amsterdam", lat: 52.358000, lang: 4.879800),
+    HistoricalPlace(name: "Munch Museum", lat: 59.905800, lang: 10.753900),
+    HistoricalPlace(name: "National Museum of Denmark", lat: 55.675700, lang: 12.573600),
+    HistoricalPlace(name: "National Museum of Finland", lat: 60.174400, lang: 24.931000),
+    HistoricalPlace(name: "Vasa Museum", lat: 59.327900, lang: 18.091600),
+    HistoricalPlace(name: "ABBA Museum", lat: 59.324900, lang: 18.095200),
+    HistoricalPlace(name: "National Museum of Iceland", lat: 64.140200, lang: -21.953000),
+    HistoricalPlace(name: "National Museum of Ireland", lat: 53.339800, lang: -6.254300),
+    HistoricalPlace(name: "Museu Nacional d'Art de Catalunya", lat: 41.368400, lang: 2.153600),
+    HistoricalPlace(name: "Guggenheim Museum Bilbao", lat: 43.268500, lang: -2.934300),
+    HistoricalPlace(name: "Thyssen-Bornemisza Museum", lat: 40.415700, lang: -3.694600),
+    HistoricalPlace(name: "Reina Sofía Museum", lat: 40.408200, lang: -3.694100),
+    HistoricalPlace(name: "National Archaeological Museum Athens", lat: 37.989400, lang: 23.731900),
+    HistoricalPlace(name: "Capitoline Museums", lat: 41.893400, lang: 12.482900),
+    HistoricalPlace(name: "Borghese Gallery", lat: 41.914300, lang: 12.492100),
+    HistoricalPlace(name: "National Museum of Rome", lat: 41.902700, lang: 12.498400),
+    HistoricalPlace(name: "National Archaeological Museum Naples", lat: 40.854700, lang: 14.250600),
+    HistoricalPlace(name: "Palatine Hill Museum", lat: 41.888700, lang: 12.487400),
+    HistoricalPlace(name: "Pushkin Museum of Fine Arts", lat: 55.745000, lang: 37.605300),
+    HistoricalPlace(name: "Tretyakov Gallery", lat: 55.741400, lang: 37.620500),
+    HistoricalPlace(name: "Kremlin Museums", lat: 55.751700, lang: 37.617300),
+    HistoricalPlace(name: "Prague National Museum", lat: 50.075700, lang: 14.430800),
+    HistoricalPlace(name: "Hungarian National Museum", lat: 47.491100, lang: 19.063400),
+    HistoricalPlace(name: "Warsaw National Museum", lat: 52.231400, lang: 21.023900),
+    HistoricalPlace(name: "Romanian National Museum of History", lat: 44.431400, lang: 26.097600),
+
+    // KUZEY AMERİKA
+    HistoricalPlace(name: "Metropolitan Museum of Art", lat: 40.779400, lang: -73.963200),
+    HistoricalPlace(name: "Smithsonian National Museum of Natural History", lat: 38.891300, lang: -77.026000),
+    HistoricalPlace(name: "Museum of Modern Art (MoMA)", lat: 40.761500, lang: -73.977600),
+    HistoricalPlace(name: "American Museum of Natural History", lat: 40.781300, lang: -73.974200),
+    HistoricalPlace(name: "The Getty Center", lat: 34.078000, lang: -118.474000),
+    HistoricalPlace(name: "Art Institute of Chicago", lat: 41.879600, lang: -87.623700),
+    HistoricalPlace(name: "National Museum of American History", lat: 38.891000, lang: -77.030000),
+    HistoricalPlace(name: "National Air and Space Museum", lat: 38.888200, lang: -77.019900),
+    HistoricalPlace(name: "Library of Congress", lat: 38.888700, lang: -77.004700),
+    HistoricalPlace(name: "National Portrait Gallery Washington", lat: 38.897900, lang: -77.023200),
+    HistoricalPlace(name: "Philadelphia Museum of Art", lat: 39.965600, lang: -75.180900),
+    HistoricalPlace(name: "Museum of Fine Arts Boston", lat: 42.339400, lang: -71.094000),
+    HistoricalPlace(name: "Los Angeles County Museum of Art", lat: 34.063800, lang: -118.359200),
+    HistoricalPlace(name: "San Francisco Museum of Modern Art", lat: 37.785700, lang: -122.400900),
+    HistoricalPlace(name: "Denver Art Museum", lat: 39.738000, lang: -104.989400),
+    HistoricalPlace(name: "Houston Museum of Fine Arts", lat: 29.725700, lang: -95.390600),
+    HistoricalPlace(name: "Detroit Institute of Arts", lat: 42.359600, lang: -83.064700),
+    HistoricalPlace(name: "Cleveland Museum of Art", lat: 41.509400, lang: -81.611800),
+    HistoricalPlace(name: "Minneapolis Institute of Art", lat: 44.958300, lang: -93.273500),
+    HistoricalPlace(name: "Yale University Art Gallery", lat: 41.308200, lang: -72.929700),
+    HistoricalPlace(name: "Museo Nacional de Antropología", lat: 19.426000, lang: -99.186300),
+    HistoricalPlace(name: "Museo Frida Kahlo", lat: 19.355200, lang: -99.162700),
+    HistoricalPlace(name: "Royal Ontario Museum", lat: 43.667700, lang: -79.394900),
+    HistoricalPlace(name: "Montreal Museum of Fine Arts", lat: 45.498500, lang: -73.579200),
+    HistoricalPlace(name: "Canadian Museum of History", lat: 45.429600, lang: -75.716900),
+
+    // GÜNEY AMERİKA
+    HistoricalPlace(name: "Museo Nacional de Bellas Artes Buenos Aires", lat: -34.576400, lang: -58.393800),
+    HistoricalPlace(name: "Museo Larco", lat: -12.092700, lang: -77.072300),
+    HistoricalPlace(name: "Museo Nacional de Colombia", lat: 4.627600, lang: -74.064900),
+    HistoricalPlace(name: "Museo do Ipiranga", lat: -23.585600, lang: -46.610800),
+    HistoricalPlace(name: "Museo Nacional de Historia Natural Chile", lat: -33.443400, lang: -70.651200),
+    HistoricalPlace(name: "Museo del Oro Bogotá", lat: 4.601200, lang: -74.072600),
+
+    // ASYA
+    HistoricalPlace(name: "National Palace Museum", lat: 25.102400, lang: 121.548400),
+    HistoricalPlace(name: "Tokyo National Museum", lat: 35.718900, lang: 139.776400),
+    HistoricalPlace(name: "National Museum of China", lat: 39.905600, lang: 116.397500),
+    HistoricalPlace(name: "Indian Museum", lat: 22.557200, lang: 88.352000),
+    HistoricalPlace(name: "National Museum of Korea", lat: 37.524500, lang: 126.980700),
+    HistoricalPlace(name: "Singapore National Museum", lat: 1.296900, lang: 103.848700),
+    HistoricalPlace(name: "Palace Museum Beijing (Forbidden City)", lat: 39.916300, lang: 116.390500),
+    HistoricalPlace(name: "Shanghai Museum", lat: 31.229900, lang: 121.473500),
+    HistoricalPlace(name: "Shaanxi History Museum", lat: 34.220700, lang: 108.943300),
+    HistoricalPlace(name: "Nanjing Museum", lat: 32.060400, lang: 118.797500),
+    HistoricalPlace(name: "Osaka Museum of History", lat: 34.681000, lang: 135.519700),
+    HistoricalPlace(name: "Kyoto National Museum", lat: 34.994900, lang: 135.778400),
+    HistoricalPlace(name: "Nara National Museum", lat: 34.685100, lang: 135.843000),
+    HistoricalPlace(name: "Hiroshima Peace Memorial Museum", lat: 34.395000, lang: 132.453400),
+    HistoricalPlace(name: "National Museum of Tokyo Edo", lat: 35.698500, lang: 139.797800),
+    HistoricalPlace(name: "Vietnam Museum of Ethnology", lat: 21.036600, lang: 105.800600),
+    HistoricalPlace(name: "National Museum of Thailand", lat: 13.757800, lang: 100.491500),
+    HistoricalPlace(name: "National Museum of Malaysia", lat: 3.142600, lang: 101.686500),
+    HistoricalPlace(name: "National Museum of Indonesia", lat: -6.176900, lang: 106.822400),
+    HistoricalPlace(name: "National Museum of the Philippines", lat: 14.590700, lang: 120.979700),
+    HistoricalPlace(name: "National Museum of Pakistan", lat: 24.860700, lang: 67.010500),
+    HistoricalPlace(name: "National Museum of Bangladesh", lat: 23.738800, lang: 90.392800),
+    HistoricalPlace(name: "National Museum of Nepal", lat: 27.713900, lang: 85.298600),
+    HistoricalPlace(name: "Colombo National Museum", lat: 6.910400, lang: 79.861000),
+    HistoricalPlace(name: "Taipei Fine Arts Museum", lat: 25.073000, lang: 121.523800),
+    HistoricalPlace(name: "Hong Kong Museum of History", lat: 22.297600, lang: 114.172800),
+    HistoricalPlace(name: "Macau Museum", lat: 22.197300, lang: 113.539500),
+
+    // ORTA DOĞU & AFRİKA
+    HistoricalPlace(name: "Egyptian Museum", lat: 30.047700, lang: 31.233600),
+    HistoricalPlace(name: "Museum of Islamic Art", lat: 25.286800, lang: 51.536500),
+    HistoricalPlace(name: "Israel Museum", lat: 31.772800, lang: 35.204200),
+    HistoricalPlace(name: "Iran National Museum", lat: 35.694000, lang: 51.415800),
+    HistoricalPlace(name: "Iraq Museum", lat: 33.345600, lang: 44.373700),
+    HistoricalPlace(name: "National Museum of Saudi Arabia", lat: 24.688900, lang: 46.713200),
+    HistoricalPlace(name: "Jordan Museum", lat: 31.954400, lang: 35.933400),
+    HistoricalPlace(name: "National Museum of Beirut", lat: 33.878500, lang: 35.510300),
+    HistoricalPlace(name: "Dubai Museum", lat: 25.263200, lang: 55.297200),
+
+    // AVUSTRALYA
+    HistoricalPlace(name: "Australian Museum", lat: -33.873900, lang: 151.211800),
+    HistoricalPlace(name: "National Museum of Australia", lat: -35.293300, lang: 149.124700),
+
+    // AVUSTRALYA & OKYANUSYA - EK
+    HistoricalPlace(name: "National Gallery of Australia", lat: -35.298200, lang: 149.131100),
+    HistoricalPlace(name: "Melbourne Museum", lat: -37.803300, lang: 144.971800),
+    HistoricalPlace(name: "South Australian Museum", lat: -34.920900, lang: 138.601400),
+    HistoricalPlace(name: "Western Australian Museum", lat: -31.950500, lang: 115.859700),
+    HistoricalPlace(name: "Te Papa Tongarewa Museum", lat: -41.290400, lang: 174.781500),
+
+    // AFRİKA - EK
+    HistoricalPlace(name: "South African Museum", lat: -33.924200, lang: 18.423800),
+    HistoricalPlace(name: "Nigerian National Museum", lat: 6.451400, lang: 3.394700),
+    HistoricalPlace(name: "Ethiopian National Museum", lat: 9.021800, lang: 38.763500),
+    HistoricalPlace(name: "Kenya National Museum", lat: -1.269800, lang: 36.816000),
+    HistoricalPlace(name: "Musée des Civilisations Noires", lat: 14.693400, lang: -17.450500),
+    HistoricalPlace(name: "Bardo National Museum", lat: 36.817400, lang: 10.132300),
+    HistoricalPlace(name: "Alexandria National Museum", lat: 31.200900, lang: 29.907600),
+
+    // TÜRKİYE
+    HistoricalPlace(name: "Topkapı Sarayı Müzesi", lat: 41.011592, lang: 28.983357),
+    HistoricalPlace(name: "Ayasofya Müzesi", lat: 41.008600, lang: 28.980200),
+    HistoricalPlace(name: "Anadolu Medeniyetleri Müzesi", lat: 39.941100, lang: 32.863900),
+    HistoricalPlace(name: "İstanbul Arkeoloji Müzesi", lat: 41.013000, lang: 28.979200),
+    HistoricalPlace(name: "Efes Müzesi", lat: 37.949800, lang: 27.363600),
+    HistoricalPlace(name: "Türk ve İslam Eserleri Müzesi", lat: 41.005400, lang: 28.976300),
+    HistoricalPlace(name: "Deniz Müzesi İstanbul", lat: 41.044300, lang: 29.005200),
+    HistoricalPlace(name: "Rahmi M. Koç Müzesi", lat: 41.034800, lang: 28.948500),
+    HistoricalPlace(name: "Pera Müzesi", lat: 41.033200, lang: 28.977400),
+    HistoricalPlace(name: "Harbiye Askeri Müzesi", lat: 41.047800, lang: 28.993200),
+    HistoricalPlace(name: "Çanakkale Şehitler Müzesi", lat: 40.141200, lang: 26.386000),
+    HistoricalPlace(name: "Troya Müzesi", lat: 39.957300, lang: 26.238900),
+    HistoricalPlace(name: "Bergama Arkeoloji Müzesi", lat: 39.120700, lang: 27.183500),
+    HistoricalPlace(name: "Bodrum Sualtı Arkeoloji Müzesi", lat: 37.034400, lang: 27.430600),
+    HistoricalPlace(name: "Konya Mevlana Müzesi", lat: 37.870900, lang: 32.493100),
+    HistoricalPlace(name: "Ankara Etnografya Müzesi", lat: 39.933700, lang: 32.854200),
+    HistoricalPlace(name: "Hatay Arkeoloji Müzesi", lat: 36.201600, lang: 36.160200),
+    HistoricalPlace(name: "Gaziantep Zeugma Mozaik Müzesi", lat: 37.066200, lang: 37.383500),
+
+
+    //! ----------------------------------------------------------------------------------------------------------------
+
+
     // türkiye
-    HistoricalPlace(name: "Topkapı Sarayı", lat: 41.011592, lang: 28.983357),
+    /* HistoricalPlace(name: "Topkapı Sarayı", lat: 41.011592, lang: 28.983357),
     HistoricalPlace(name: "Ayasofya", lat: 41.008583, lang: 28.980178),
     HistoricalPlace(name: "Efes Antik Kenti", lat: 37.939453, lang: 27.340965),
     HistoricalPlace(name: "Anıtkabir", lat: 39.925148, lang: 32.837551),
@@ -177,10 +359,10 @@ class StaticClass {
     HistoricalPlace(name: "Sultanahmet Camii", lat: 41.005278, lang: 28.976944),
     HistoricalPlace(name: "Galata Kulesi", lat: 41.025556, lang: 28.974167),
     HistoricalPlace(name: "Yerebatan Sarnıcı", lat: 41.008333, lang: 28.977778),
-    HistoricalPlace(name: "Anadolu Medeniyetleri Müzesi", lat: 39.940556, lang: 32.863889),
+    HistoricalPlace(name: "Anadolu Medeniyetleri Müzesi", lat: 39.940556, lang: 32.863889), */
 
     // fransa
-    HistoricalPlace(name: "Louvre Müzesi", lat: 48.860611, lang: 2.337644),
+    /* HistoricalPlace(name: "Louvre Müzesi", lat: 48.860611, lang: 2.337644),
     HistoricalPlace(name: "Musée d'Orsay", lat: 48.859970, lang: 2.326553),
     HistoricalPlace(name: "Versay Sarayı", lat: 48.804865, lang: 2.120355),
     HistoricalPlace(name: "Centre Pompidou", lat: 48.860642, lang: 2.352245),
@@ -212,10 +394,10 @@ class StaticClass {
     HistoricalPlace(name: "Nîmes Arena", lat: 43.834444, lang: 4.360833),
     HistoricalPlace(name: "Arles Amphitheatre", lat: 43.677500, lang: 4.631389),
     HistoricalPlace(name: "Marseille History Museum", lat: 43.296389, lang: 5.374722),
-    HistoricalPlace(name: "Strasbourg Cathedral", lat: 48.581944, lang: 7.751111),
+    HistoricalPlace(name: "Strasbourg Cathedral", lat: 48.581944, lang: 7.751111), */
 
     // ingiltere
-    HistoricalPlace(name: "British Museum", lat: 51.519413, lang: -0.126957),
+    /* HistoricalPlace(name: "British Museum", lat: 51.519413, lang: -0.126957),
     HistoricalPlace(name: "National Gallery", lat: 51.508929, lang: -0.128299),
     HistoricalPlace(name: "Victoria and Albert Museum", lat: 51.496715, lang: -0.172169),
     HistoricalPlace(name: "Tate Modern", lat: 51.507577, lang: -0.099334),
@@ -239,10 +421,10 @@ class StaticClass {
     HistoricalPlace(name: "Kensington Palace", lat: 51.505278, lang: -0.187778),
     HistoricalPlace(name: "Hampton Court Palace", lat: 51.403333, lang: -0.337222),
     HistoricalPlace(name: "York Minster", lat: 53.962222, lang: -1.081667),
-    HistoricalPlace(name: "National Railway Museum", lat: 53.961389, lang: -1.099167),
+    HistoricalPlace(name: "National Railway Museum", lat: 53.961389, lang: -1.099167), */
 
     // italya 
-    HistoricalPlace(name: "Vatikan Müzeleri", lat: 41.906469, lang: 12.454331),
+    /* HistoricalPlace(name: "Vatikan Müzeleri", lat: 41.906469, lang: 12.454331),
     HistoricalPlace(name: "Uffizi Galerisi", lat: 43.768387, lang: 11.255773),
     HistoricalPlace(name: "Kolezyum", lat: 41.890210, lang: 12.492231),
     HistoricalPlace(name: "Galleria Borghese", lat: 41.914249, lang: 12.492457),
@@ -272,10 +454,10 @@ class StaticClass {
     HistoricalPlace(name: "Siena Cathedral", lat: 43.317778, lang: 11.329444),
     HistoricalPlace(name: "San Gimignano", lat: 43.467778, lang: 11.043056),
     HistoricalPlace(name: "Verona Arena", lat: 45.439167, lang: 10.994722),
-    HistoricalPlace(name: "Lake Como", lat: 45.995833, lang: 9.263889),
+    HistoricalPlace(name: "Lake Como", lat: 45.995833, lang: 9.263889), */
 
     // ispanya
-    HistoricalPlace(name: "Prado Müzesi", lat: 40.413792, lang: -3.692280),
+    /* HistoricalPlace(name: "Prado Müzesi", lat: 40.413792, lang: -3.692280),
     HistoricalPlace(name: "Sagrada Familia", lat: 41.403629, lang: 2.174356),
     HistoricalPlace(name: "Reina Sofía Müzesi", lat: 40.407945, lang: -3.693707),
     HistoricalPlace(name: "Alhambra", lat: 37.176512, lang: -3.588426),
@@ -301,10 +483,10 @@ class StaticClass {
     HistoricalPlace(name: "Valencia Cathedral", lat: 39.475556, lang: -0.375278),
     HistoricalPlace(name: "Ronda Bridge", lat: 36.741389, lang: -5.165278),
     HistoricalPlace(name: "Cuenca Hanging Houses", lat: 40.079444, lang: -2.131667),
-    HistoricalPlace(name: "Ibiza Old Town", lat: 38.907778, lang: 1.432778),
+    HistoricalPlace(name: "Ibiza Old Town", lat: 38.907778, lang: 1.432778), */
 
     // almanya
-    HistoricalPlace(name: "Pergamon Müzesi", lat: 52.521074, lang: 13.396577),
+    /* HistoricalPlace(name: "Pergamon Müzesi", lat: 52.521074, lang: 13.396577),
     HistoricalPlace(name: "Neues Museum", lat: 52.520889, lang: 13.397778),
     HistoricalPlace(name: "Deutsches Museum", lat: 48.129944, lang: 11.583583),
     HistoricalPlace(name: "BMW Museum", lat: 48.176818, lang: 11.559490),
@@ -332,10 +514,10 @@ class StaticClass {
     HistoricalPlace(name: "Hamburg Kunsthalle", lat: 53.554167, lang: 10.001389),
     HistoricalPlace(name: "Rhine Valley", lat: 50.354722, lang: 7.591667),
     HistoricalPlace(name: "Aachen Cathedral", lat: 50.774722, lang: 6.083889),
-    HistoricalPlace(name: "Bauhaus Museum", lat: 51.964722, lang: 7.626111),
+    HistoricalPlace(name: "Bauhaus Museum", lat: 51.964722, lang: 7.626111), */
 
     // amerika
-    HistoricalPlace(name: "Metropolitan Museum", lat: 40.779437, lang: -73.963244),
+    /* HistoricalPlace(name: "Metropolitan Museum", lat: 40.779437, lang: -73.963244),
     HistoricalPlace(name: "MoMA", lat: 40.761433, lang: -73.977622),
     HistoricalPlace(name: "Empire State Building", lat: 40.748817, lang: -73.985428),
     HistoricalPlace(name: "Statue of Liberty", lat: 40.689247, lang: -74.044502),
@@ -420,10 +602,10 @@ class StaticClass {
     HistoricalPlace(name: "Great Smoky Mountains", lat: 35.611944, lang: -83.489444),
     HistoricalPlace(name: "French Quarter", lat: 29.958333, lang: -90.066667),
     HistoricalPlace(name: "Bourbon Street", lat: 29.963889, lang: -90.067778),
-    HistoricalPlace(name: "Crater Lake", lat: 42.944722, lang: -122.109444),
+    HistoricalPlace(name: "Crater Lake", lat: 42.944722, lang: -122.109444), */
 
     // mısır
-    HistoricalPlace(name: "Mısır Müzesi", lat: 30.047778, lang: 31.233333),
+    /* HistoricalPlace(name: "Mısır Müzesi", lat: 30.047778, lang: 31.233333),
     HistoricalPlace(name: "Giza Piramitleri", lat: 29.979175, lang: 31.134358),
     HistoricalPlace(name: "Karnak Tapınağı", lat: 25.718817, lang: 32.657375),
     HistoricalPlace(name: "Luxor Tapınağı", lat: 25.699583, lang: 32.639167),
@@ -444,10 +626,10 @@ class StaticClass {
     HistoricalPlace(name: "Colossi of Memnon", lat: 25.720556, lang: 32.610278),
     HistoricalPlace(name: "Siwa Oasis", lat: 29.203056, lang: 25.519444),
     HistoricalPlace(name: "White Desert", lat: 27.401944, lang: 27.947500),
-    HistoricalPlace(name: "Montaza Palace", lat: 31.289167, lang: 30.017222),
+    HistoricalPlace(name: "Montaza Palace", lat: 31.289167, lang: 30.017222), */
 
     // yunanistan
-    HistoricalPlace(name: "Akropolis Müzesi", lat: 37.968525, lang: 23.728083),
+    /* HistoricalPlace(name: "Akropolis Müzesi", lat: 37.968525, lang: 23.728083),
     HistoricalPlace(name: "Parthenon", lat: 37.971536, lang: 23.726817),
     HistoricalPlace(name: "Ulusal Arkeoloji Müzesi", lat: 37.989167, lang: 23.732778),
     HistoricalPlace(name: "Delphi Antik Kenti", lat: 38.482500, lang: 22.501111),
@@ -470,10 +652,10 @@ class StaticClass {
     HistoricalPlace(name: "Ancient Corinth", lat: 37.906389, lang: 22.879167),
     HistoricalPlace(name: "Nafplio", lat: 37.567778, lang: 22.805556),
     HistoricalPlace(name: "Acropolis of Lindos", lat: 36.092500, lang: 28.086667),
-    HistoricalPlace(name: "Samaria Gorge", lat: 35.296111, lang: 23.966389),
+    HistoricalPlace(name: "Samaria Gorge", lat: 35.296111, lang: 23.966389), */
 
     // japonya
-    HistoricalPlace(name: "Tokyo National Museum", lat: 35.719028, lang: 139.776278),
+    /* HistoricalPlace(name: "Tokyo National Museum", lat: 35.719028, lang: 139.776278),
     HistoricalPlace(name: "Kyoto National Museum", lat: 34.987778, lang: 135.772222),
     HistoricalPlace(name: "Hiroshima Peace Memorial", lat: 34.395483, lang: 132.453592),
     HistoricalPlace(name: "Fushimi Inari Tapınağı", lat: 34.967146, lang: 135.772695),
@@ -498,10 +680,10 @@ class StaticClass {
     HistoricalPlace(name: "Hokkaido Shrine", lat: 43.065556, lang: 141.356944),
     HistoricalPlace(name: "Ryoan-ji Temple", lat: 35.034444, lang: 135.718333),
     HistoricalPlace(name: "Ginkaku-ji", lat: 35.027222, lang: 135.798056),
-    HistoricalPlace(name: "Matsumoto Castle", lat: 36.238333, lang: 137.968889),
+    HistoricalPlace(name: "Matsumoto Castle", lat: 36.238333, lang: 137.968889), */
 
     // çin
-    HistoricalPlace(name: "Forbidden City", lat: 39.916668, lang: 116.390556),
+    /* HistoricalPlace(name: "Forbidden City", lat: 39.916668, lang: 116.390556),
     HistoricalPlace(name: "Çin Seddi", lat: 40.431908, lang: 116.570374),
     HistoricalPlace(name: "Terracotta Warriors Museum", lat: 34.384722, lang: 109.278611),
     HistoricalPlace(name: "Shanghai Museum", lat: 31.228611, lang: 121.475),
@@ -530,10 +712,10 @@ class StaticClass {
     HistoricalPlace(name: "Three Gorges Dam", lat: 30.823056, lang: 111.003333),
     HistoricalPlace(name: "Shilin Stone Forest", lat: 24.813889, lang: 103.348889),
     HistoricalPlace(name: "Mount Emei", lat: 29.544167, lang: 103.347778),
-    HistoricalPlace(name: "Pingyao Ancient City", lat: 37.190278, lang: 112.181389),
+    HistoricalPlace(name: "Pingyao Ancient City", lat: 37.190278, lang: 112.181389), */
 
     // hollanda
-    HistoricalPlace(name: "Rijksmuseum", lat: 52.360001, lang: 4.885278),
+    /* HistoricalPlace(name: "Rijksmuseum", lat: 52.360001, lang: 4.885278),
     HistoricalPlace(name: "Van Gogh Museum", lat: 52.358417, lang: 4.881111),
     HistoricalPlace(name: "Anne Frank Evi", lat: 52.375217, lang: 4.883976),
     HistoricalPlace(name: "Mauritshuis", lat: 52.080555, lang: 4.313889),
@@ -552,10 +734,10 @@ class StaticClass {
     HistoricalPlace(name: "Peace Palace", lat: 52.087222, lang: 4.295833),
     HistoricalPlace(name: "Delft Blue Pottery", lat: 52.011944, lang: 4.357222),
     HistoricalPlace(name: "Giethoorn", lat: 52.738611, lang: 6.076667),
-    HistoricalPlace(name: "Utrecht Dom Tower", lat: 52.090833, lang: 5.121389),
+    HistoricalPlace(name: "Utrecht Dom Tower", lat: 52.090833, lang: 5.121389), */
 
     // rusya
-    HistoricalPlace(name: "Hermitage Museum", lat: 59.939861, lang: 30.314444),
+    /* HistoricalPlace(name: "Hermitage Museum", lat: 59.939861, lang: 30.314444),
     HistoricalPlace(name: "Kremlin", lat: 55.752121, lang: 37.617664),
     HistoricalPlace(name: "Tretyakov Gallery", lat: 55.741389, lang: 37.620556),
     HistoricalPlace(name: "Peterhof Sarayı", lat: 59.885556, lang: 29.908889),
@@ -577,10 +759,10 @@ class StaticClass {
     HistoricalPlace(name: "Fabergé Museum", lat: 59.938333, lang: 30.339722),
     HistoricalPlace(name: "Lake Baikal", lat: 53.558333, lang: 108.165278),
     HistoricalPlace(name: "Trans-Siberian Railway", lat: 55.755833, lang: 37.617778),
-    HistoricalPlace(name: "Kizhi Island", lat: 62.066667, lang: 35.233333),
+    HistoricalPlace(name: "Kizhi Island", lat: 62.066667, lang: 35.233333), */
 
     // avustralya
-    HistoricalPlace(name: "Australian Museum", lat: -33.874444, lang: 151.212778),
+    /* HistoricalPlace(name: "Australian Museum", lat: -33.874444, lang: 151.212778),
     HistoricalPlace(name: "National Gallery of Australia", lat: -35.296667, lang: 149.135),
     HistoricalPlace(name: "Sydney Opera House", lat: -33.856784, lang: 151.215297),
     HistoricalPlace(name: "Melbourne Museum", lat: -37.803333, lang: 144.971667),
@@ -597,10 +779,10 @@ class StaticClass {
     HistoricalPlace(name: "Daintree Rainforest", lat: -16.170278, lang: 145.417222),
     HistoricalPlace(name: "Federation Square", lat: -37.817778, lang: 144.968889),
     HistoricalPlace(name: "Queen Victoria Market", lat: -37.807222, lang: 144.957222),
-    HistoricalPlace(name: "Taronga Zoo", lat: -33.843056, lang: 151.241111),
+    HistoricalPlace(name: "Taronga Zoo", lat: -33.843056, lang: 151.241111), */
 
     // berzilya
-    HistoricalPlace(name: "Museu do Ipiranga", lat: -23.585278, lang: -46.609722),
+    /* HistoricalPlace(name: "Museu do Ipiranga", lat: -23.585278, lang: -46.609722),
     HistoricalPlace(name: "Museu Nacional", lat: -22.905833, lang: -43.226111),
     HistoricalPlace(name: "Cristo Redentor", lat: -22.951944, lang: -43.210556),
     HistoricalPlace(name: "MASP", lat: -23.561389, lang: -46.655833),
@@ -620,10 +802,10 @@ class StaticClass {
     HistoricalPlace(name: "Teatro Amazonas", lat: -3.130556, lang: -60.022778),
     HistoricalPlace(name: "Catedral Metropolitana", lat: -22.909444, lang: -43.177778),
     HistoricalPlace(name: "Escadaria Selaron", lat: -22.914722, lang: -43.179167),
-    HistoricalPlace(name: "São Paulo Cathedral", lat: -23.550556, lang: -46.633889),
+    HistoricalPlace(name: "São Paulo Cathedral", lat: -23.550556, lang: -46.633889), */
 
     // belçika
-    HistoricalPlace(name: "Royal Museums of Fine Arts", lat: 50.842222, lang: 4.358056),
+    /* HistoricalPlace(name: "Royal Museums of Fine Arts", lat: 50.842222, lang: 4.358056),
     HistoricalPlace(name: "Atomium", lat: 50.894941, lang: 4.341547),
     HistoricalPlace(name: "Grand Place Brussels", lat: 50.846667, lang: 4.352222),
     HistoricalPlace(name: "Manneken Pis", lat: 50.845000, lang: 4.350000),
@@ -644,10 +826,10 @@ class StaticClass {
     HistoricalPlace(name: "Menin Gate", lat: 50.852222, lang: 2.892222),
     HistoricalPlace(name: "Citadel of Namur", lat: 50.463889, lang: 4.860833),
     HistoricalPlace(name: "Boudewijn Seapark", lat: 51.208889, lang: 3.200556),
-    HistoricalPlace(name: "Bruges Markt", lat: 51.208333, lang: 3.224722),
+    HistoricalPlace(name: "Bruges Markt", lat: 51.208333, lang: 3.224722), */
 
     // isviçre
-    HistoricalPlace(name: "Swiss National Museum", lat: 47.379167, lang: 8.540278),
+    /* HistoricalPlace(name: "Swiss National Museum", lat: 47.379167, lang: 8.540278),
     HistoricalPlace(name: "Kunsthaus Zürich", lat: 47.370278, lang: 8.548333),
     HistoricalPlace(name: "Chillon Castle", lat: 46.414444, lang: 6.927222),
     HistoricalPlace(name: "Matterhorn", lat: 45.976389, lang: 7.658333),
@@ -670,10 +852,10 @@ class StaticClass {
     HistoricalPlace(name: "Lugano Lake", lat: 46.005833, lang: 8.951667),
     HistoricalPlace(name: "Interlaken", lat: 46.686111, lang: 7.865556),
     HistoricalPlace(name: "Titlis Mountain", lat: 46.771944, lang: 8.435833),
-    HistoricalPlace(name: "Bellinzona Castles", lat: 46.192500, lang: 9.026944),
+    HistoricalPlace(name: "Bellinzona Castles", lat: 46.192500, lang: 9.026944), */
 
     // avusturya
-    HistoricalPlace(name: "Kunsthistorisches Museum", lat: 48.203611, lang: 16.361667),
+    /* HistoricalPlace(name: "Kunsthistorisches Museum", lat: 48.203611, lang: 16.361667),
     HistoricalPlace(name: "Schönbrunn Palace", lat: 48.184722, lang: 16.312222),
     HistoricalPlace(name: "Belvedere Palace", lat: 48.191389, lang: 16.380278),
     HistoricalPlace(name: "Hofburg Palace", lat: 48.206667, lang: 16.365278),
@@ -698,10 +880,10 @@ class StaticClass {
     HistoricalPlace(name: "Seefeld", lat: 47.331111, lang: 11.186111),
     HistoricalPlace(name: "Vienna Woods", lat: 48.166667, lang: 16.150000),
     HistoricalPlace(name: "Karlskirche", lat: 48.198056, lang: 16.371944),
-    HistoricalPlace(name: "Kunsthaus Graz", lat: 47.070556, lang: 15.438889),
+    HistoricalPlace(name: "Kunsthaus Graz", lat: 47.070556, lang: 15.438889), */
 
     // portekiz
-    HistoricalPlace(name: "Jerónimos Monastery", lat: 38.697778, lang: -9.206111),
+    /* HistoricalPlace(name: "Jerónimos Monastery", lat: 38.697778, lang: -9.206111),
     HistoricalPlace(name: "Belém Tower", lat: 38.691667, lang: -9.215833),
     HistoricalPlace(name: "São Jorge Castle", lat: 38.713889, lang: -9.133333),
     HistoricalPlace(name: "Sintra National Palace", lat: 38.797778, lang: -9.390556),
@@ -725,10 +907,10 @@ class StaticClass {
     HistoricalPlace(name: "Serralves Museum", lat: 41.159444, lang: -8.659722),
     HistoricalPlace(name: "Lisbon Cathedral", lat: 38.709722, lang: -9.132778),
     HistoricalPlace(name: "Ponte 25 de Abril", lat: 38.692222, lang: -9.176667),
-    HistoricalPlace(name: "Berlenga Island", lat: 39.413889, lang: -9.506111),
+    HistoricalPlace(name: "Berlenga Island", lat: 39.413889, lang: -9.506111), */
 
     // norveç
-    HistoricalPlace(name: "Viking Ship Museum", lat: 59.904722, lang: 10.684167),
+    /* HistoricalPlace(name: "Viking Ship Museum", lat: 59.904722, lang: 10.684167),
     HistoricalPlace(name: "Vigeland Sculpture Park", lat: 59.927222, lang: 10.700556),
     HistoricalPlace(name: "Akershus Fortress", lat: 59.907500, lang: 10.736389),
     HistoricalPlace(name: "Bryggen Bergen", lat: 60.397500, lang: 5.324444),
@@ -746,10 +928,10 @@ class StaticClass {
     HistoricalPlace(name: "Trolltunga", lat: 60.124167, lang: 6.740833),
     HistoricalPlace(name: "Flåm Railway", lat: 60.863333, lang: 7.115833),
     HistoricalPlace(name: "Oslo Opera House", lat: 59.907500, lang: 10.753056),
-    HistoricalPlace(name: "Sognefjord", lat: 61.090278, lang: 6.826389),
+    HistoricalPlace(name: "Sognefjord", lat: 61.090278, lang: 6.826389), */
 
     // isveç
-    HistoricalPlace(name: "Vasa Museum", lat: 59.327778, lang: 18.091389),
+    /* HistoricalPlace(name: "Vasa Museum", lat: 59.327778, lang: 18.091389),
     HistoricalPlace(name: "ABBA Museum", lat: 59.325278, lang: 18.096944),
     HistoricalPlace(name: "Royal Palace Stockholm", lat: 59.326667, lang: 18.071389),
     HistoricalPlace(name: "Gamla Stan", lat: 59.325833, lang: 18.072222),
@@ -771,10 +953,10 @@ class StaticClass {
     HistoricalPlace(name: "Moderna Museet", lat: 59.325833, lang: 18.084722),
     HistoricalPlace(name: "Lund Cathedral", lat: 55.704722, lang: 13.193333),
     HistoricalPlace(name: "Archipelago Stockholm", lat: 59.350000, lang: 18.666667),
-    HistoricalPlace(name: "Sigtuna", lat: 59.620833, lang: 17.722778),
+    HistoricalPlace(name: "Sigtuna", lat: 59.620833, lang: 17.722778), */
 
     // danimarka
-    HistoricalPlace(name: "Tivoli Gardens", lat: 55.673611, lang: 12.568056),
+    /* HistoricalPlace(name: "Tivoli Gardens", lat: 55.673611, lang: 12.568056),
     HistoricalPlace(name: "Little Mermaid", lat: 55.692944, lang: 12.599278),
     HistoricalPlace(name: "Nyhavn", lat: 55.679722, lang: 12.591389),
     HistoricalPlace(name: "Kronborg Castle", lat: 56.038889, lang: 12.622222),
@@ -794,10 +976,10 @@ class StaticClass {
     HistoricalPlace(name: "Egeskov Castle", lat: 55.191667, lang: 10.731667),
     HistoricalPlace(name: "Skagen", lat: 57.720833, lang: 10.583889),
     HistoricalPlace(name: "Ribe Viking Center", lat: 55.328056, lang: 8.762500),
-    HistoricalPlace(name: "Christiania", lat: 55.673889, lang: 12.599444),
+    HistoricalPlace(name: "Christiania", lat: 55.673889, lang: 12.599444), */
 
     // finlandiya 
-    HistoricalPlace(name: "Suomenlinna Fortress", lat: 60.144722, lang: 24.988333),
+    /* HistoricalPlace(name: "Suomenlinna Fortress", lat: 60.144722, lang: 24.988333),
     HistoricalPlace(name: "Helsinki Cathedral", lat: 60.170278, lang: 24.952222),
     HistoricalPlace(name: "Ateneum Art Museum", lat: 60.170000, lang: 24.943889),
     HistoricalPlace(name: "Temppeliaukio Church", lat: 60.172778, lang: 24.925278),
@@ -814,10 +996,10 @@ class StaticClass {
     HistoricalPlace(name: "Linnanmäki", lat: 60.188889, lang: 24.940556),
     HistoricalPlace(name: "Turku Cathedral", lat: 60.453889, lang: 22.279167),
     HistoricalPlace(name: "Levi Ski Resort", lat: 67.805556, lang: 24.808889),
-    HistoricalPlace(name: "Koli National Park", lat: 63.093889, lang: 29.808889),
+    HistoricalPlace(name: "Koli National Park", lat: 63.093889, lang: 29.808889), */
 
     // polonya
-    HistoricalPlace(name: "Auschwitz-Birkenau", lat: 50.026944, lang: 19.203889),
+    /* HistoricalPlace(name: "Auschwitz-Birkenau", lat: 50.026944, lang: 19.203889),
     HistoricalPlace(name: "Wawel Castle", lat: 50.054167, lang: 19.935278),
     HistoricalPlace(name: "Main Market Square Kraków", lat: 50.061667, lang: 19.937222),
     HistoricalPlace(name: "Wieliczka Salt Mine", lat: 49.983611, lang: 20.054722),
@@ -843,10 +1025,10 @@ class StaticClass {
     HistoricalPlace(name: "Ojców National Park", lat: 50.212500, lang: 19.829167),
     HistoricalPlace(name: "POLIN Museum", lat: 52.249722, lang: 20.994167),
     HistoricalPlace(name: "Częstochowa Monastery", lat: 50.808333, lang: 19.096111),
-    HistoricalPlace(name: "Lublin Castle", lat: 51.248611, lang: 22.571111),
+    HistoricalPlace(name: "Lublin Castle", lat: 51.248611, lang: 22.571111), */
 
     // çek cumhuriyeti
-    HistoricalPlace(name: "Prague Castle", lat: 50.090278, lang: 14.400000),
+    /* HistoricalPlace(name: "Prague Castle", lat: 50.090278, lang: 14.400000),
     HistoricalPlace(name: "Charles Bridge", lat: 50.086528, lang: 14.411389),
     HistoricalPlace(name: "Old Town Square Prague", lat: 50.087500, lang: 14.421111),
     HistoricalPlace(name: "Astronomical Clock", lat: 50.087083, lang: 14.420556),
@@ -868,10 +1050,10 @@ class StaticClass {
     HistoricalPlace(name: "Olomouc Holy Trinity", lat: 49.593611, lang: 17.250833),
     HistoricalPlace(name: "Litomyšl Castle", lat: 49.874167, lang: 16.312778),
     HistoricalPlace(name: "Konopiště Castle", lat: 49.779722, lang: 14.657778),
-    HistoricalPlace(name: "Třeboň", lat: 49.003333, lang: 14.770556),
+    HistoricalPlace(name: "Třeboň", lat: 49.003333, lang: 14.770556), */
 
     // macaristan
-    HistoricalPlace(name: "Hungarian Parliament", lat: 47.507222, lang: 19.045556),
+    /* HistoricalPlace(name: "Hungarian Parliament", lat: 47.507222, lang: 19.045556),
     HistoricalPlace(name: "Buda Castle", lat: 47.496389, lang: 19.039444),
     HistoricalPlace(name: "Fisherman's Bastion", lat: 47.502222, lang: 19.034722),
     HistoricalPlace(name: "St. Stephen's Basilica", lat: 47.501111, lang: 19.053889),
@@ -890,10 +1072,10 @@ class StaticClass {
     HistoricalPlace(name: "Visegrád Castle", lat: 47.786944, lang: 18.970278),
     HistoricalPlace(name: "Gödöllő Palace", lat: 47.596111, lang: 19.368889),
     HistoricalPlace(name: "Sopron Old Town", lat: 47.685000, lang: 16.591389),
-    HistoricalPlace(name: "Pannonhalma Abbey", lat: 47.550556, lang: 17.758333),
+    HistoricalPlace(name: "Pannonhalma Abbey", lat: 47.550556, lang: 17.758333), */
 
     // romanya
-    HistoricalPlace(name: "Bran Castle", lat: 45.515000, lang: 25.367222),
+    /* HistoricalPlace(name: "Bran Castle", lat: 45.515000, lang: 25.367222),
     HistoricalPlace(name: "Palace of Parliament", lat: 44.427500, lang: 26.087222),
     HistoricalPlace(name: "Peleș Castle", lat: 45.360000, lang: 25.542500),
     HistoricalPlace(name: "Village Museum Bucharest", lat: 44.471944, lang: 26.076944),
@@ -911,10 +1093,10 @@ class StaticClass {
     HistoricalPlace(name: "Bâlea Lake", lat: 45.606389, lang: 24.618889),
     HistoricalPlace(name: "Turda Gorge", lat: 46.570833, lang: 23.712222),
     HistoricalPlace(name: "Curtea de Argeș", lat: 45.136389, lang: 24.674444),
-    HistoricalPlace(name: "Horezu Monastery", lat: 45.154444, lang: 24.014722),
+    HistoricalPlace(name: "Horezu Monastery", lat: 45.154444, lang: 24.014722), */
 
     // hırvatistan
-    HistoricalPlace(name: "Diocletian's Palace", lat: 43.508056, lang: 16.440278),
+    /* HistoricalPlace(name: "Diocletian's Palace", lat: 43.508056, lang: 16.440278),
     HistoricalPlace(name: "Dubrovnik Old Town", lat: 42.641389, lang: 18.108333),
     HistoricalPlace(name: "Plitvice Lakes", lat: 44.880000, lang: 15.616667),
     HistoricalPlace(name: "Hvar Island", lat: 43.172500, lang: 16.441667),
@@ -935,10 +1117,10 @@ class StaticClass {
     HistoricalPlace(name: "Elafiti Islands", lat: 42.715000, lang: 17.941667),
     HistoricalPlace(name: "Paklenica National Park", lat: 44.381667, lang: 15.467778),
     HistoricalPlace(name: "Varaždin", lat: 46.305556, lang: 16.336944),
-    HistoricalPlace(name: "Brijuni Islands", lat: 44.915000, lang: 13.762778),
+    HistoricalPlace(name: "Brijuni Islands", lat: 44.915000, lang: 13.762778), */
 
     // irlanda
-    HistoricalPlace(name: "Trinity College Library", lat: 53.343889, lang: -6.254444),
+    /* HistoricalPlace(name: "Trinity College Library", lat: 53.343889, lang: -6.254444),
     HistoricalPlace(name: "Cliffs of Moher", lat: 52.971944, lang: -9.426389),
     HistoricalPlace(name: "Dublin Castle", lat: 53.342778, lang: -6.267500),
     HistoricalPlace(name: "Guinness Storehouse", lat: 53.341944, lang: -6.286667),
@@ -958,10 +1140,10 @@ class StaticClass {
     HistoricalPlace(name: "Powerscourt Estate", lat: 53.184444, lang: -6.186667),
     HistoricalPlace(name: "Kylemore Abbey", lat: 53.560556, lang: -9.888333),
     HistoricalPlace(name: "Skellig Michael", lat: 51.770833, lang: -10.540278),
-    HistoricalPlace(name: "Cobh Heritage Centre", lat: 51.850833, lang: -8.294167),
+    HistoricalPlace(name: "Cobh Heritage Centre", lat: 51.850833, lang: -8.294167), */
 
     // iskoçya
-    HistoricalPlace(name: "Edinburgh Castle", lat: 55.948611, lang: -3.199722),
+    /* HistoricalPlace(name: "Edinburgh Castle", lat: 55.948611, lang: -3.199722),
     HistoricalPlace(name: "Loch Ness", lat: 57.322778, lang: -4.424444),
     HistoricalPlace(name: "Stirling Castle", lat: 56.123889, lang: -3.949167),
     HistoricalPlace(name: "Isle of Skye", lat: 57.410000, lang: -6.193333),
@@ -977,7 +1159,7 @@ class StaticClass {
     HistoricalPlace(name: "Rosslyn Chapel", lat: 55.855000, lang: -3.160556),
     HistoricalPlace(name: "Urquhart Castle", lat: 57.322222, lang: -4.443333),
     HistoricalPlace(name: "Dunnottar Castle", lat: 56.946111, lang: -2.196944), 
-    HistoricalPlace(name: "Arthur's Seat", lat: 55.944444, lang: -3.161667),
+    HistoricalPlace(name: "Arthur's Seat", lat: 55.944444, lang: -3.161667), */
   ];
 
   static void showPlaceOptions (BuildContext context, HistoricalPlace place,) {

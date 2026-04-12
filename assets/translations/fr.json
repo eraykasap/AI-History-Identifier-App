@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "Accueil",
         "profil" : "Profil",
-        "kaleler" : "Brève information",
+        "kaleler" : "Aujourd'hui dans l'Histoire",
         "share" : "Partager",
         "premium" : "Premium",
         "scan" : "Scanner",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "Une erreur s'est produite. Veuillez réessayer.",
         "daily_scan_limit" : "Votre limite de scan quotidienne a été atteinte.",
+        "paketError" : "Impossible de charger les forfaits",
 
         "app_version_text" : "Nouvelle version de l'application disponible",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "Lire",
+        "muzeler" : "Musées",
+        "kesfet" : "Explorer"
     },
 
     "upgrader": {

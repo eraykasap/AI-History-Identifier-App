@@ -3,7 +3,7 @@
     "navigation" : {
         "home" : "Ana Sayfa",
         "profil" : "Profil",
-        "kaleler" : "Kısa Bilgi",
+        "kaleler" : "Tarihte Bugün",
         "share" : "Paylaş",
         "premium" : "Premium",
         "scan" : "Tara",
@@ -41,9 +41,14 @@
         "ok" : "Tamam",
         "analiz_error" : "Bir hata oluştu. Lütfen tekrar deneyin.",
         "daily_scan_limit" : "Günlük tarama limitinize ulaşıldı.",
+        "paketError" : "Paketler Yüklenemedi",
 
         "app_version_text" : "Uygulamanın Yeni Sürümü Mevcut",
-        "app_version_text_button" : "Tamam"
+        "app_version_text_button" : "Tamam",
+
+        "oku" : "Oku",
+        "muzeler" : "Müzeler",
+        "kesfet" : "Keşfet"
     },
 
     "upgrader": {

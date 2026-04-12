@@ -72,7 +72,7 @@ class HomePage extends ConsumerWidget {
 
               Align(
                 alignment: AlignmentGeometry.centerLeft,
-                child: Text("Müzeler", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)
+                child: Text("navigation.muzeler".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)
               ),
 
               mapViewMuseum(context),
@@ -84,8 +84,14 @@ class HomePage extends ConsumerWidget {
               const SizedBox(height: 20,),
 
               //buildNearbyPlaces(nearLocationPlace)
+              Align(
+                alignment: AlignmentGeometry.centerLeft,
+                child: Text("navigation.kesfet".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)
+              ),
 
-              wikiArticlesNews(articlesAsync)
+              wikiArticlesNews(articlesAsync, context),
+
+              const SizedBox(height: 40,),
 
             ]
           ),
@@ -118,7 +124,7 @@ class HomePage extends ConsumerWidget {
                 child: WikiEventContentCard(title: item.title, content: item.text, year: item.year.toString()), /*Contentcard(image: item.imageUrl, title: item.title),*/
               );
             },
-          ) : CircularProgressIndicator(),
+          ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator(color: Color.fromRGBO(195, 150, 57, 1),))),
         ),
       ],
     );
@@ -412,18 +418,21 @@ class HomePage extends ConsumerWidget {
   } */
 
 
-  Widget wikiArticlesNews (List<WikiArticle> liste) {
+  Widget wikiArticlesNews (List<WikiArticle> liste, BuildContext context) {
 
-    return liste.isNotEmpty ? ListView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), itemCount: liste.length, itemBuilder: (context, index) {
-      final item = liste[index];
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: GestureDetector(
-          onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ArticlesDetailPage(image: item.thumbnailUrl, title: item.title, content: item.content))),
-          child: WikiArticleCard(image: item.thumbnailUrl, title: item.title)
-        ),
-      );
-    }) : CircularProgressIndicator();
+    return liste.isNotEmpty ? SizedBox(
+      width: MediaQuery.of(context).size.width <= 400 ? MediaQuery.of(context).size.width : 400,
+      child: ListView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), itemCount: liste.length, itemBuilder: (context, index) {
+        final item = liste[index];
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ArticlesDetailPage(image: item.thumbnailUrl, title: item.title, content: item.content))),
+            child: WikiArticalContendCard(title: item.title, content: item.content, imageUrl: item.thumbnailUrl) /*WikiArticleCard(image: item.thumbnailUrl, title: item.title)*/
+          ),
+        );
+      }),
+    ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator(color: Color.fromRGBO(195, 150, 57, 1),)));
 
   }
 

@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "Início",
         "profil" : "Perfil",
-        "kaleler" : "Informação breve",
+        "kaleler" : "Hoje na História",
         "share" : "Compartilhar",
         "premium" : "Premium",
         "scan" : "Escanear",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "Ocorreu um erro. Por favor, tente novamente.",
         "daily_scan_limit" : "Seu limite de digitalização diária foi atingido.",
+        "paketError" : "Não foi possível carregar os pacotes",
 
         "app_version_text" : "Nova versão do aplicativo disponível",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "Ler",
+        "muzeler" : "Museus",
+        "kesfet" : "Explorar"
     },
 
     "upgrader": {

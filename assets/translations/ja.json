@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "ホーム",
         "profil" : "プロフィール",
-        "kaleler" : "簡単な情報",
+        "kaleler" : "今日の歴史",
         "share" : "共有",
         "premium" : "プレミアム",
         "scan" : "スキャン",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "エラーが発生しました。もう一度お試しください。",
         "daily_scan_limit" : "1日のスキャン制限に達しました。",
+        "paketError" : "パッケージを読み込めませんでした",
 
         "app_version_text" : "アプリの新しいバージョンが利用可能です",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "読む",
+        "muzeler" : "博物館",
+        "kesfet" : "探索する"
     },
 
     "upgrader": {

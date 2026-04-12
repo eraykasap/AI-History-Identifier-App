@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "होम",
         "profil" : "प्रोफ़ाइल",
-        "kaleler" : "संक्षिप्त जानकारी",
+        "kaleler" : "इतिहास में आज",
         "share" : "शेयर करें",
         "premium" : "प्रीमियम",
         "scan" : "स्कैन करें",
@@ -43,9 +43,14 @@
         "ok" : "ठीक है",
         "analiz_error" : "एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
         "daily_scan_limit" : "आपकी दैनिक स्कैनिंग सीमा पूरी हो गई है।",
+        "paketError" : "पैकेज लोड नहीं हो सके",
 
         "app_version_text" : "ऐप का नया संस्करण उपलब्ध है",
-        "app_version_text_button" : "ठीक है"
+        "app_version_text_button" : "ठीक है",
+
+        "oku" : "पढ़ें",
+        "muzeler" : "संग्रहालय",
+        "kesfet" : "अन्वेषण करें"
     },
 
     "upgrader": {

@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "Strona główna",
         "profil" : "Profil",
-        "kaleler" : "Krótkie informacje",
+        "kaleler" : "Dziś w Historii",
         "share" : "Udostępnij",
         "premium" : "Premium",
         "scan" : "Skanuj",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "Wystąpił błąd. Spróbuj ponownie.",
         "daily_scan_limit" : "Osiągnięto dzienny limit skanowania.",
+        "paketError" : "Nie można załadować pakietów",
 
         "app_version_text" : "Dostępna nowa wersja aplikacji",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "Czytaj",
+        "muzeler" : "Muzea",
+        "kesfet" : "Odkryj"
     },
 
     "upgrader": {

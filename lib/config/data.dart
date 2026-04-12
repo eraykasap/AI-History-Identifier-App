@@ -447,8 +447,8 @@ class WikiArticleService {
     final List<WikiArticle> articles = [];
     int index = 0;
 
-    while (articles.length < 10 && index < allPageIds.length) {
-      final batch = allPageIds.skip(index).take(3).toList();
+    while (articles.length < 8 && index < allPageIds.length) {
+      final batch = allPageIds.skip(index).take(2).toList();
 
       final results = await Future.wait(
         batch.map((id) => _fetchArticle(id, lang)),
@@ -457,13 +457,13 @@ class WikiArticleService {
       articles.addAll(results.whereType<WikiArticle>());
 
       // Rate limit aşmamak için bekle
-      await Future.delayed(const Duration(milliseconds: 300));
+      await Future.delayed(const Duration(milliseconds: 400));
 
       debugPrint('🔍 index: $index → toplam: ${articles.length}');
       index += 3;
     }
 
-    return articles.take(10).toList();
+    return articles.take(8).toList();
   }
 
   static Future<List<WikiArticle>> fetchHistoryArticles() async {

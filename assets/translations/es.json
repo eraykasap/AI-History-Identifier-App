@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "Inicio",
         "profil" : "Perfil",
-        "kaleler" : "Información breve",
+        "kaleler" : "Hoy en la Historia",
         "share" : "Compartir",
         "premium" : "Premium",
         "scan" : "Escanear",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "Ocurrió un error. Por favor, inténtalo de nuevo.",
         "daily_scan_limit" : "Se ha alcanzado tu límite de escaneo diario.",
+        "paketError" : "No se pudieron cargar los paquetes",
 
         "app_version_text" : "Nueva versión de la aplicación disponible",
-        "app_version_text_button" : "Aceptar"
+        "app_version_text_button" : "Aceptar",
+
+        "oku" : "Leer",
+        "muzeler" : "Museos",
+        "kesfet" : "Explorar"
     },
 
     "upgrader": {

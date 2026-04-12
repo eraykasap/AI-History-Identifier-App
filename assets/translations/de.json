@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "Startseite",
         "profil" : "Profil",
-        "kaleler" : "Kurzinformation",
+        "kaleler" : "Heute in der Geschichte",
         "share" : "Teilen",
         "premium" : "Premium",
         "scan" : "Scannen",
@@ -43,9 +43,14 @@
         "ok" : "Ok",
         "analiz_error" : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
         "daily_scan_limit" : "Ihr tägliches Scanlimit wurde erreicht.",
+        "paketError" : "Pakete konnten nicht geladen werden",
 
         "app_version_text" : "Neue App-Version verfügbar",
-        "app_version_text_button" : "OK"
+        "app_version_text_button" : "OK",
+
+        "oku" : "Lesen",
+        "muzeler" : "Museen",
+        "kesfet" : "Erkunden"
     },
 
     "upgrader": {

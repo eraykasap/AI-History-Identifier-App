@@ -5,7 +5,7 @@
     "navigation" : {
         "home" : "홈",
         "profil" : "프로필",
-        "kaleler" : "간단한 정보",
+        "kaleler" : "오늘의 역사",
         "share" : "공유",
         "premium" : "프리미엄",
         "scan" : "스캔",
@@ -43,9 +43,14 @@
         "ok" : "확인",
         "analiz_error" : "오류가 발생했습니다. 다시 시도해주세요.",
         "daily_scan_limit" : "일일 스캔 한도에 도달했습니다.",
+        "paketError" : "패키지를 불러올 수 없습니다",
 
         "app_version_text" : "새로운 앱 버전 사용 가능",
-        "app_version_text_button" : "확인"
+        "app_version_text_button" : "확인",
+
+        "oku" : "읽다",
+        "muzeler" : "박물관",
+        "kesfet" : "탐색"
     },
 
     "upgrader": {

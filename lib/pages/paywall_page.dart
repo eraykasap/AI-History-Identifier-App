@@ -117,7 +117,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     if (isSub == false) {
       
       if (_packeges == null || _packeges!.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Paketler Yüklenemedi")));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("navigation.paketError".tr())));
         
         return;
       }

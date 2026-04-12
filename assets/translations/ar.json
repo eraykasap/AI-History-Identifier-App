@@ -4,7 +4,7 @@
     "navigation" : {
         "home" : "الرئيسية",
         "profil" : "الملف الشخصي",
-        "kaleler" : "معلومات مختصرة",
+        "kaleler" : "اليوم في التاريخ",
         "share" : "مشاركة",
         "premium" : "بريميوم",
         "scan" : "مسح",
@@ -42,9 +42,14 @@
         "ok" : "حسناً",
         "analiz_error" : "حدث خطأ. يرجى المحاولة مرة أخرى.",
         "daily_scan_limit" : "تم الوصول إلى حد المسح اليومي.",
+        "paketError" : "تعذّر تحميل الحزم",
 
         "app_version_text" : "يتوفر إصدار جديد من التطبيق",
-        "app_version_text_button" : "حسناً"
+        "app_version_text_button" : "حسناً",
+
+        "oku" : "اقرأ",
+        "muzeler" : "المتاحف",
+        "kesfet" : "استكشف"
     },
 
     "upgrader": {

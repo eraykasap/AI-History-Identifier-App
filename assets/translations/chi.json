@@ -7,7 +7,7 @@
     "navigation" : {
         "home" : "首页",
         "profil" : "个人资料",
-        "kaleler" : "简短信息",
+        "kaleler" : "历史上的今天",
         "share" : "分享",
         "premium" : "高级版",
         "scan" : "扫描",
@@ -45,9 +45,14 @@
         "ok" : "确定",
         "analiz_error" : "发生错误。请重试。",
         "daily_scan_limit" : "您的每日扫描限额已达到。",
+        "paketError" : "无法加载套餐",
 
         "app_version_text" : "新应用版本可用",
-        "app_version_text_button" : "确定"
+        "app_version_text_button" : "确定",
+
+        "oku" : "阅读",
+        "muzeler" : "博物馆",
+        "kesfet" : "探索"
     },
 
     "upgrader": {

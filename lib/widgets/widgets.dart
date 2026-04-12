@@ -77,13 +77,9 @@ class ContentSavedCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
-              child: Container(
-                decoration: BoxDecoration(
-                  //color: Colors.blue,
-                ),
-                width: double.maxFinite,
+              child: SizedBox(
+                width: double.infinity,
                 height: 160,
-                //child: Image.file(image, fit: BoxFit.cover,),
                 child: FutureBuilder<String>(
                   future: imagePath, 
                   builder: (context, snapshot) {
@@ -96,7 +92,19 @@ class ContentSavedCard extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(child: Center(child: Text(allContent[0].title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,)))
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Text(
+                    allContent[0].title, 
+                    style: Theme.of(context).textTheme.bodySmall, 
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            )
         
           ],
         ),
@@ -257,7 +265,7 @@ class WikiEventContentCard extends StatelessWidget {
                       child: Center(child: Text(year, style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontSize: 26, fontWeight: FontWeight.bold),)),
                     ),
                     Spacer(),
-                    Text("Oku", style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold),),
+                    Text("navigation.oku".tr(), style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold),),
                     SizedBox(width: 7,),
                     Container(
                       decoration: BoxDecoration(
@@ -351,6 +359,123 @@ class WikiArticleCard extends StatelessWidget {
     );
   }
 }
+
+class WikiArticalContendCard extends StatelessWidget {
+
+  final String title;
+  final String content;
+  final String? imageUrl;
+
+  const WikiArticalContendCard({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //width: 50,
+      height: 160,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16)
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+        
+            ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(16),
+              child: Container(
+                width: 135,
+                height: 135,
+                decoration: BoxDecoration(
+                  //color: Colors.grey,
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: (imageUrl != null && imageUrl!.isNotEmpty)
+                  ? ColorFiltered(colorFilter: ColorFilter.matrix([
+                    0.393, 0.769, 0.189, 0, 0,
+                    0.349, 0.686, 0.168, 0, 0,
+                    0.272, 0.534, 0.131, 0, 0,
+                    0,     0,     0,     1, 0,
+                  ]),
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl!,
+                    fit: BoxFit.cover,
+                    cacheKey: imageUrl!,
+                    memCacheWidth: 150,
+                    memCacheHeight: 150,
+                    placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
+                    //errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                    errorWidget: (context, url, error) {
+                      //CachedNetworkImage.evictFromCache(imageUrl!);
+                      debugPrint('❌ Resim yüklenemedi: $url');
+                      debugPrint('❌ Hata: $error');
+                      return const Icon(Icons.broken_image);
+                    },
+                  ),
+                  ) :  const Icon(Icons.image_not_supported),
+              ),
+            ),
+        
+            SizedBox(width: 10,),
+        
+            Container(
+              height: 135,
+              width: 230,
+              //color: Colors.amber,
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                      
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20), overflow: TextOverflow.ellipsis, maxLines: 1,),
+                  ),
+                      
+                  SizedBox(height: 5,),
+                      
+                  Text(content, style: TextStyle(fontSize: 16), overflow: TextOverflow.ellipsis, maxLines: 2,),
+
+                  SizedBox(height: 5,),
+                      
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("navigation.oku".tr(),style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold, fontSize: 18)),
+                        SizedBox(width: 7,),
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromRGBO(195, 150, 57, 1)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(Icons.arrow_forward, color: Colors.white, size: 15,),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                      
+                ],
+              ),
+            )
+        
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 
@@ -1079,7 +1204,7 @@ class _FourPointStarPainter extends CustomPainter {
 
 
 
-// Yardımcı widget — aynı dosyaya ekle
+
 class NavItem extends StatelessWidget {
   final IconData icon;
   final IconData activeIcon;
