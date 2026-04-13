@@ -25,6 +25,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
   bool isLoading = true;
   bool isSub = false;
   bool isHasEverSub = false;
+  bool isProcessing = false;
 
 
   @override
@@ -125,10 +126,13 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       final selectedpackage = _packeges![selectedIndex];
 
       bool success = await SubscriptionManager.purchasePackage(selectedpackage);
+
+      if (isSub == false) setState(() => isProcessing = true); //!
       
-      if (success) {
-        
-        Navigator.of(context).pop(true);
+
+      if (mounted) {
+        setState(() => isProcessing = false);
+        if (success) Navigator.of(context).pop(true);
       }
 
     }
@@ -142,187 +146,200 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(15, 27, 33, 1),
-
-      body: Stack(
-        
-        children: [
+    return PopScope(
+      canPop: !isProcessing,
+      child: Scaffold(
+        backgroundColor: Color.fromRGBO(15, 27, 33, 1),
       
-          SingleChildScrollView(
-            child: Column(
-              
-              children: [
-            
-                Stack(
-                  children: [
-                    Image.asset("assets/images/history/history.jpeg", width: double.maxFinite, height: MediaQuery.of(context).size.height * 0.3, fit: BoxFit.cover,),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: AlignmentGeometry.bottomCenter,
-                          end: AlignmentGeometry.topCenter,
-                          stops: [
-                            0,
-                            0.4,
-                          ],
-                          colors: [
-                            Color.fromRGBO(15, 27, 33, 1),
-                            Colors.transparent
-                          ]
-                        )
-                      ),
-                    )
-                  ],
-                ),
-            
-            
-            
-                !isLoading ? Column(
-                  
-                  children: [
-                                
-                    Text("navigation.paywall_title".tr(), textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
-                                
-                    SizedBox(height: 20,),
-                    
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 20,
-                      children: [
-                        ContainerPayyWall(icon: Icons.document_scanner, label: "navigation.payWallContainer_1".tr()),
-                        ContainerPayyWall(icon: Icons.article_outlined, label: "navigation.payWallContainer_2".tr()),
-                        ContainerPayyWall(icon: Icons.payment, label: "navigation.payWallContainer_3".tr())
-                      ],
-                    ),
-
-                    
-                                
-                    SizedBox(height: 15,),
-                        
-                    
-                    Platform.isAndroid ? Visibility(
-                      visible: !isHasEverSub,
-                      child: buildPackageCard(
-                        index: 0, 
-                        title: "navigation.monthly_30".tr(),  
-                        subtitle: "", 
-                        price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.introductoryPrice != null) ? "${_packeges![0].storeProduct.introductoryPrice!.priceString}" : "error",
-                        period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "NULL",
-                        isDiscount: true
-                      ),
-                    ) :
-                    Visibility(
-                      visible: !isHasEverSub,
-                      child: buildPackageCard(
-                        index: 0, 
-                        title: "navigation.monthly_30".tr(),  
-                        subtitle: "", 
-                        price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.discounts != null) ? "${_packeges![0].storeProduct.discounts![0].priceString}" : "error",
-                        period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
-                        isDiscount: true
-                      ),
-                    ),
-
-                    
-                    Visibility(
-                      visible: isHasEverSub,
-                      child: buildPackageCard(
-                        index: 2, 
-                        title: "navigation.monthly_30".tr(), 
-                        subtitle: "", 
-                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "error", 
-                        period: "", 
-                        isDiscount: false
-                      ),
-                    ),
-                                
-                    SizedBox(height: 15,),
-                                
-                    buildPackageCard(
-                      index: 1, 
-                      title: "navigation.weekly".tr(), 
-                      subtitle: "", 
-                      price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "error", 
-                      period: "",
-                      isDiscount: false
-                    ),
-
-
-                    //SizedBox(height: 10,),
-
-                    //Text("ABONELIK DURUMU : $isSub", style: TextStyle(color: Colors.white, fontSize: 22),),
-                    //Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),), 
-                    
-                                
-                    SafeArea(child: PulsAnimation(
-                      scaleFactor: 1.2,
-                      duration: Duration(seconds: 1),
-                      child: SizedBox(
-                        height: 60,
-                        width: 230,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                          onPressed: () {
-                          handlePurchase();
-                        }, child: Text("navigation.continue".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),)),
-                      ),
-                    )),
+        body: Stack(
+          
+          children: [
+        
+            SingleChildScrollView(
+              child: Column(
                 
-                    SizedBox(height: 10,),
-                                
-                                
-                  ],
-                ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator())),
-
-
-  
-                Platform.isIOS ? Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 6),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+              
+                  Stack(
                     children: [
-                      TextButton(onPressed: () async {
-
-                        final url = Uri.parse("https://sites.google.com/view/endlesfootball/ana-sayfa");
-                        await launchUrl(url, mode: LaunchMode.externalApplication);
-
-                      }, child: Text("Privacy Policy", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
-                      TextButton(onPressed: () async {
-
-                        final url = Uri.parse("https://www.apple.com/legal/internet-services/itunes/dev/stdeula/");
-                        await launchUrl(url, mode: LaunchMode.externalApplication);
-
-                      }, child: Text("User License Agreement", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
+                      Image.asset("assets/images/history/history.jpeg", width: double.maxFinite, height: MediaQuery.of(context).size.height * 0.3, fit: BoxFit.cover,),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: AlignmentGeometry.bottomCenter,
+                            end: AlignmentGeometry.topCenter,
+                            stops: [
+                              0,
+                              0.4,
+                            ],
+                            colors: [
+                              Color.fromRGBO(15, 27, 33, 1),
+                              Colors.transparent
+                            ]
+                          )
+                        ),
+                      )
                     ],
                   ),
-                ) : Container()
-            
-            
-              ],
-            ),
-          ),
+              
+              
+              
+                  !isLoading ? Column(
+                    
+                    children: [
+                                  
+                      Text("navigation.paywall_title".tr(), textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.bold),),
+                                  
+                      SizedBox(height: 20,),
+                      
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 20,
+                        children: [
+                          ContainerPayyWall(icon: Icons.document_scanner, label: "navigation.payWallContainer_1".tr()),
+                          ContainerPayyWall(icon: Icons.article_outlined, label: "navigation.payWallContainer_2".tr()),
+                          ContainerPayyWall(icon: Icons.payment, label: "navigation.payWallContainer_3".tr())
+                        ],
+                      ),
+      
+                      
+                                  
+                      SizedBox(height: 15,),
+                          
+                      
+                      Platform.isAndroid ? Visibility(
+                        visible: !isHasEverSub,
+                        child: buildPackageCard(
+                          index: 0, 
+                          title: "navigation.monthly_30".tr(),  
+                          subtitle: "", 
+                          price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.introductoryPrice != null) ? "${_packeges![0].storeProduct.introductoryPrice!.priceString}" : "error",
+                          period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "NULL",
+                          isDiscount: true
+                        ),
+                      ) :
+                      Visibility(
+                        visible: !isHasEverSub,
+                        child: buildPackageCard(
+                          index: 0, 
+                          title: "navigation.monthly_30".tr(),  
+                          subtitle: "", 
+                          price: (_packeges != null && _packeges!.isNotEmpty) && (_packeges![0].storeProduct.discounts != null) ? "${_packeges![0].storeProduct.discounts![0].priceString}" : "error",
+                          period: (_packeges != null && _packeges!.isNotEmpty) && !isHasEverSub ? "${_packeges![0].storeProduct.priceString}" : "${_packeges![0].storeProduct.priceString}",
+                          isDiscount: true
+                        ),
+                      ),
+      
+                      
+                      Visibility(
+                        visible: isHasEverSub,
+                        child: buildPackageCard(
+                          index: 2, 
+                          title: "navigation.monthly_30".tr(), 
+                          subtitle: "", 
+                          price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![2].storeProduct.priceString}" : "error", 
+                          period: "", 
+                          isDiscount: false
+                        ),
+                      ),
+                                  
+                      SizedBox(height: 15,),
+                                  
+                      buildPackageCard(
+                        index: 1, 
+                        title: "navigation.weekly".tr(), 
+                        subtitle: "", 
+                        price: (_packeges != null && _packeges!.isNotEmpty) ? "${_packeges![1].storeProduct.priceString}" : "error", 
+                        period: "",
+                        isDiscount: false
+                      ),
       
       
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
-              child: Align(
-                alignment: AlignmentGeometry.topLeft,
-                child: IconButton(onPressed: () {
-                  Navigator.of(context).pop();
-                  //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
-                }, icon: Icon(Icons.arrow_back_ios, size: 36, color: Colors.white,))
+                      //SizedBox(height: 10,),
+      
+                      //Text("ABONELIK DURUMU : $isSub", style: TextStyle(color: Colors.white, fontSize: 22),),
+                      //Text("HERHANGİ BİR ABONELİK OLMUŞMU : $isHasEverSub", style: TextStyle(color: Colors.white, fontSize: 18),), 
+                      
+                                  
+                      SafeArea(child: PulsAnimation(
+                        scaleFactor: 1.2,
+                        duration: Duration(seconds: 1),
+                        child: SizedBox(
+                          height: 60,
+                          width: 230,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                            onPressed: () {
+                            handlePurchase();
+                          }, child: Text("navigation.continue".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),)),
+                        ),
+                      )),
+                  
+                      SizedBox(height: 10,),
+                                  
+                                  
+                    ],
+                  ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator())),
+      
+      
+        
+                  Platform.isIOS ? Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 6),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(onPressed: () async {
+      
+                          final url = Uri.parse("https://sites.google.com/view/endlesfootball/ana-sayfa");
+                          await launchUrl(url, mode: LaunchMode.externalApplication);
+      
+                        }, child: Text("Privacy Policy", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
+                        TextButton(onPressed: () async {
+      
+                          final url = Uri.parse("https://www.apple.com/legal/internet-services/itunes/dev/stdeula/");
+                          await launchUrl(url, mode: LaunchMode.externalApplication);
+      
+                        }, child: Text("User License Agreement", style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white, fontSize: 16),)),
+                      ],
+                    ),
+                  ) : Container()
+              
+              
+                ],
               ),
             ),
-          ),
+        
+        
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
+                child: Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: IconButton(onPressed: () {
+                    Navigator.of(context).pop();
+                    //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+                  }, icon: Icon(Icons.arrow_back_ios, size: 36, color: Colors.white,))
+                ),
+              ),
+            ),
 
 
-          
 
-        ],
-      )
+            if (isProcessing) 
+              Container(
+                color: Colors.black.withAlpha(170),
+                child: Center(
+                  child: CircularProgressIndicator(color: Colors.white,),
+                ),
+              )
+      
+      
+            
+      
+          ],
+        )
+      ),
     );
   }
 

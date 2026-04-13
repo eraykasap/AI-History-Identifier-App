@@ -66,7 +66,61 @@ class ContentSavedCard extends StatelessWidget {
   });
 
   @override
+
   Widget build(BuildContext context) { 
+  return Card(
+    color: Theme.of(context).cardColor,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    child: LayoutBuilder(
+      builder: (context, constraints) {
+        final cardWidth = constraints.maxWidth;
+        final imageHeight = cardWidth * 0.8; 
+        
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  height: imageHeight,
+                  width: double.infinity,
+                  child: FutureBuilder<String>(
+                    future: imagePath,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Image.file(File(snapshot.data!), fit: BoxFit.cover);
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Text(
+                      allContent[0].title,
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width * 0.035),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
+}
+
+
+  /* Widget build(BuildContext context) { 
     return Card(
       color: Theme.of(context).cardColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(12)),
@@ -78,8 +132,8 @@ class ContentSavedCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
               child: SizedBox(
-                width: double.infinity,
                 height: 160,
+                width: double.infinity,
                 child: FutureBuilder<String>(
                   future: imagePath, 
                   builder: (context, snapshot) {
@@ -110,7 +164,9 @@ class ContentSavedCard extends StatelessWidget {
         ),
       )
     );
-  }
+  } */
+
+
 }
 
 
@@ -526,6 +582,9 @@ class CustomSearchDelegate extends SearchDelegate {
   
   ThemeData appBarTheme (BuildContext context) {
     return Theme.of(context).copyWith(
+      appBarTheme: AppBarTheme(
+        backgroundColor: Color.fromRGBO(237, 234, 227, 1),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: Theme.of(context).textTheme.labelMedium,
         focusedBorder: UnderlineInputBorder(
@@ -574,27 +633,30 @@ class CustomSearchDelegate extends SearchDelegate {
     return Consumer(
       
       builder: (context, ref, child) {
-        return GridView.builder(
-          itemCount: suggestions.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          childAspectRatio: 0.85
-        ), itemBuilder: (context, index) {
-          
-          final item = suggestions[index];
-          return GestureDetector(
-            onTap: () async {
-              ref.read(contentProvider.notifier).state = item.allContent;
-              ref.read(photoTakenProvider.notifier).state = await item.imageFile;
-              ref.read(onSaveProvider.notifier).state = item.isSave;
-              ref.read(saveIdProvider.notifier).state = item.Id;
-              Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
-            },
-            child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
-              
-          );
-        });
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: GridView.builder(
+            itemCount: suggestions.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            childAspectRatio: 0.85
+          ), itemBuilder: (context, index) {
+            
+            final item = suggestions[index];
+            return GestureDetector(
+              onTap: () async {
+                ref.read(contentProvider.notifier).state = item.allContent;
+                ref.read(photoTakenProvider.notifier).state = await item.imageFile;
+                ref.read(onSaveProvider.notifier).state = item.isSave;
+                ref.read(saveIdProvider.notifier).state = item.Id;
+                Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => DetaySayfasi()));
+              },
+              child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
+                
+            );
+          }),
+        );
       },
       
     );

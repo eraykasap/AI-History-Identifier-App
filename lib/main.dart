@@ -486,8 +486,8 @@ Widget bottomNavigationBar(int selectIndex, BuildContext context, WidgetRef ref,
     
                   // Profil butonu
                   NavItem(
-                    icon: Icons.person_outline,
-                    activeIcon: Icons.person_rounded,
+                    icon: Icons.bookmark_outline,
+                    activeIcon: Icons.bookmark_rounded,
                     label: "navigation.profil".tr(),
                     isSelected: selectIndex == 1,
                     onTap: () => onSelect(1),

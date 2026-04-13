@@ -16,7 +16,14 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+
+
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(237, 234, 227, 1),
+      body: SavedContentTab(),
+    );
+    
+    /* DefaultTabController(
       length: 2, 
       initialIndex: 0,
       child: Scaffold(
@@ -51,7 +58,9 @@ class ProfilePage extends StatelessWidget {
         ),
 
       )
-    );
+    ); */
+
+
   }
 }
 
@@ -146,52 +155,57 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
 
     var contentGridList = ref.watch(contentSaveProvider);
 
-    return Column(
-      children: [
-
-        SizedBox(height: 5,),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 25),
-              child: IconButton(onPressed: () {
-                searcItem(contentGridList);
-              }, icon: Icon(Icons.search, fontWeight: FontWeight.bold,color: Theme.of(context).iconTheme.color,))
-            ),
-          ],
-        ),        
-        
-        SizedBox(height: 5,),
-
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisExtent: 230,  mainAxisSpacing: 10), 
-              itemCount: contentGridList.length,
-              itemBuilder: (context, index) {
-                final item = contentGridList[index];
-                return GestureDetector(
-                  onTap: () async {
-                    ref.read(contentProvider.notifier).state = item.allContent;
-                    ref.read(photoTakenProvider.notifier).state = await item.imageFile;
-                    ref.read(onSaveProvider.notifier).state = item.isSave;
-                    ref.read(saveIdProvider.notifier).state = item.Id;
-                    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
+    return SafeArea(
+      child: Column(
+        children: [
+      
+          SizedBox(height: 5,),
+      
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 25),
+                child: IconButton(onPressed: () {
+                  searcItem(contentGridList);
+                }, icon: Icon(Icons.search, fontWeight: FontWeight.bold,color: Theme.of(context).iconTheme.color,))
+              ),
+            ],
+          ),        
+          
+          SizedBox(height: 15,),
+      
+          
+      
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: GridView.builder(
+                
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 0.9, mainAxisSpacing: 10), 
+                itemCount: contentGridList.length,
+                itemBuilder: (context, index) {
+                  final item = contentGridList[index];
+                  return GestureDetector(
+                    onTap: () async {
+                      ref.read(contentProvider.notifier).state = item.allContent;
+                      ref.read(photoTakenProvider.notifier).state = await item.imageFile;
+                      ref.read(onSaveProvider.notifier).state = item.isSave;
+                      ref.read(saveIdProvider.notifier).state = item.Id;
+                      Navigator.of(context).push(CupertinoPageRoute(builder: (context) => DetaySayfasi(itemIndex: index,)));
+                      
+                    },
+                    child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
                     
-                  },
-                  child: ContentSavedCard(imagePath: item.fullImagePath, allContent: item.allContent)
-                  
-                        
-                );
-              }
+                          
+                  );
+                }
+              ),
             ),
           ),
-        ),
-
-      ],
+      
+        ],
+      ),
     );
   }
 
@@ -201,6 +215,8 @@ class _SavedContentTabState extends ConsumerState<SavedContentTab> {
   searcItem (List<ContentSaveModel> list) {
     showSearch(context: context, delegate: CustomSearchDelegate(list));
   }
+
+  
 }
 
 
