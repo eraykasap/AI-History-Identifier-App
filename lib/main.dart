@@ -79,6 +79,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   var savedDay = Hive.box<int>("savedDay");
   var saveOnboard = Hive.box<bool>("saveOnboard");
 
+  late Upgrader _upgrader; //!
+
   List<dynamic> nearLocationHistory = []; 
 
   List<NearLatLng> nearLatLngList = [];
@@ -90,6 +92,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _upgrader = Upgrader(messages: LocalizedUpgraderMessages()); //!
 
     
 
@@ -263,6 +266,16 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
     
 
+    if (state == AppLifecycleState.resumed) { //!
+      Upgrader.clearSavedSettings().then((_) { //!
+        if (mounted) { //!
+          setState(() { //!
+            _upgrader = Upgrader(messages: LocalizedUpgraderMessages()); //!
+          }); //!
+        } //!
+      }); //!
+    } //!
+
     if (state == AppLifecycleState.inactive || state == AppLifecycleState.paused) {
       int value = ref.read(photoCounterProvider);
       box.put("photoCounter", value);
@@ -304,9 +317,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       darkTheme: darkTheme,
     
       home: UpgradeAlert(
-        upgrader: Upgrader(
-          messages: LocalizedUpgraderMessages()
-        ),
+        upgrader: _upgrader, //!
         dialogStyle: UpgradeDialogStyle.cupertino,
         barrierDismissible: false,
         showIgnore: false,
