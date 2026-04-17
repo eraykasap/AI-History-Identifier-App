@@ -127,13 +127,15 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
       bool success = await SubscriptionManager.purchasePackage(selectedpackage);
 
-      if (isSub == false) setState(() => isProcessing = true); //!
+      //print("-------------------------- SUCCESS DEĞERİ : $success -----------------------------------------");
+
+      //if (isSub == false) setState(() => isProcessing = true); //!
       
 
-      if (mounted) {
+      /* if (mounted) {
         setState(() => isProcessing = false);
         if (success) Navigator.of(context).pop(true);
-      }
+      } */
 
     }
     else {
@@ -317,8 +319,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                 child: Align(
                   alignment: AlignmentGeometry.topLeft,
                   child: IconButton(onPressed: () {
-                    Navigator.of(context).pop();
-                    //Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => MyApp()));
+                    //Navigator.of(context).pop();
+                    Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => BottomNavBarCustom()));
                   }, icon: Icon(Icons.arrow_back_ios, size: 36, color: Colors.white,))
                 ),
               ),
