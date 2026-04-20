@@ -131,6 +131,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
       //if (isSub == false) setState(() => isProcessing = true); //!
       
+      if (success) {
+        Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => BottomNavBarCustom()));
+      }
 
       /* if (mounted) {
         setState(() => isProcessing = false);

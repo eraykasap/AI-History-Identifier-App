@@ -247,10 +247,10 @@ class HomePage extends ConsumerWidget {
         return Column(
           children: [
             Dialog(
-              backgroundColor: Theme.of(context).cardColor,
+              backgroundColor: Color.fromRGBO(237, 234, 227, 1),
               child: Container(
-                width: 330,
-                height: 600,
+                width: MediaQuery.of(context).size.width * 0.7, //330,
+                height: MediaQuery.of(context).size.height * 0.5, //600,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   child: SingleChildScrollView(

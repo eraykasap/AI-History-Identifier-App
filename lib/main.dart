@@ -51,6 +51,7 @@ void main() async {
   await Hive.openBox<String>("themeModeSave");
   await Hive.openBox<int>("freePhotoTake");
   await Hive.openBox<int>("savedDay");
+  //await Hive.openBox<int>("savedDay02"); //!
   await Hive.openBox<bool>("saveOnboard");
   //await Hive.deleteBoxFromDisk("themeModeSave");
 
@@ -77,6 +78,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   var themeModeBox = Hive.box<String>("themeModeSave");
   var freePhotoTake = Hive.box<int>("freePhotoTake");
   var savedDay = Hive.box<int>("savedDay");
+  //var savedDay02 = Hive.box<int>("savedDay02");
   var saveOnboard = Hive.box<bool>("saveOnboard");
 
   late Upgrader _upgrader; //!
@@ -100,10 +102,14 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     initializeRevenueCat();
     
     getEventWikiPedia();
-    getWikiArticals();
+    
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       DailyLimitManager.getDateTime(ref);
+      var deger = await DailyLimitManager.getDateTime_02(ref);
+      if (deger) {
+        getWikiArticals();
+      }
     });
     
   }
@@ -243,6 +249,8 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     savedDay.isNotEmpty ? ref.read(savedDayProvider.notifier).state = savedDay.get("savedDay") ?? 0 : DateTime.now().day;
     //print("YENİ SAVED DAY : ${ref.read(savedDayProvider)}");
 
+    //savedDay02.isNotEmpty ? ref.read(savedDayProvider_02.notifier).state = savedDay.get("savedDay02") ?? 0 : DateTime.now().day; //!
+
     
     saveOnboard.isNotEmpty ? ref.read(onBoardPageProvider.notifier).state = saveOnboard.get("saveOnboard") ?? false : ref.read(onBoardPageProvider);
     //print("KAYDEDİLEN PROVİDER ONBOARD DEĞERİ ${ref.read(onBoardPageProvider)}");
@@ -288,6 +296,9 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
       var savedday = ref.read(savedDayProvider);
       savedDay.put("savedDay", savedday);
+
+      //var savedday02 = ref.read(savedDayProvider_02); //!
+      //savedDay02.put("savedDay", savedday02); //!
 
       var saveonBoardPage = ref.read(onBoardPageProvider);
       //print("KAYDEDİLEN ONBOARD DEĞERİ $saveonBoardPage");

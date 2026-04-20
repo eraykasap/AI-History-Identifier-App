@@ -42,6 +42,7 @@ final apiOperationsController = Provider<ApiOperations>((ref) {
 });
 
 final savedDayProvider = StateProvider<int>((ref) => 0);
+final savedDayProvider_02 = StateProvider<int>((ref) => 0);
 
 final saveFreePhotoTakeProvider = StateProvider<int>((ref) => 0);
 

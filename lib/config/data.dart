@@ -773,9 +773,33 @@ class DailyLimitManager {
       //print("YENI KAYDEDILEN GUN : ${ref.read(savedDayProvider)}");
     }
     
-    
+  }
+
+
+
+  static Future<bool> getDateTime_02(WidgetRef ref) async {
+
+    final toDay = DateTime.now().day;
+    final savedDay = ref.read(savedDayProvider_02);
+
+    //print("TODAY : $toDay");
+    //print("KAYDEDİLEN GÜN : $savedDay");
+
+    if (toDay > savedDay || savedDay > toDay) {
+
+      return true;
+      /* ref.read(saveFreePhotoTakeProvider.notifier).state = 0;
+      ref.read(savedDayProvider.notifier).state = toDay; */
+
+      //print("YENI KAYDEDILEN GUN : ${ref.read(savedDayProvider)}");
+    }
+    else {
+      return false;
+    }
     
   }
+
+
 
 }
 
