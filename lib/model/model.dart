@@ -54,7 +54,10 @@ class ContentSaveModel extends HiveObject {
   @HiveField(4)
   bool isSave = false;
 
-  ContentSaveModel({required this.allContent, required this.imagePath, required this.Id, required this.isSave});
+  @HiveField(5)
+  DateTime? savedAt = DateTime.now();
+
+  ContentSaveModel({required this.allContent, required this.imagePath, required this.Id, required this.isSave,}) : savedAt = DateTime.now();
 
   //File get image => File(imagePath);
 

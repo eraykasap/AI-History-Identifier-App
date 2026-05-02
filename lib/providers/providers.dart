@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:history_identifier/config/data.dart';
@@ -57,17 +58,18 @@ class ContentSaveNotifier extends StateNotifier<List<ContentSaveModel>> {
   final _box = Hive.box<ContentSaveModel>('savedContent');
 
   ContentSaveNotifier() : super([]) {
-    loadFromBox();
+    Future(() => loadFromBox());
   }
 
   Future<void> loadFromBox () async {
-    state = await _box.values.toList();
-    /* print("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
-    final values = await _box.values.toList();
-    for (var v in values) {
-      print("ID: ${v.Id} | imagePath: ${v.imagePath}");
-    }
-    state = values; */
+    //state = await _box.values.toList();
+    final values = _box.values.toList();
+    values.sort((a, b) {
+      final aTime = a.savedAt ?? DateTime(2000);
+      final bTime = b.savedAt ?? DateTime(2000);
+      return aTime.compareTo(bTime);
+    });
+    state = values;
   }
 
   //Hive.box<ContentSaveModel>('savedContent').values.toList()

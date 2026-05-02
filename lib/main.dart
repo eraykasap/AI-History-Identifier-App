@@ -47,6 +47,7 @@ void main() async {
   Hive.registerAdapter(ContentModelAdapter());
 
   await Hive.openBox<ContentSaveModel>('savedContent');
+  //await Hive.deleteBoxFromDisk("savedContent");
   await Hive.openBox<int>("photoCounter");
   await Hive.openBox<String>("themeModeSave");
   await Hive.openBox<int>("freePhotoTake");
@@ -98,13 +99,14 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
     
 
-    loadHiveBox();
+    
     initializeRevenueCat();
     
     getEventWikiPedia();
     
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      loadHiveBox();
       DailyLimitManager.getDateTime(ref);
       var deger = await DailyLimitManager.getDateTime_02(ref);
       if (deger) {

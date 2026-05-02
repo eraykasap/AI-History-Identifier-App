@@ -58,13 +58,13 @@ class ContentSaveModelAdapter extends TypeAdapter<ContentSaveModel> {
       imagePath: fields[2] as String,
       Id: fields[3] as String,
       isSave: fields[4] as bool,
-    );
+    )..savedAt = fields[5] as DateTime?;
   }
 
   @override
   void write(BinaryWriter writer, ContentSaveModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(1)
       ..write(obj.allContent)
       ..writeByte(2)
@@ -72,7 +72,9 @@ class ContentSaveModelAdapter extends TypeAdapter<ContentSaveModel> {
       ..writeByte(3)
       ..write(obj.Id)
       ..writeByte(4)
-      ..write(obj.isSave);
+      ..write(obj.isSave)
+      ..writeByte(5)
+      ..write(obj.savedAt);
   }
 
   @override
