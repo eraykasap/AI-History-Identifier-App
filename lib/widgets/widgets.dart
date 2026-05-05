@@ -433,21 +433,21 @@ class WikiArticalContendCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //width: 50,
-      height: 160,
+      //height: 160,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16)
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
           children: [
         
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(16),
               child: Container(
-                width: 135,
-                height: 135,
+                width: MediaQuery.of(context).size.width <= 450 ? MediaQuery.of(context).size.width * 0.28 : MediaQuery.of(context).size.width * 0.15,
+                height: MediaQuery.of(context).size.width <= 450 ? MediaQuery.of(context).size.width * 0.28 : MediaQuery.of(context).size.width * 0.15,
                 decoration: BoxDecoration(
                   //color: Colors.grey,
                   borderRadius: BorderRadius.circular(16)
@@ -480,48 +480,48 @@ class WikiArticalContendCard extends StatelessWidget {
         
             SizedBox(width: 10,),
         
-            Container(
-              height: 135,
-              width: 230,
-              //color: Colors.amber,
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                      
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20), overflow: TextOverflow.ellipsis, maxLines: 1,),
-                  ),
-                      
-                  SizedBox(height: 5,),
-                      
-                  Text(content, style: TextStyle(fontSize: 16), overflow: TextOverflow.ellipsis, maxLines: 2,),
-
-                  SizedBox(height: 5,),
-                      
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("navigation.oku".tr(),style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold, fontSize: 18)),
-                        SizedBox(width: 7,),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromRGBO(195, 150, 57, 1)
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Icon(Icons.arrow_forward, color: Colors.white, size: 15,),
-                          ),
-                        )
-                      ],
+            Expanded(
+              child: SizedBox(
+                height: 135,
+                child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                        
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20), overflow: TextOverflow.ellipsis, maxLines: 1,),
                     ),
-                  )
-                      
-                ],
+                        
+                    SizedBox(height: 5,),
+                        
+                    Text(content, style: TextStyle(fontSize: 16), overflow: TextOverflow.ellipsis, maxLines: 2,),
+                
+                    SizedBox(height: 5,),
+                        
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("navigation.oku".tr(),style: TextStyle(color: Color.fromRGBO(195, 150, 57, 1), fontWeight: FontWeight.bold, fontSize: 18)),
+                          SizedBox(width: 7,),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color.fromRGBO(195, 150, 57, 1)
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Icon(Icons.arrow_forward, color: Colors.white, size: 15,),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                        
+                  ],
+                ),
               ),
             )
         

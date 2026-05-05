@@ -269,7 +269,7 @@ class HomePage extends ConsumerWidget {
                               height: 200,
                               child: Center(child: CircularProgressIndicator()),
                             ),
-                            errorWidget: (context, url, error) => const SizedBox.shrink(), // hata olunca hiç gösterme
+                            errorWidget: (context, url, error) => const SizedBox.shrink(), 
                           ),
                         ),
                                 
