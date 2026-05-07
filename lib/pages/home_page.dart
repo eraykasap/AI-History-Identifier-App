@@ -399,7 +399,7 @@ class HomePage extends ConsumerWidget {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
         ),
-        width: MediaQuery.of(context).size.width <= 450 ? 350 : 450,
+        width: MediaQuery.of(context).size.width <= 450 ? 400 : 450,
         height: 130,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(14),
@@ -454,7 +454,7 @@ class HomePage extends ConsumerWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
       ),
-      width: MediaQuery.of(context).size.width <= 450 ? 350 : 450,
+      width: MediaQuery.of(context).size.width <= 450 ? 400 : 450,
       height: 130,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(14),
