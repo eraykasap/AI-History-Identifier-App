@@ -54,17 +54,19 @@ class HomePage extends ConsumerWidget {
           child: Column(
             spacing: 10, 
             children: [
-              const SizedBox(height: 15),
+              const SizedBox(height: 30),
 
-              topContainer(context),
+              //topContainer(context),
+
+              scannerContainer(context),
+
+              const SizedBox(height: 5,),
+
+              shareContainer(context),
 
               const SizedBox(height: 20,),
 
               historicalEventsListt(context, historyEvents),
-              
-              //Text(ref.watch(saveFreePhotoTakeProvider).toString()),
-
-              //Text(ref.watch(savedDayProvider).toString()),
 
               const SizedBox(height: 30,),
 
@@ -77,19 +79,9 @@ class HomePage extends ConsumerWidget {
 
               mapViewMuseum(context),
 
-              const SizedBox(height: 10,),
+              
 
-              //identifierCounter(),
-
-              const SizedBox(height: 20,),
-
-              //buildNearbyPlaces(nearLocationPlace)
-              Align(
-                alignment: AlignmentGeometry.centerLeft,
-                child: Text("navigation.kesfet".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)
-              ),
-
-              wikiArticlesNews(articlesAsync, context),
+              //wikiArticlesNews(articlesAsync, context),
 
               const SizedBox(height: 40,),
 
@@ -99,6 +91,8 @@ class HomePage extends ConsumerWidget {
       ),
     );
   }
+
+
 
   Widget historicalEventsListt(BuildContext context, List<HistoricalEvent> historyList) {
     return Column(
@@ -358,84 +352,153 @@ class HomePage extends ConsumerWidget {
   }
 
 
-  /* Widget buildNearbyPlaces(List<dynamic> rawData) {
-    // Gelen ham veriyi modele çeviriyoruz
-    List<NearHistoricalPlace> places = rawData.map((e) => NearHistoricalPlace.fromJson(e)).toList();
+  /* Widget scannerContainer (BuildContext context) {
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Text("Yakınındaki Tarihi Duraklar", 
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+    return Container(
+
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2)
+      ),
+
+      
+      width: MediaQuery.of(context).size.width <= 450 ? 350 : 450,
+      height: 130,
+
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+        
+            Icon(Icons.photo_camera, size: 40, color: Color.fromRGBO(195, 150, 57, 1),),
+
+            SizedBox(width: 25,),
+        
+            Text("navigation.scan".tr()),
+        
+            Spacer(),
+        
+            Image.asset("assets/images/history/statuess.png")
+        
+          ],
         ),
-        SizedBox(
-          height: 150, // Kartların yüksekliği
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: places.length,
-            itemBuilder: (context, index) {
-              final place = places[index];
-              return Container(
-                width: 160,
-                margin: const EdgeInsets.only(left: 16),
-                child: Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  child: InkWell(
-                    onTap: () => StaticClass.openInGoogleMaps(place.lat, place.lon, place.name), /* openMap(place.lat, place.lon), */ // Haritaya fırlat
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.museum_outlined, size: 40, color: Colors.brown),
-                          const SizedBox(height: 8),
-                          Text(
-                            place.name,
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            place.category.toUpperCase(),
-                            style: TextStyle(fontSize: 10, color: Colors.grey[600]),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
+      ),
     );
+
   } */
 
 
-  Widget wikiArticlesNews (List<WikiArticle> liste, BuildContext context) {
-
-    return liste.isNotEmpty ? SizedBox(
-      width: MediaQuery.of(context).size.width <= 400 ? MediaQuery.of(context).size.width : 400,
-      child: ListView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), itemCount: liste.length, itemBuilder: (context, index) {
-        final item = liste[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          child: GestureDetector(
-            onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ArticlesDetailPage(image: item.thumbnailUrl, title: item.title, content: item.content))),
-            child: WikiArticalContendCard(title: item.title, content: item.content, imageUrl: item.thumbnailUrl) /*WikiArticleCard(image: item.thumbnailUrl, title: item.title)*/
+  
+  Widget scannerContainer(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PhotoScannerPage()),),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
+        ),
+        width: MediaQuery.of(context).size.width <= 450 ? 350 : 450,
+        height: 130,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(14),
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+      
+              // Arka plan
+              Container(
+                color: Colors.white,
+                width: double.infinity,
+                height: 130,
+              ),
+      
+              // Sol içerik
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Center(
+                  child: Row(
+                    
+                    children: [
+                      Icon(Icons.photo_camera, size: 40, color: Color.fromRGBO(195, 150, 57, 1)),
+                      SizedBox(width: 25),
+                      Text("navigation.scan".tr(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    ],
+                  ),
+                ),
+              ),
+      
+              // Taşan görsel
+              Positioned(
+                right: 0,
+                top: -15,
+                child: Image.asset(
+                  "assets/images/history/statuess.png",
+                  height: 160,
+                ),
+              ),
+      
+            ],
           ),
-        );
-      }),
-    ) : SizedBox(width: 50, height: 50, child: Center(child: CircularProgressIndicator(color: Color.fromRGBO(195, 150, 57, 1),)));
-
+        ),
+      ),
+    );
   }
 
+
+
+  Widget shareContainer(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
+      ),
+      width: MediaQuery.of(context).size.width <= 450 ? 350 : 450,
+      height: 130,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(14),
+        child: Stack(
+          clipBehavior: Clip.hardEdge,
+          children: [
+
+            // Arka plan
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              height: 130,
+            ),
+
+            // Sol içerik
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Center(
+                child: Row(
+                  
+                  children: [
+                    Icon(Icons.share, size: 40, color: Color.fromRGBO(195, 150, 57, 1)),
+                    SizedBox(width: 25),
+                    Text("navigation.share".tr(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                  ],
+                ),
+              ),
+            ),
+
+            // Taşan görsel
+            Positioned(
+              right: 0,
+              top: -15,
+              child: Image.asset(
+                "assets/images/history/share.png",
+                height: 160,
+              ),
+            ),
+
+          ],
+        ),
+      ),
+    );
+  }
 
 
 

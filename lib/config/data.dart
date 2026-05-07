@@ -142,7 +142,7 @@ class WikipediaHistoryService {
 }
 
 
-class WikiArticleService {
+/* class WikiArticleService {
 
   static const Map<String, List<String>> _categoriesByLang = {
     'tr': [
@@ -481,8 +481,168 @@ class WikiArticleService {
     debugPrint('🎯 Toplam makale: ${articles.length}');
     return articles;
   }
+} */
+
+
+/* class WikiArticleService {
+  static const Map<String, String> _supportedLanguages = {
+    'tr': 'tr', 'en': 'en', 'de': 'de', 'fr': 'fr',
+    'es': 'es', 'it': 'it', 'ja': 'ja', 'ko': 'ko',
+    'pt': 'pt', 'ru': 'ru', 'ar': 'ar', 'hi': 'hi', 'zh': 'zh',
+  };
+
+  static const Map<String, List<String>> _searchKeywords = {
+    'tr': ['Osmanlı İmparatorluğu', 'Antik Roma', 'Mısır uygarlığı', 'Bizans', 'Orta Çağ', 'Arkeoloji', 'Antik Yunan', 'Selçuklu'],
+    'en': ['Ancient Rome', 'Egyptian civilization', 'Byzantine Empire', 'Medieval history', 'Archaeology', 'Ancient Greece', 'Ottoman Empire', 'Viking history'],
+    'de': ['Römisches Reich', 'Altes Ägypten', 'Mittelalter', 'Archäologie', 'Antikes Griechenland', 'Osmanisches Reich', 'Byzantinisches Reich', 'Wikinger'],
+    'fr': ['Empire romain', 'Égypte ancienne', 'Moyen Âge', 'Archéologie', 'Grèce antique', 'Empire ottoman', 'Empire byzantin', 'Vikings'],
+    'es': ['Imperio romano', 'Egipto antiguo', 'Edad Media', 'Arqueología', 'Grecia antigua', 'Imperio otomano', 'Imperio bizantino', 'Vikingos'],
+    'it': ['Impero romano', 'Antico Egitto', 'Medioevo', 'Archeologia', 'Grecia antica', 'Impero ottomano', 'Impero bizantino', 'Vichinghi'],
+    'ja': ['古代ローマ', '古代エジプト', '中世', '考古学', '古代ギリシャ', 'オスマン帝国', 'ビザンツ帝国', 'ヴァイキング'],
+    'ko': ['고대 로마', '고대 이집트', '중세', '고고학', '고대 그리스', '오스만 제국', '비잔틴 제국', '바이킹'],
+    'pt': ['Império romano', 'Egito antigo', 'Idade Média', 'Arqueologia', 'Grécia antiga', 'Império Otomano', 'Império Bizantino', 'Vikings'],
+    'ru': ['Древний Рим', 'Древний Египет', 'Средневековье', 'Археология', 'Древняя Греция', 'Османская империя', 'Византийская империя', 'Викинги'],
+    'ar': ['روما القديمة', 'مصر القديمة', 'العصور الوسطى', 'علم الآثار', 'اليونان القديمة', 'الدولة العثمانية', 'الإمبراطورية البيزنطية'],
+    'hi': ['प्राचीन रोम', 'प्राचीन मिस्र', 'मध्यकाल', 'पुरातत्व', 'प्राचीन यूनान', 'उस्मानी साम्राज्य', 'बीजान्टिन साम्राज्य'],
+    'zh': ['古罗马', '古埃及', '中世纪', '考古学', '古希腊', '奥斯曼帝国', '拜占庭帝国', '维京人'],
+  };
+
+  static String _getLanguageCode() {
+    final locale = ui.PlatformDispatcher.instance.locale;
+    return _supportedLanguages[locale.languageCode] ?? 'en';
+  }
+
+  static Future<WikiArticle?> _fetchArticleBySearch(
+  String lang,
+  String keyword,
+) async {
+  try {
+    final searchUri = Uri.parse(
+      'https://$lang.wikipedia.org/w/api.php'
+      '?action=query'
+      '&list=search'
+      '&srsearch=${Uri.encodeComponent(keyword)}'
+      '&srlimit=10'
+      '&format=json'
+      '&origin=*',
+    );
+
+    var searchResp = await http.get(
+      searchUri,
+      headers: {'User-Agent': 'HistoryLens/1.0 (Flutter app)'},
+    ).timeout(const Duration(seconds: 8));
+
+    // 429 gelirse 2 saniye bekle ve bir kez daha dene
+    if (searchResp.statusCode == 429) {
+      debugPrint('⏳ 429 alındı, bekleniyor... ($keyword)');
+      await Future.delayed(const Duration(seconds: 2));
+      searchResp = await http.get(
+        searchUri,
+        headers: {'User-Agent': 'HistoryLens/1.0 (Flutter app)'},
+      ).timeout(const Duration(seconds: 8));
+    }
+
+    if (searchResp.statusCode != 200) {
+      debugPrint('❌ Search status: ${searchResp.statusCode} ($keyword)');
+      return null;
+    }
+
+    final searchData = jsonDecode(searchResp.body);
+    final results = searchData['query']?['search'] as List?;
+    if (results == null || results.isEmpty) return null;
+
+    final random = Random();
+    final picked = results[random.nextInt(results.length)];
+    final pageId = picked['pageid'] as int;
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    final articleUri = Uri.parse(
+      'https://$lang.wikipedia.org/w/api.php'
+      '?action=query'
+      '&pageids=$pageId'
+      '&prop=extracts|pageimages'
+      '&exintro=true'
+      '&explaintext=true'
+      '&pithumbsize=400'
+      '&format=json'
+      '&origin=*',
+    );
+
+    final articleResp = await http.get(
+      articleUri,
+      headers: {'User-Agent': 'HistoryLens/1.0 (Flutter app)'},
+    ).timeout(const Duration(seconds: 8));
+
+    if (articleResp.statusCode != 200) {
+      debugPrint('❌ Article status: ${articleResp.statusCode} ($keyword)');
+      return null;
+    }
+
+    final articleData = jsonDecode(articleResp.body);
+    final pages = articleData['query']?['pages'] as Map<String, dynamic>?;
+    if (pages == null) return null;
+
+    final page = pages.values.first;
+    final title = page['title']?.toString() ?? '';
+    final content = page['extract']?.toString().trim() ?? '';
+    final thumbnailUrl = page['thumbnail']?['source'] as String?;
+
+    if (content.isEmpty || thumbnailUrl == null) {
+      debugPrint('⚠️ Thumbnail veya içerik yok: $title');
+      return null;
+    }
+
+    debugPrint('✅ Makale geldi: $title');
+    return WikiArticle(
+      title: title,
+      content: content,
+      thumbnailUrl: thumbnailUrl,
+    );
+  } catch (e) {
+    debugPrint('❌ fetchArticleBySearch hata ($keyword): $e');
+    return null;
+  }
 }
 
+  static Future<List<WikiArticle>> _fetchArticlesForLang(String lang) async {
+  final keywords = List.of(_searchKeywords[lang] ?? _searchKeywords['en']!)
+    ..shuffle();
+
+  final articles = <WikiArticle>[];
+
+  for (final keyword in keywords) {
+    if (articles.length >= 8) break;
+
+    final article = await _fetchArticleBySearch(lang, keyword);
+    if (article != null) {
+      articles.add(article);
+    }
+
+    // 800ms — 429'dan kaçınmak için
+    await Future.delayed(const Duration(milliseconds: 800));
+  }
+
+  return articles;
+}
+
+  static Future<List<WikiArticle>> fetchHistoryArticles() async {
+    final lang = _getLanguageCode();
+    debugPrint('🌍 Dil: $lang');
+
+    List<WikiArticle> articles = await _fetchArticlesForLang(lang);
+    debugPrint('📦 Cihaz dilinde makale: ${articles.length}');
+
+    if (articles.length < 5 && lang != 'en') {
+      debugPrint('🔄 Yetersiz makale, EN\'e geçiliyor');
+      final enArticles = await _fetchArticlesForLang('en');
+      articles.addAll(enArticles);
+    }
+
+    debugPrint('🎯 Toplam makale: ${articles.length}');
+    return articles.take(8).toList();
+  }
+} */
 
 
 

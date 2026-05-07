@@ -108,93 +108,14 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       loadHiveBox();
       DailyLimitManager.getDateTime(ref);
-      var deger = await DailyLimitManager.getDateTime_02(ref);
-      if (deger) {
-        getWikiArticals();
-      }
     });
     
   }
 
 
-  /* Future<void> fetchhistoricalPlace () async {
+  
 
-    try {
-      Position position = await ApiOperations.getUserLatLang();
-      print("!!!!!!!!! KONUM ALINDI !!!!!!!!!!: ${position.latitude}, ${position.longitude}");
-      nearLocationHistory = await getNearbyHistoricalPlaces(position.latitude, position.longitude);
-      print("!!!!!!!!!! ${nearLocationHistory.length} !!!!!!!!!!"); 
-      ref.read(nearHistoryPlace.notifier).state = nearLocationHistory;
-      
-
-      List<NearHistoricalPlace> places = nearLocationHistory.map((e) => NearHistoricalPlace.fromJson(e)).toList();
-
-
-
-      for (var element in places) {
-        //nearLatLngList.add(NearLatLng(lat: element.lat, lng: element.lon));
-        ref.read(nearLatLngPlace.notifier).state.add(NearLatLng(lat: element.lat, lng: element.lon, name: element.name));
-        //print("!!!!!!!!!!!!!!!!!!!!!!!!! ${ref.read(nearLatLngPlace).length} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      }
-
-
-
-    } catch (e) {
-      print("!!!!! HATA !!!!! : $e");
-    }
-
-  }  */
-
-  /* Future<List<dynamic>> getNearbyHistoricalPlaces (double lat, double lng) async {
-
-    const int radius = 50000;
-
-    final query = '''
-    [out:json][timeout:25];
-    (
-      node["tourism"~"museum"](around:$radius, $lat, $lng);
-      
-      node["historic"](around:$radius, $lat, $lng);
-      
-      
-    );
-    out center; ''';
-
-    final url = Uri.parse("https://overpass-api.de/api/interpreter");
-    //final url = Uri.parse("https://overpass.kumi.systems/api/interpreter");
-
-    try {
-
-      final response = await http.post(
-        url,
-        body: {'data': query},
-        headers: {
-          'User-Agent': 'History Identifier/1.0', // 
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      );
-
-      if (response.statusCode == 200) {
-        final data = json.decode(utf8.decode(response.bodyBytes));
-        return data['elements'] ?? [];
-      }
-      else {
-        print("!!!!! API Hatası !!!!! : ${response.statusCode}");
-        return [];
-      }
-      
-    } catch (e) {
-
-      print("!!!!! Bağlantı Hatası !!!!! : $e");
-      return [];
-
-    }
-
-
-    
-
-  } */
-
+  
   
   Future<void> getEventWikiPedia () async {
 
@@ -216,14 +137,14 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   }
 
 
-  Future<void> getWikiArticals () async {
+  /* Future<void> getWikiArticals () async {
 
     final articles = await WikiArticleService.fetchHistoryArticles();
     ref.read(wikiArticlesProvider.notifier).state = articles;
 
     print("!!!!!!!!!!!!!!!!!!!!!!!!!! toplam makale : ${articles.length} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-  }
+  } */
 
 
 
