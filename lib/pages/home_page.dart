@@ -54,7 +54,12 @@ class HomePage extends ConsumerWidget {
           child: Column(
             spacing: 10, 
             children: [
-              const SizedBox(height: 30),
+
+              const SizedBox(height: 10),
+
+              payWallButton(),
+
+              const SizedBox(height: 10),
 
               //topContainer(context),
 
@@ -90,6 +95,40 @@ class HomePage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+
+  Widget payWallButton() {
+
+    return Container(
+      width: 300,
+      height: 60,
+      decoration: BoxDecoration(
+        //color: Color.fromRGBO(175, 110, 68, 1),
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(175, 110, 68, 1),
+            Color.fromRGBO(233, 179, 68, 1)
+          ],
+          begin: AlignmentGeometry.centerLeft,
+          end: AlignmentGeometry.centerRight
+        )
+      ),
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("assets/images/icon/star.png", scale: 20,),
+          SizedBox(width: 10,),
+          Text("navigation.premium".tr(), style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),),
+          
+        ],
+
+      ),
+
+    );
+
   }
 
 
