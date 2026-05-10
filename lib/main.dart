@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:history_identifier/config/data.dart';
 import 'package:history_identifier/model/model.dart';
@@ -135,7 +135,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     }
 
   }
-
+  
 
   /* Future<void> getWikiArticals () async {
 
@@ -149,10 +149,15 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
 
   Future<void> initializeRevenueCat() async {
+
+    
+
     final apiKey = Platform.isAndroid ? "goog_vMhnSxifPOsRTWyMLofGZZKPRuv" : "appl_aEwBKMUYjJIaEUdhbYwXuvPFWqf";
     await Purchases.configure(PurchasesConfiguration(apiKey));
 
     ref.read(isCustomerSubProvider.notifier).state = await SubscriptionManager.isUserSubscribed();
+    
+    
 
     //print("ABONELİK DURUMU : ${ref.read(isCustomerSubProvider)}");
   }

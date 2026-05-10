@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
+//import 'package:geolocator/geolocator.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:history_identifier/model/model.dart';
 import 'package:history_identifier/providers/providers.dart';
@@ -784,7 +784,7 @@ class ApiOperations {
   }
 
 
-  static Future<Position> getUserLatLang() async {
+  /* static Future<Position> getUserLatLang() async {
 
     bool servicesEnabled;
     LocationPermission permission;
@@ -809,7 +809,7 @@ class ApiOperations {
 
     return await Geolocator.getCurrentPosition();
 
-  }
+  } */
 
 
 }
