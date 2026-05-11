@@ -16,7 +16,15 @@ import 'package:share_plus/share_plus.dart';
 
 
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
+
+  HomePage({super.key});
+
+  @override
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
 
   final List<List<String>> historyInfo = [
     StaticContentkalelerList.history_info_1,
@@ -31,12 +39,33 @@ class HomePage extends ConsumerWidget {
     StaticContentkalelerList.history_info_10,
   ];
 
-  
+  bool customerSubInfo = false;
+  //bool _subCheckDone = false;
 
-  HomePage({super.key});
+
+  /* @override
+  void initState() {
+    
+    super.initState();
+
+    customerSubCheck();
+
+  } */
+
+
+  /* void customerSubCheck () async {
+
+    final result = await SubscriptionManager.isUserSubscribed();
+    setState(() {
+      customerSubInfo = result;
+      _subCheckDone = true;
+    });
+
+  } */
+
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
 
     //var freephototake = ref.watch(saveFreePhotoTakeProvider);
 
@@ -45,6 +74,8 @@ class HomePage extends ConsumerWidget {
     var historyEvents = ref.watch(historicalEventsProvider);
 
     var articlesAsync = ref.watch(wikiArticlesProvider);
+
+    
 
 
     return SafeArea(
@@ -57,7 +88,7 @@ class HomePage extends ConsumerWidget {
 
               const SizedBox(height: 10),
 
-              payWallButton(),
+              payWallButton(context),
 
               const SizedBox(height: 10),
 
@@ -98,35 +129,38 @@ class HomePage extends ConsumerWidget {
   }
 
 
-  Widget payWallButton() {
+  Widget payWallButton(BuildContext context) {
 
-    return Container(
-      width: 300,
-      height: 60,
-      decoration: BoxDecoration(
-        //color: Color.fromRGBO(175, 110, 68, 1),
-        borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(
-          colors: [
-            Color.fromRGBO(175, 110, 68, 1),
-            Color.fromRGBO(233, 179, 68, 1)
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (Context) => PayWallPage())),
+      child: Container(
+        width: MediaQuery.of(context).size.width <= 450 ? 300 : 300,
+        height: 60,
+        decoration: BoxDecoration(
+          //color: Color.fromRGBO(175, 110, 68, 1),
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(175, 110, 68, 1),
+              Color.fromRGBO(233, 179, 68, 1)
+            ],
+            begin: AlignmentGeometry.centerLeft,
+            end: AlignmentGeometry.centerRight
+          )
+        ),
+      
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/images/icon/star.png", scale: 25,),
+            SizedBox(width: 10,),
+            Text("navigation.premium".tr(), style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),),
+            
           ],
-          begin: AlignmentGeometry.centerLeft,
-          end: AlignmentGeometry.centerRight
-        )
+      
+        ),
+      
       ),
-
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset("assets/images/icon/star.png", scale: 20,),
-          SizedBox(width: 10,),
-          Text("navigation.premium".tr(), style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),),
-          
-        ],
-
-      ),
-
     );
 
   }
@@ -139,7 +173,6 @@ class HomePage extends ConsumerWidget {
       children: [
         const SizedBox(height: 15),
         Text("navigation.kaleler".tr(), style: Theme.of(context).textTheme.headlineLarge,),
-        const SizedBox(height: 15),
         SizedBox(
           height: 230,
           width: MediaQuery.of(context).size.width,

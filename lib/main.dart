@@ -287,6 +287,8 @@ class BottomNavBarCustom extends ConsumerStatefulWidget {
 class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
 
 
+  static bool _subscriptionCheckDone = false;
+
   int selectedIndex = 0;
   bool version = true;
   
@@ -304,6 +306,16 @@ class _BottomNavBarCustomState extends ConsumerState<BottomNavBarCustom> {
     homePage = HomePage();
     profilePage = ProfilePage();
     allPages = [homePage, profilePage];
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (_subscriptionCheckDone) return;
+      _subscriptionCheckDone = true;
+
+      final isSubscribed = await SubscriptionManager.isUserSubscribed();
+      if (!isSubscribed && mounted) {
+        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PayWallPage()),);
+      }
+    });
 
     //versionControl();
 
