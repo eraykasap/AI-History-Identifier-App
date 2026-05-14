@@ -40,36 +40,18 @@ class _HomePageState extends ConsumerState<HomePage> {
   ];
 
   bool customerSubInfo = false;
-  //bool _subCheckDone = false;
+  
 
 
-  /* @override
-  void initState() {
-    
-    super.initState();
-
-    customerSubCheck();
-
-  } */
-
-
-  /* void customerSubCheck () async {
-
-    final result = await SubscriptionManager.isUserSubscribed();
-    setState(() {
-      customerSubInfo = result;
-      _subCheckDone = true;
-    });
-
-  } */
+  
 
 
   @override
   Widget build(BuildContext context) {
 
-    //var freephototake = ref.watch(saveFreePhotoTakeProvider);
-
-    //var nearLocationPlace = ref.watch(nearHistoryPlace);
+    /* var freephototake = ref.watch(saveFreePhotoTakeProvider);
+    var daySave = ref.watch(savedDayProvider); */
+  
 
     var historyEvents = ref.watch(historicalEventsProvider);
 
@@ -90,9 +72,12 @@ class _HomePageState extends ConsumerState<HomePage> {
 
               payWallButton(context),
 
+              //Text("$freephototake"),
+              //Text("$daySave"),
+
               const SizedBox(height: 10),
 
-              //topContainer(context),
+              
 
               scannerContainer(context),
 
@@ -106,7 +91,6 @@ class _HomePageState extends ConsumerState<HomePage> {
 
               const SizedBox(height: 30,),
 
-              //SparkleLoader(),
 
               Align(
                 alignment: AlignmentGeometry.centerLeft,

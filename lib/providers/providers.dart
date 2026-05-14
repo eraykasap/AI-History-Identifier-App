@@ -16,9 +16,6 @@ final isCustomerSubProvider = StateProvider<bool>((ref) => false);
 
 final contentProvider = StateProvider<List<ContentModel>>((ref) => []);
 
-//final nearHistoryPlace = StateProvider<List<dynamic>>((ref) => []);
-
-//final nearLatLngPlace = StateProvider<List<NearLatLng>>((ref) => []);
 
 final historicalEventsProvider = StateProvider<List<HistoricalEvent>>((ref) => []);
 
