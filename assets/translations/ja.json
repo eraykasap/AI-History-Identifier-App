@@ -34,6 +34,9 @@
         "weekly" : "週額",
         "continue" : "続ける",
         "paywall_title" : "歴史の隠された\n秘密を解き明かす",
+        "restoreTrue": "サブスクリプションが復元されました",
+    "restoreFalse": "現在のサブスクリプションがありません",
+    "restoreBtn": "購入を復元する",
 
         "moreDetails" : "詳細情報",
         "onboardbutton_text_1" : "次へ",

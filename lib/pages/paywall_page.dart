@@ -280,6 +280,16 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
                           }, child: Text("navigation.continue".tr(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),)),
                         ),
                       )),
+
+                      Platform.isIOS ? TextButton(onPressed: () async {
+                        var restoreSub = await SubscriptionManager.restorePurchases();
+                        
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.white, duration: Duration(seconds: 2), 
+                        content: Text(restoreSub ? "navigation.restoreTrue".tr() : "navigation.restoreFalse".tr() ,style: TextStyle(color: Colors.black),)));
+
+                      }, 
+                        child: Text("navigation.restoreBtn".tr(), style: TextStyle(decoration: TextDecoration.underline, decorationColor: Colors.white),)
+                      ) : Container(),
                   
                       SizedBox(height: 10,),
                                   
@@ -451,5 +461,8 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
 
   }
 
+
+  
+ 
 
 }

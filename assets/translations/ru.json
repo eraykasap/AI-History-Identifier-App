@@ -34,6 +34,9 @@
         "weekly" : "Еженедельно",
         "continue" : "продолжить",
         "paywall_title" : "Раскройте скрытые \nсекреты истории",
+        "restoreTrue": "Подписка восстановлена",
+    "restoreFalse": "У вас нет активной подписки",
+    "restoreBtn": "Восстановить покупки",
 
         "moreDetails" : "Подробнее",
         "onboardbutton_text_1" : "Далее",

@@ -34,6 +34,9 @@
         "weekly" : "Wöchentlich",
         "continue" : "weiter",
         "paywall_title" : "Entdecken Sie die \nverborgenen Geheimnisse der Geschichte",
+        "restoreTrue": "Abonnement wiederhergestellt",
+    "restoreFalse": "Sie haben kein aktives Abonnement",
+    "restoreBtn": "Käufe wiederherstellen",
 
         "moreDetails" : "Weitere Details",
         "onboardbutton_text_1" : "Weiter",

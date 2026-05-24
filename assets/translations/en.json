@@ -32,6 +32,9 @@
         "weekly" : "Weekly",
         "continue" : "continue",
         "paywall_title" : "Unlock History's \nHidden Secrets",
+        "restoreTrue": "Subscription restored",
+    "restoreFalse": "You have no active subscription",
+    "restoreBtn": "Restore Purchases",
 
         "moreDetails" : "More Details",
         "onboardbutton_text_1" : "Next",

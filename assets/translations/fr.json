@@ -34,6 +34,9 @@
         "weekly" : "Hebdomadaire",
         "continue" : "continuer",
         "paywall_title" : "Dévoilez les secrets \ncachés de l'histoire",
+        "restoreTrue": "Abonnement restauré",
+    "restoreFalse": "Vous n'avez pas d'abonnement actif",
+    "restoreBtn": "Restaurer les achats",
 
         "moreDetails" : "Plus de détails",
         "onboardbutton_text_1" : "Suivant",

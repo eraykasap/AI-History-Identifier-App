@@ -32,6 +32,9 @@
         "weekly" : "Haftalık",
         "continue" : "devam et",
         "paywall_title" : "Tarihin Gizli \nSırlarını Keşfedin",
+        "restoreTrue" : "Abonelik geri yüklendi",
+"restoreFalse" : "Mevcut bir aboneliğiniz yok",
+"restoreBtn": "Satın alınanları geri yükle",
 
         "moreDetails" : "Daha Fazla Detay", 
         "onboardbutton_text_1" : "İleri",

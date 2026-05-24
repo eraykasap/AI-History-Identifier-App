@@ -34,6 +34,9 @@
         "weekly" : "Tygodniowo",
         "continue" : "kontynuuj",
         "paywall_title" : "Odkryj ukryte\nsekrety historii",
+        "restoreTrue": "Subskrypcja przywrócona",
+    "restoreFalse": "Nie masz aktywnej subskrypcji",
+    "restoreBtn": "Przywróć zakupy",
 
         "moreDetails" : "Więcej szczegółów",
         "onboardbutton_text_1" : "Dalej",

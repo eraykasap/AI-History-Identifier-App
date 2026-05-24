@@ -34,6 +34,9 @@
         "weekly" : "Settimanale",
         "continue" : "continua",
         "paywall_title" : "Svela i segreti\nnascosti della storia",
+        "restoreTrue": "Abbonamento ripristinato",
+    "restoreFalse": "Non hai un abbonamento attivo",
+    "restoreBtn": "Ripristina acquisti",
 
         "moreDetails" : "Maggiori dettagli",
         "onboardbutton_text_1" : "Avanti",

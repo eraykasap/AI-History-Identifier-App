@@ -33,6 +33,9 @@
         "weekly" : "أسبوعياً",
         "continue" : "متابعة",
         "paywall_title" : "اكتشف أسرار \nالتاريخ الخفية",
+        "restoreTrue": "تم استعادة الاشتراك",
+    "restoreFalse": "ليس لديك اشتراك حالي",
+    "restoreBtn" : "استعادة المشتريات",
 
         "moreDetails" : "المزيد من التفاصيل",
         "onboardbutton_text_1" : "التالي",
