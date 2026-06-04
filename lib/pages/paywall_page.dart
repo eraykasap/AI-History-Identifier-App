@@ -21,7 +21,7 @@ class PayWallPage extends StatefulWidget {
 class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStateMixin {
 
   List<Package>? _packeges = [];
-  int selectedIndex = 0;
+  int selectedIndex = 2;
   bool isLoading = true;
   bool isSub = false;
   bool isHasEverSub = false;
@@ -65,6 +65,7 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
       else {
           selectedIndex = 0;
       }
+     //selectedIndex = 1;
 
     });
 
@@ -77,9 +78,9 @@ class _PayWallPageState extends State<PayWallPage> with SingleTickerProviderStat
     final hasEverSub = await SubscriptionManager.hasEverSubscribed();
     
     setState(() {
-     /*  if (hasEverSub) {
+      if (hasEverSub) {
         selectedIndex = 2;
-      } */
+      }
       isSub = subscriptionStatus;
       isHasEverSub = hasEverSub;
     });
