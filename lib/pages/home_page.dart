@@ -511,12 +511,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         const playStoreLink = 'https://play.google.com/store/apps/details?id=com.history_identifier';
         SharePlus.instance.share(
           ShareParams(
-            text: 'navigation.shareText'.tr(
-              namedArgs: {
-                'appStore': appStoreLink,
-                'playStore': playStoreLink,
-              },
-            ),
+            text:  """iOS: $appStoreLink\n\nAndroid: $playStoreLink""",
           ),
         );
       },
