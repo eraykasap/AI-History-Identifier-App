@@ -35,8 +35,9 @@
         "continue" : "continua",
         "paywall_title" : "Svela i segreti\nnascosti della storia",
         "restoreTrue": "Abbonamento ripristinato",
-    "restoreFalse": "Non hai un abbonamento attivo",
-    "restoreBtn": "Ripristina acquisti",
+        "restoreFalse": "Non hai un abbonamento attivo",
+        "restoreBtn": "Ripristina acquisti",
+        "shareText": "Scopri subito l'identificatore storico",
 
         "moreDetails" : "Maggiori dettagli",
         "onboardbutton_text_1" : "Avanti",

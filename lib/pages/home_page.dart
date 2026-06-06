@@ -505,52 +505,68 @@ class _HomePageState extends ConsumerState<HomePage> {
 
 
   Widget shareContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
-      ),
-      width: MediaQuery.of(context).size.width <= 450 ? 400 : 450,
-      height: 130,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(14),
-        child: Stack(
-          clipBehavior: Clip.hardEdge,
-          children: [
-
-            // Arka plan
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: 130,
+    return GestureDetector(
+      onTap: () {
+        const appStoreLink = 'https://apps.apple.com/us/app/history-lens-ai-identifier/id6757669028';
+        const playStoreLink = 'https://play.google.com/store/apps/details?id=com.history_identifier';
+        SharePlus.instance.share(
+          ShareParams(
+            text: 'navigation.shareText'.tr(
+              namedArgs: {
+                'appStore': appStoreLink,
+                'playStore': playStoreLink,
+              },
             ),
-
-            // Sol içerik
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Center(
-                child: Row(
-                  
-                  children: [
-                    Icon(Icons.share, size: 40, color: Color.fromRGBO(195, 150, 57, 1)),
-                    SizedBox(width: 25),
-                    Text("navigation.share".tr(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                  ],
+          ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Color.fromRGBO(195, 150, 57, 1), width: 2),
+        ),
+        width: MediaQuery.of(context).size.width <= 450 ? 400 : 450,
+        height: 130,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(14),
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+      
+              // Arka plan
+              Container(
+                color: Colors.white,
+                width: double.infinity,
+                height: 130,
+              ),
+      
+              // Sol içerik
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Center(
+                  child: Row(
+                    
+                    children: [
+                      Icon(Icons.share, size: 40, color: Color.fromRGBO(195, 150, 57, 1)),
+                      SizedBox(width: 25),
+                      Text("navigation.share".tr(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            // Taşan görsel
-            Positioned(
-              right: 0,
-              top: -15,
-              child: Image.asset(
-                "assets/images/history/share.png",
-                height: 160,
+      
+              // Taşan görsel
+              Positioned(
+                right: 0,
+                top: -15,
+                child: Image.asset(
+                  "assets/images/history/share.png",
+                  height: 160,
+                ),
               ),
-            ),
-
-          ],
+      
+            ],
+          ),
         ),
       ),
     );

@@ -35,8 +35,9 @@
         "continue" : "kontynuuj",
         "paywall_title" : "Odkryj ukryte\nsekrety historii",
         "restoreTrue": "Subskrypcja przywrócona",
-    "restoreFalse": "Nie masz aktywnej subskrypcji",
-    "restoreBtn": "Przywróć zakupy",
+        "restoreFalse": "Nie masz aktywnej subskrypcji",
+        "restoreBtn": "Przywróć zakupy",
+        "shareText": "Odkryj identyfikator historii teraz",
 
         "moreDetails" : "Więcej szczegółów",
         "onboardbutton_text_1" : "Dalej",

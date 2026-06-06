@@ -37,8 +37,10 @@
         "continue" : "继续",
         "paywall_title" : "发现历史的\n隐藏秘密",
         "restoreTrue": "订阅已恢复",
-    "restoreFalse": "您没有当前订阅",
-    "restoreBtn": "恢复购买",
+        "restoreFalse": "您没有当前订阅",
+        "restoreBtn": "恢复购买",
+        "shareText": "立即探索历史识别器",
+
 
         "moreDetails" : "更多详情",
         "onboardbutton_text_1" : "继续",

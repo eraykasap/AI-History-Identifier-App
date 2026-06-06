@@ -35,8 +35,9 @@
         "continue" : "continuar",
         "paywall_title" : "Descubra los secretos \nocultos de la historia",
         "restoreTrue": "Suscripción restaurada",
-    "restoreFalse": "No tienes una suscripción activa",
-    "restoreBtn": "Restaurar compras",
+        "restoreFalse": "No tienes una suscripción activa",
+        "restoreBtn": "Restaurar compras",
+        "shareText": "Descubre el identificador de historia ahora",
 
         "moreDetails" : "Más detalles",
         "onboardbutton_text_1" : "Siguiente",

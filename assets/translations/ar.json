@@ -34,8 +34,9 @@
         "continue" : "متابعة",
         "paywall_title" : "اكتشف أسرار \nالتاريخ الخفية",
         "restoreTrue": "تم استعادة الاشتراك",
-    "restoreFalse": "ليس لديك اشتراك حالي",
-    "restoreBtn" : "استعادة المشتريات",
+        "restoreFalse": "ليس لديك اشتراك حالي",
+        "restoreBtn" : "استعادة المشتريات",
+        "shareText": "اكتشف محدد التاريخ الآن",
 
         "moreDetails" : "المزيد من التفاصيل",
         "onboardbutton_text_1" : "التالي",

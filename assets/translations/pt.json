@@ -35,8 +35,9 @@
         "continue" : "continuar",
         "paywall_title" : "Desvende os segredos \nocultos da história",
         "restoreTrue": "Subscrição restaurada",
-    "restoreFalse": "Não tem uma subscrição ativa",
-    "restoreBtn": "Restaurar compras",
+        "restoreFalse": "Não tem uma subscrição ativa",
+        "restoreBtn": "Restaurar compras",
+        "shareText": "Descubra o identificador de história agora",
 
         "moreDetails" : "Mais detalhes",
         "onboardbutton_text_1" : "Próximo",

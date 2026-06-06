@@ -33,8 +33,9 @@
         "continue" : "devam et",
         "paywall_title" : "Tarihin Gizli \nSırlarını Keşfedin",
         "restoreTrue" : "Abonelik geri yüklendi",
-"restoreFalse" : "Mevcut bir aboneliğiniz yok",
-"restoreBtn": "Satın alınanları geri yükle",
+        "restoreFalse" : "Mevcut bir aboneliğiniz yok",
+        "restoreBtn": "Satın alınanları geri yükle",
+        "shareText" : "Tarih Tanımlayıcısını Hemen Keşfedin",
 
         "moreDetails" : "Daha Fazla Detay", 
         "onboardbutton_text_1" : "İleri",

@@ -33,8 +33,9 @@
         "continue" : "continue",
         "paywall_title" : "Unlock History's \nHidden Secrets",
         "restoreTrue": "Subscription restored",
-    "restoreFalse": "You have no active subscription",
-    "restoreBtn": "Restore Purchases",
+        "restoreFalse": "You have no active subscription",
+        "restoreBtn": "Restore Purchases",
+        "shareText": "Discover the History Identifier Now",
 
         "moreDetails" : "More Details",
         "onboardbutton_text_1" : "Next",
