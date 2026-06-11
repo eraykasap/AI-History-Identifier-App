@@ -720,7 +720,7 @@ class ApiOperations {
       final base64Image = base64Encode(bytes);
 
       final response = await http.post(
-        Uri.parse('https://us-central1-history-identifier.cloudfunctions.net/analyzeImage'),
+        Uri.parse( "https://analyzeimage-6yrmqiw3uq-uc.a.run.app"/*'https://us-central1-history-identifier.cloudfunctions.net/analyzeImage'*/),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'imageBase64': base64Image,
@@ -728,8 +728,10 @@ class ApiOperations {
         }),
       ).timeout(const Duration(seconds: 60));
 
-      print('STATUS: ${response.statusCode}');
-      print('BODY: ${response.body}');
+      print("---------------------------------------------------------------------------------");
+
+      print('STATUS !!!!!!!!!!!!!!!!!: ${response.statusCode}');
+      print('BODY !!!!!!!!!!!!!!!: ${response.body}');
 
       if (response.statusCode == 200) {
         final responseBody = jsonDecode(response.body);
