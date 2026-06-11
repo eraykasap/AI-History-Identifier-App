@@ -1426,23 +1426,24 @@ class TTSService {
     await _tts.setSpeechRate(0.5);
     await _tts.setVolume(1.0);
     await _tts.setPitch(1.0);
+    await _tts.awaitSpeakCompletion(true);
 
     _tts.setStartHandler(() => _isSpeaking = true);
     _tts.setCompletionHandler(() {
       _isSpeaking = false;
-      onCompleted?.call(); 
     });
     _tts.setCancelHandler(() {
       _isSpeaking = false;
-      onCompleted?.call();
     });
   }
 
   Future<void> speak(StringBuffer buffer) async {
     final text = buffer.toString();
     if (text.isEmpty) return;
-    await _tts.speak(text);
     _isSpeaking = true;
+    await _tts.speak(text);
+    _isSpeaking = false;
+    onCompleted?.call();
   }
 
   Future<void> stop() async {

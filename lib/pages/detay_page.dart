@@ -70,10 +70,12 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> with TickerProvider
     await TTSService().init();
 
     TTSService().onCompleted = () {
-      setState(() {
-        isAudioPlay = false;
-        _lottieController?.stop();
-      });
+      if (mounted) {
+        setState(() {
+          isAudioPlay = false;
+          _lottieController?.stop();
+        });
+      }
     };
 
     await _checkSubscription();
@@ -132,7 +134,7 @@ class _DetaySayfasiState extends ConsumerState<DetaySayfasi> with TickerProvider
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    TTSService().onCompleted = null;
     super.dispose();
     _audioService.dispose();
     _lottieController?.dispose();
